@@ -1,0 +1,26 @@
+[user]
+    email = kai.harries@gmail.com
+    name = Kai Harries
+[color]
+    branch = auto
+    status = auto
+    diff = auto
+[alias]
+    d = difftool -t vimdiff
+    graphviz = "!f() { echo 'digraph git {' ; git log --pretty='format:  %h -> { %p }' \"$@\" | sed 's/[0-9a-f][0-9a-f]*/\"&\"/g' ; echo '}'; }; f"
+    lg = log --oneline --graph --decorate
+    st = status --short
+
+[color "diff"]
+    frag = cyan
+    new = green
+    commit = yellow
+[color "branch"]
+    current = green
+[color "status"]
+    updated = green
+[color "decorate"]
+    branch = green
+    remoteBranch = red
+    tag = cyan
+    HEAD = blue
