@@ -1,0 +1,50 @@
+set directory=~/.cache/vim,~/,/tmp
+set backupdir=~/.cache/vim,~/,/tmp
+set viminfo+=n~/.cache/vim/viminfo
+
+execute pathogen#infect()
+
+set hlsearch
+set incsearch
+set nowrap
+set tabstop=4
+set shiftwidth=4
+set autoindent
+set expandtab
+set mouse=a
+set colorcolumn=81
+set modeline
+set history=4000
+hi ColorColumn ctermbg=7
+hi Pmenu ctermfg=0 ctermbg=7 guibg=Grey
+hi PmenuSel ctermfg=0 ctermbg=6 guibg=LightMagenta
+match Error '\s\+$'
+
+let python_highlight_indent_errors=1
+let g:xml_syntax_folding=1
+
+filetype plugin on
+filetype on
+au BufNewFile,BufRead *.seq set filetype=seq
+au BufNewFile,BufRead *.tex set textwidth=80
+
+vmap > >gv
+vmap < <gv
+
+if has("gui_running")
+    set background=light
+    set guioptions+=b
+else
+    set background=light
+endif
+
+if &diff
+    set diffopt+=iwhite
+    syntax off
+    vnoremap ,p :diffput<cr>
+    vnoremap ,g :diffget<cr>
+    nnoremap ,u :diffupdate<cr>
+else
+    syntax on
+    set number
+endif

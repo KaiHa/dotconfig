@@ -1,0 +1,20 @@
+#!/bin/sh
+
+set -e
+
+lnk()
+{
+    if [ -e $2 ]
+    then
+        if [ "$(readlink -e $1)" != "$(readlink -e $2)" ]
+        then
+            echo "warning: not overwriting existing file $2"
+        fi
+    else
+        ln -s $1 $2
+    fi
+}
+
+mkdir -p ~/.cache/vim
+
+lnk ~/.config/vim/vimrc ~/.vimrc
