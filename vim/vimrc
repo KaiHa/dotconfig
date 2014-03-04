@@ -18,7 +18,7 @@ set history=4000
 hi ColorColumn ctermbg=7
 hi Pmenu ctermfg=0 ctermbg=7 guibg=Grey
 hi PmenuSel ctermfg=0 ctermbg=6 guibg=LightMagenta
-match Error '\s\+$'
+match ErrorMsg '\s\+$'
 
 let python_highlight_indent_errors=1
 let g:xml_syntax_folding=1
