@@ -24,3 +24,5 @@
     remoteBranch = red
     tag = cyan
     HEAD = blue
+[push]
+	default = nothing
