@@ -49,3 +49,7 @@ else
     syntax on
     set number
 endif
+
+if filereadable(".myvimrc")
+    so .myvimrc
+endif
