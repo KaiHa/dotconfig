@@ -18,3 +18,5 @@ lnk()
 mkdir -p ~/.cache/vim
 
 lnk ~/.config/vim/vimrc ~/.vimrc
+lnk ~/.config/vim       ~/.vim
+lnk ~/.config/zsh/zshrc ~/.zshrc

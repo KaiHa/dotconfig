@@ -1,7 +1,6 @@
 set directory=~/.cache/vim,~/,/tmp
 set backupdir=~/.cache/vim,~/,/tmp
 set viminfo+=n~/.cache/vim/viminfo
-set runtimepath^=~/.config/vim
 set t_Co=256
 let &showbreak='↪ '
 set scrolloff=3
