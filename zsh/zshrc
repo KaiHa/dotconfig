@@ -253,16 +253,16 @@ zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 # ### Aliases:                                                               #
 # ### ####################################################################{{{1
 
-# ### Ordinary aliases:
-# { grep --help  | grep -- --color } >/dev/null 2>&1 && \
-#     alias grep='grep --color=auto'
-# { egrep --help | grep -- --color } >/dev/null 2>&1 && \
-#     alias egrep='egrep --color=auto'
-# alias cp='nocorrect cp'
-# alias ln='nocorrect ln'
-# alias mkdir='nocorrect mkdir'
-# alias mv='nocorrect mv'
-# alias rm='nocorrect rm'
+### Ordinary aliases:
+{ grep --help  | grep -- --color } >/dev/null 2>&1 && \
+    alias grep='grep --color=auto'
+{ egrep --help | grep -- --color } >/dev/null 2>&1 && \
+    alias egrep='egrep --color=auto'
+alias cp='nocorrect cp'
+alias ln='nocorrect ln'
+alias mkdir='nocorrect mkdir'
+alias mv='nocorrect mv'
+alias rm='nocorrect rm'
 
 # ### Suffix aliases:
 # ### http://dev.codemac.net/config.git?p=config.git;a=blob;f=zsh/alias
