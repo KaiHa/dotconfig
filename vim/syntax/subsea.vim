@@ -1,0 +1,5 @@
+"syn match Function '\s\@<=\/[A-Za-z0-9_+-]\+\(\s\|$\)\@='
+syn match Function '\$P\S\+'
+syn match Type '\s\@<=[AB]:'
+syn match Error '[AB]:[AB]:'
+syn match Comment '#.*'
