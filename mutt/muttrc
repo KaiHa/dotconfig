@@ -1,4 +1,5 @@
 source ~/.config/mutt/gpg.rc
+source ~/.config/mutt/sidebar.rc
 
 auto_view text/html
 color index yellow black ~N
