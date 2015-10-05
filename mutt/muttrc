@@ -16,7 +16,7 @@ set trash = '+[Google Mail]/Trash'
 
 set header_cache =~/.mutt/cache/headers
 set message_cachedir =~/.mutt/cache/bodies
-set certificate_file =~./mutt/certificates
+set certificate_file =~/.mutt/certificates
 
 set smtp_url = 'smtp://kai.harries@smtp.gmail.com:587/'
 set smtp_pass = `cat ~/.mutt/.password`
