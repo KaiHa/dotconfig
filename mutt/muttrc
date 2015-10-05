@@ -1,0 +1,35 @@
+source ~/.config/mutt/gpg.rc
+
+auto_view text/html
+color index yellow black ~N
+color index brightwhite black ~O
+
+set from = 'kai.harries@gmail.com'
+set realname = 'Kai Harries'
+set imap_user = 'kai.harries@gmail.com'
+set imap_pass = `cat ~/.mutt/.password`
+
+set folder = 'imaps://imap.gmail.com:993'
+set spoolfile = '+INBOX'
+set postponed = '+[Google Mail]/Drafts'
+set trash = '+[Google Mail]/Trash'
+
+set header_cache =~/.mutt/cache/headers
+set message_cachedir =~/.mutt/cache/bodies
+set certificate_file =~./mutt/certificates
+
+set smtp_url = 'smtp://kai.harries@smtp.gmail.com:587/'
+set smtp_pass = `cat ~/.mutt/.password`
+
+set move = no  #Stop asking to move read messages to mbox!
+set imap_keepalive = 900
+
+bind editor <space> noop
+bind pager gg top
+bind pager G  bottom
+macro index,pager y "<save-message>=[Google Mail]/All Mail<enter>" "Archive"
+macro index,pager d "<save-message>=[Google Mail]/Trash<enter>" "Trash"
+macro index gi "<change-folder>=INBOX<enter>" "Go to inbox"
+macro index ga "<change-folder>=[Google Mail]/All Mail<enter>" "Go to all mail"
+macro index gd "<change-folder>=[Google Mail]/Drafts<enter>" "Go to drafts"
+macro index <F5> "<imap-fetch-mail>" "Fetch mail over IMAP"

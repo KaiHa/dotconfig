@@ -4,19 +4,20 @@ set -e
 
 lnk()
 {
-    if [ -e $2 ]
+    if [ -e "$2" ]
     then
-        if [ "$(readlink -e $1)" != "$(readlink -e $2)" ]
+        if [ "$(readlink -e "$1")" != "$(readlink -e "$2")" ]
         then
             echo "warning: not overwriting existing file $2"
         fi
     else
-        ln -s $1 $2
+        ln -s "$1" "$2"
     fi
 }
 
 mkdir -p ~/.cache/vim
 
-lnk ~/.config/vim/vimrc ~/.vimrc
-lnk ~/.config/vim       ~/.vim
-lnk ~/.config/zsh/zshrc ~/.zshrc
+lnk ~/.config/mutt/muttrc ~/.muttrc
+lnk ~/.config/vim         ~/.vim
+lnk ~/.config/vim/vimrc   ~/.vimrc
+lnk ~/.config/zsh/zshrc   ~/.zshrc
