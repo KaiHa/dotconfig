@@ -1,3 +1,5 @@
+set folder = 'imaps://imap.gmail.com:993'
+
 source ~/.config/mutt/gpg.rc
 source ~/.config/mutt/sidebar.rc
 source ~/.config/mutt/colors.rc
@@ -9,8 +11,8 @@ set from = 'kai.harries@gmail.com'
 set realname = 'Kai Harries'
 set imap_user = 'kai.harries@gmail.com'
 set imap_pass = `cat ~/.mutt/.password`
+set imap_check_subscribed
 
-set folder = 'imaps://imap.gmail.com:993'
 set spoolfile = '+INBOX'
 set postponed = '+[Google Mail]/Drafts'
 set trash = '+[Google Mail]/Trash'
@@ -28,9 +30,11 @@ set imap_keepalive = 900
 bind editor <space> noop
 bind pager gg top
 bind pager G  bottom
-macro index,pager y "<save-message>=[Google Mail]/All Mail<enter>" "Archive"
-macro index,pager d "<save-message>=[Google Mail]/Trash<enter>" "Trash"
-macro index gi "<change-folder>=INBOX<enter>" "Go to inbox"
-macro index ga "<change-folder>=[Google Mail]/All Mail<enter>" "Go to all mail"
-macro index gd "<change-folder>=[Google Mail]/Drafts<enter>" "Go to drafts"
-macro index <F5> "<imap-fetch-mail>" "Fetch mail over IMAP"
+macro index,pager y "<save-message>=[Google Mail]/All Mail<enter>" "Archive message"
+macro index,pager d "<save-message>=[Google Mail]/Trash<enter>" "Move message to Trash"
+macro index gi "<change-folder>=INBOX<enter>" "Go to the Inbox"
+macro index ga "<change-folder>=[Google Mail]/All Mail<enter>" "Go to the folder All Mail"
+macro index gd "<change-folder>=[Google Mail]/Drafts<enter>" "Go to the folder Drafts"
+macro index gp "<change-folder>=Promotions<enter>" "Go to the folder Promotions"
+macro index gv "<change-folder>=VonMirAnMich<enter>" "Go to the folder VonMirAnMich"
+macro index <F5> "<imap-fetch-mail>" "Fetch mail over IMAP (refresh)"

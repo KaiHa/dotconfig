@@ -1,17 +1,10 @@
-# set up the sidebar, default not visible
-#set sidebar_width=12
-#set sidebar_visible=no
-#set sidebar_delim='|'
-#set sidebar_sort=yes
-
 # which mailboxes to list in the sidebar
-mailboxes "imaps://imap.gmail.com/INBOX" \
-  "imaps://imap.gmail.com/ML/Debian" \
-  "imaps://imap.gmail.com/ML/Debian/Announce" \
-  "imaps://imap.gmail.com/ML/Haskell" \
-  "imaps://imap.gmail.com/Promotions" \
-  "imaps://imap.gmail.com/VonMirAnMich"
-#  "imaps://imap.gmail.com/[Google Mail]/All Mail"
+#mailboxes "+INBOX" \
+#  "+ML/Debian" \
+#  "+ML/Debian/Announce" \
+#  "+[Google Mail]/All Mail"
+
+macro index,pager B '<enter-command>toggle sidebar_visible<enter>'
 
 # ctrl-n, ctrl-p to select next, prev folder
 # ctrl-o to open selected folder
