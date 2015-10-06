@@ -3,6 +3,7 @@ source ~/.config/mutt/sidebar.rc
 source ~/.config/mutt/colors.rc
 
 auto_view text/html
+alternative_order text/plain text/enriched text/html
 
 set from = 'kai.harries@gmail.com'
 set realname = 'Kai Harries'

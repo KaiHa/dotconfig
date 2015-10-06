@@ -17,7 +17,8 @@ lnk()
 
 mkdir -p ~/.cache/vim
 
-lnk ~/.config/mutt/muttrc ~/.muttrc
-lnk ~/.config/vim         ~/.vim
-lnk ~/.config/vim/vimrc   ~/.vimrc
-lnk ~/.config/zsh/zshrc   ~/.zshrc
+lnk ~/.config/mutt/mailcap ~/.mailcap
+lnk ~/.config/mutt/muttrc  ~/.muttrc
+lnk ~/.config/vim          ~/.vim
+lnk ~/.config/vim/vimrc    ~/.vimrc
+lnk ~/.config/zsh/zshrc    ~/.zshrc
