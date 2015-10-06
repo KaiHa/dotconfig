@@ -1,9 +1,8 @@
 source ~/.config/mutt/gpg.rc
 source ~/.config/mutt/sidebar.rc
+source ~/.config/mutt/colors.rc
 
 auto_view text/html
-color index yellow black ~N
-color index brightwhite black ~O
 
 set from = 'kai.harries@gmail.com'
 set realname = 'Kai Harries'

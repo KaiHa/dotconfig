@@ -13,9 +13,6 @@ mailboxes "imaps://imap.gmail.com/INBOX" \
   "imaps://imap.gmail.com/VonMirAnMich"
 #  "imaps://imap.gmail.com/[Google Mail]/All Mail"
 
-# color of folders with new mail
-color sidebar_new yellow default
-
 # ctrl-n, ctrl-p to select next, prev folder
 # ctrl-o to open selected folder
 bind index CP sidebar-prev

@@ -1,0 +1,3 @@
+source /usr/share/doc/mutt/examples/colors.default
+
+color sidebar_new red white
