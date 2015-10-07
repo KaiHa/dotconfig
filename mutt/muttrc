@@ -7,6 +7,9 @@ source ~/.config/mutt/colors.rc
 auto_view text/html
 alternative_order text/plain text/enriched text/html
 
+set index_format = '%4C %Z %{%b %d} %-15.15L (%?M?#%3M&%4c?) %s'
+folder-hook . "exec collapse-all"
+
 set from = 'kai.harries@gmail.com'
 set realname = 'Kai Harries'
 set imap_user = 'kai.harries@gmail.com'
