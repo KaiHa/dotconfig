@@ -394,5 +394,6 @@ compdef md=mkdir
 
 compdef gpg2=gpg
 alias mutt="TERM=xterm-256color mutt"
+alias c="toilet --termwidth --gay -f bigmono9"
 
 . /usr/share/powerline/bindings/zsh/powerline.zsh
