@@ -1,5 +1,6 @@
 source /usr/share/doc/mutt/examples/colors.default
 
 color sidebar_new red white
+color sidebar_flagged black white
 color header brightcolor22 white "^Subject:"
 color header color18 white "^From:"
