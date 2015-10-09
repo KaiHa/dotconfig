@@ -20,9 +20,9 @@ alias l='ls -F'
 alias ll='ls -F -l'
 alias la='ls -F -A'
 
-### Keep 1000 lines of history within the shell:
-HISTSIZE=1000
-SAVEHIST=1000
+### Keep history within the shell:
+HISTSIZE=10000
+SAVEHIST=10000
 HISTFILE=~/.config/zsh/zsh_history
 
 # ### Teach less, e.g., reading compressed files and listing archive content:
@@ -391,6 +391,8 @@ compdef md=mkdir
 # ### Source ~/.zshrc.local if it exists and is readable:
 # [[ -r ~/.zshrc.local ]] && . ~/.zshrc.local || true
 
+bindkey "OA" history-beginning-search-backward
+bindkey "OB" history-beginning-search-forward
 
 compdef gpg2=gpg
 alias mutt="TERM=xterm-256color mutt"
