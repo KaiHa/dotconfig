@@ -17,6 +17,7 @@ lnk()
 
 mkdir -p ~/.cache/vim
 
+lnk ~/.config/emacs/config ~/.emacs
 lnk ~/.config/mutt/mailcap ~/.mailcap
 lnk ~/.config/mutt/muttrc  ~/.muttrc
 lnk ~/.config/vim          ~/.vim
