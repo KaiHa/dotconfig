@@ -397,5 +397,7 @@ bindkey "OB" history-beginning-search-forward
 compdef gpg2=gpg
 alias mutt="TERM=xterm-256color mutt"
 alias c="toilet --termwidth --gay -f bigmono9"
+alias emacs="emacsclient -nw"
+alias vim="emacsclient -nw"
 
 . /usr/share/powerline/bindings/zsh/powerline.zsh

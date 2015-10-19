@@ -26,3 +26,5 @@
     HEAD = blue
 [push]
 	default = nothing
+[core]
+	editor = emacsclient -nw
