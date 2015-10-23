@@ -35,6 +35,7 @@ set editor="emacsclient -nw"
 bind editor <space> noop
 bind pager gg top
 bind pager G  bottom
+bind pager R  group-reply
 macro index,pager y "<save-message>=[Google Mail]/All Mail<enter>" "Archive message"
 macro index,pager d "<save-message>=[Google Mail]/Trash<enter>" "Move message to Trash"
 macro index gi "<change-folder>=INBOX<enter>" "Go to the Inbox"
