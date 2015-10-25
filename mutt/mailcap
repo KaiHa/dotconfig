@@ -1,2 +1,2 @@
-text/html; sensible-browser '%s' &; test=test -n "$DISPLAY"; needsterminal;
+text/html; sensible-browser %s; test=test -n "$DISPLAY"; needsterminal; nametemplate=%s.html
 text/html; w3m -I %{charset} -T text/html; copiousoutput;
