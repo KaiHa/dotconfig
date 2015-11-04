@@ -16,6 +16,7 @@
 
 (ensure-package-installed 'evil
                           'helm
+                          'hideshowvis
                           'magit)
 
 (package-initialize)
@@ -26,6 +27,10 @@
 (require 'evil)
 
 (evil-mode t)
+;; hide-show-mode (folding)
+(add-hook 'prog-mode-hook #'hs-minor-mode)
+(add-hook 'prog-mode-hook #'hideshowvis-minor-mode)
+(hideshowvis-symbols)
 
 (server-start)
 
