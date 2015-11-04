@@ -38,8 +38,9 @@ Return a list of installed packages or nil for every skipped package."
 
 (server-start)
 
-;; custom shortcuts
+;; custom key-bindings
 (global-set-key (kbd "C-x g") 'magit-status)
+(global-set-key (kbd "M-/") 'hippie-expand)
 
 
 (custom-set-variables
