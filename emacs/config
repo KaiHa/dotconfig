@@ -54,7 +54,7 @@
    (quote
     (imenu-add-menubar-index turn-on-eldoc-mode turn-on-haskell-indentation
                              (lambda nil
-                               (ghc-init)))))
+                               (ghc-init)))) t)
  '(haskell-tags-on-save t)
  '(indent-tabs-mode nil)
  '(inhibit-startup-screen t)
@@ -66,4 +66,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:family "Hack" :foundry "bitstream" :slant normal :weight normal :height 98 :width normal)))))
+ '(default ((t (:family "Hack" :foundry "bitstream" :slant normal :weight normal :height 98 :width normal))))
+ '(hideshowvis-hidable-face ((t (:foreground "#888"))))
+ '(hs-face ((t (:background "#ff8" :slant italic :height 0.8))))
+ '(hs-fringe-face ((t (:background "#ff8" :foreground "#888")))))
