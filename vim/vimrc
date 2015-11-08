@@ -5,8 +5,6 @@ set t_Co=256
 let &showbreak='↪ '
 set scrolloff=3
 
-execute pathogen#infect()
-
 set hlsearch
 set incsearch
 set nowrap
