@@ -41,6 +41,7 @@ macro index,pager d "<save-message>=[Google Mail]/Trash<enter>" "Move message to
 macro index gi "<change-folder>=INBOX<enter>" "Go to the Inbox"
 macro index gA "<change-folder>=[Google Mail]/All Mail<enter>" "Go to the All Mail"
 macro index gD "<change-folder>=[Google Mail]/Drafts<enter>" "Go to the Drafts"
+macro index gS "<change-folder>=[Google Mail]/Sent Mail<enter>" "Go to the Sent Mail"
 macro index gd "<change-folder>=ML/Debian<enter>" "Go to the folder ML/Debian"
 macro index ga "<change-folder>=ML/Debian/Announce<enter>" "Go to the folder ML/Debian/Announce"
 macro index ge "<change-folder>=ML/Debian/Embedded<enter>" "Go to the folder ML/Debian/Embedded"
