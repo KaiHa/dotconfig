@@ -9,6 +9,8 @@ alternative_order text/plain text/enriched text/html
 
 set index_format = '%4C %Z %{%b %d} %-15.15L (%?M?#%3M&%4c?) %s'
 #folder-hook . "exec collapse-all"
+set alias_file        = '~/.mutt/aliases.txt'
+set query_command="lbdbq %s"
 
 set from = 'kai.harries@gmail.com'
 set realname = 'Kai Harries'
@@ -50,3 +52,5 @@ macro index,pager gp "<change-folder>=Promotions<enter>" "Go to the folder Promo
 macro index,pager gv "<change-folder>=Promotions/Veranstaltungen<enter>" "Go to the folder Promotions/Veranstaltungen"
 macro index,pager gr "<change-folder>=Reminder<enter>" "Go to the folder Reminder"
 macro index <F5> "<imap-fetch-mail>" "Fetch mail over IMAP (refresh)"
+
+source $alias_file

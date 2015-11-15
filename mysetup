@@ -18,8 +18,11 @@ lnk()
 mkdir -p ~/.cache/vim
 
 lnk ~/.config/emacs/config ~/.emacs
+lnk ~/.config/lbdb/lbdbrc  ~/.lbdbrc
 lnk ~/.config/mutt/mailcap ~/.mailcap
 lnk ~/.config/mutt/muttrc  ~/.muttrc
 lnk ~/.config/vim          ~/.vim
 lnk ~/.config/vim/vimrc    ~/.vimrc
 lnk ~/.config/zsh/zshrc    ~/.zshrc
+
+gpg2 --decrypt ~/.config/mutt/aliases.txt.gpg > ~/.mutt/aliases.txt
