@@ -48,6 +48,7 @@ macro index,pager gd "<change-folder>=ML/Debian<enter>" "Go to the folder ML/Deb
 macro index,pager ga "<change-folder>=ML/Debian/Announce<enter>" "Go to the folder ML/Debian/Announce"
 macro index,pager ge "<change-folder>=ML/Debian/Embedded<enter>" "Go to the folder ML/Debian/Embedded"
 macro index,pager gh "<change-folder>=ML/Haskell<enter>" "Go to the folder ML/Haskell"
+macro index,pager gm "<change-folder>=ML<enter>" "Go to the folder ML"
 macro index,pager gp "<change-folder>=Promotions<enter>" "Go to the folder Promotions"
 macro index,pager gv "<change-folder>=Promotions/Veranstaltungen<enter>" "Go to the folder Promotions/Veranstaltungen"
 macro index,pager gr "<change-folder>=Reminder<enter>" "Go to the folder Reminder"
