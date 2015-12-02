@@ -5,7 +5,7 @@
 ;;  M-s o  list all lines that match (occur)
 
 
-;;;; Do NOT edit behind this ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;; Do NOT edit this ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -71,3 +71,12 @@
 ;; custom key-bindings
 (global-set-key (kbd "C-x g") 'magit-status)
 (global-set-key (kbd "M-/") 'hippie-expand)
+
+
+(add-hook 'erlang-mode-hook 'my-erlang-mode-hook)
+(defun my-erlang-mode-hook ()
+  (setq hs-special-modes-alist
+	(cons '(erlang-mode
+		"^\\([a-z][a-zA-Z0-9_]*\\|'[^\n']*[^\\]'\\)\\s *(" nil "%"
+		erlang-end-of-clause) hs-special-modes-alist))
+  (hs-minor-mode 1))
