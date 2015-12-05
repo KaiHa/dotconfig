@@ -4,6 +4,7 @@
 !/.gitmodules
 !/LICENSE
 !/README.md
+!/autostart/
 !/emacs/
 !/environment
 !/git/
