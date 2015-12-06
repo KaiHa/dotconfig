@@ -1,4 +1,5 @@
 .#*
+gpa.conf
 gpg-agent-info-*
 private-keys-v1.d/
 pubring.gpg
