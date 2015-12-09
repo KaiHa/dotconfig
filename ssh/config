@@ -1,6 +1,9 @@
 Host github.com
      ControlPersist 120
 
+Host *.debian.org
+     User kaiha-guest
+
 Host *
      ControlMaster auto
      ControlPath /tmp/ssh-%r%h:%p
