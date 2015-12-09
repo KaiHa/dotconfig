@@ -22,6 +22,7 @@ lnk ~/.config/gnupg        ~/.gnupg
 lnk ~/.config/lbdb/lbdbrc  ~/.lbdbrc
 lnk ~/.config/mutt/mailcap ~/.mailcap
 lnk ~/.config/mutt/muttrc  ~/.muttrc
+lnk ~/.config/ssh          ~/.ssh
 lnk ~/.config/vim          ~/.vim
 lnk ~/.config/vim/vimrc    ~/.vimrc
 lnk ~/.config/zsh/zshrc    ~/.zshrc
