@@ -404,3 +404,8 @@ alias pwgen="pwgen --secure --symbols 10"
 . /usr/share/powerline/bindings/zsh/powerline.zsh
 
 zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
+
+if [ -f ~/.nix-profile/etc/profile.d/nix.sh ]
+then
+    . ~/.nix-profile/etc/profile.d/nix.sh
+fi
