@@ -6,5 +6,5 @@ Host *.debian.org
 
 Host *
      ControlMaster auto
-     ControlPath /tmp/ssh-%r%h:%p
+     ControlPath /tmp/ssh-%r@%h:%p
      ControlPersist 1800
