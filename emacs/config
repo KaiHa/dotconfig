@@ -21,6 +21,7 @@
                              (lambda nil
                                (ghc-init)))) t)
  '(haskell-tags-on-save t)
+ '(hs-hide-comments-when-hiding-all nil)
  '(indent-tabs-mode nil)
  '(inhibit-startup-screen t)
  '(package-archives
@@ -81,4 +82,5 @@
 	(cons '(erlang-mode
 		"^\\([a-z][a-zA-Z0-9_]*\\|'[^\n']*[^\\]'\\)\\s *(" nil "%"
 		erlang-end-of-clause) hs-special-modes-alist))
-  (hs-minor-mode 1))
+  (hs-minor-mode 1)
+  (define-key evil-motion-state-map "K" 'erlang-man-function))
