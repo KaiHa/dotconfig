@@ -1,0 +1,5 @@
+xsetroot -xcf /usr/share/icons/Adwaita/cursors/left_ptr 16
+xcompmgr &
+setxkbmap us nodeadkeys
+$(gnome-keyring-daemon --start --daemonize)
+emacs --daemon
