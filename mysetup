@@ -25,6 +25,7 @@ lnk ~/.config/mutt/muttrc  ~/.muttrc
 lnk ~/.config/ssh          ~/.ssh
 lnk ~/.config/vim          ~/.vim
 lnk ~/.config/vim/vimrc    ~/.vimrc
+lnk ~/.config/xmonad       ~/.xmonad
 lnk ~/.config/zsh/zshrc    ~/.zshrc
 
 gpg2 --decrypt ~/.config/mutt/aliases.txt.gpg > ~/.mutt/aliases.txt
