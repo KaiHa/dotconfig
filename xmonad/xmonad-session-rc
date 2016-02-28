@@ -1,5 +1,5 @@
 xsetroot -xcf /usr/share/icons/Adwaita/cursors/left_ptr 16
-xcompmgr &
+feh --bg-fill ~/Pictures/background &
 setxkbmap us nodeadkeys
 $(gnome-keyring-daemon --start --daemonize)
 emacs --daemon
