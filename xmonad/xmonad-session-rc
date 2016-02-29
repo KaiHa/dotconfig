@@ -1,5 +1,7 @@
 xsetroot -xcf /usr/share/icons/Adwaita/cursors/left_ptr 16
 feh --bg-fill ~/Pictures/background &
+xscreensaver -nosplash &
 setxkbmap us nodeadkeys
+setxkbmap -option "compose:menu,caps:escape,shift:both_capslock"
 $(gnome-keyring-daemon --start --daemonize)
 emacs --daemon
