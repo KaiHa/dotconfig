@@ -25,6 +25,7 @@
  '(hs-hide-comments-when-hiding-all nil)
  '(indent-tabs-mode nil)
  '(inhibit-startup-screen t)
+ '(mouse-wheel-scroll-amount (quote (1 ((shift) . 5) ((control)))))
  '(package-archives
    (quote
     (("melpa-stable" . "https://stable.melpa.org/packages/")
