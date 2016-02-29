@@ -27,5 +27,5 @@
 [push]
 	default = nothing
 [core]
-	editor = emacsclient -nw
+	editor = vim
 	excludesfile = ~/.config/git/gitignore
