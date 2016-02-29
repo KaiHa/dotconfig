@@ -64,8 +64,10 @@
 ;;;; All packages should be available at this point ;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (package-initialize)
 (require 'evil)
+(require 'helm-config)
 
 (evil-mode t)
+(helm-mode t)
 ;; hide-show-mode (folding)
 (add-hook 'prog-mode-hook #'hs-minor-mode)
 (add-hook 'prog-mode-hook #'hideshowvis-minor-mode)
