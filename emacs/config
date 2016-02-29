@@ -13,6 +13,7 @@
  ;; If there is more than one, they won't work right.
  '(browse-url-browser-function (quote browse-url-generic))
  '(browse-url-generic-program "sensible-browser")
+ '(edts-man-root "/home/harriesk/.emacs.d/edts/doc/R7B")
  '(epg-gpg-program "/usr/bin/gpg2")
  '(gnutls-verify-error t)
  '(haskell-mode-hook
@@ -54,7 +55,8 @@
 ;;;; Install missing packages ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (or (file-exists-p package-user-dir) (package-refresh-contents))
 
-(ensure-package-installed 'evil
+(ensure-package-installed 'edts
+                          'evil
                           'helm
                           'hideshowvis
                           'magit)
@@ -84,3 +86,7 @@
 		erlang-end-of-clause) hs-special-modes-alist))
   (hs-minor-mode 1)
   (define-key evil-motion-state-map "K" 'erlang-man-function))
+
+(add-hook 'after-init-hook 'my-after-init-hook)
+(defun my-after-init-hook ()
+    (require 'edts-start))
