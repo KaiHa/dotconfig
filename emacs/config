@@ -15,6 +15,7 @@
  '(browse-url-generic-program "sensible-browser")
  '(edts-man-root "/home/harriesk/.emacs.d/edts/doc/R7B")
  '(epg-gpg-program "/usr/bin/gpg2")
+ '(fic-highlighted-words (quote ("FIXME" "TODO" "BUG" "KLUDGE" "XXX" "HACK")))
  '(gnutls-verify-error t)
  '(haskell-mode-hook
    (quote
@@ -58,6 +59,7 @@
 
 (ensure-package-installed 'edts
                           'evil
+                          'fic-mode
                           'helm
                           'hideshowvis
                           'magit)
