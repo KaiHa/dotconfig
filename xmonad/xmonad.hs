@@ -66,7 +66,9 @@ myPP = defaultPP { ppCurrent  = dzenColor "black"   "white" . pad
                                 )
                  , ppTitle    = \_ -> "" -- ("^bg(#000000) " ++) . dzenEscape
                  , ppExtras   = [ fixedWidthL AlignCenter " " 80 $ logTitle
-                                , padL $ dzenColorL "green" "#2A4C3F" $ wrapL "bat: " "" battery
+                                , dzenColorL "green" "#2A4C3F"
+                                    $ wrapL "[" "]"
+                                    $ fixedWidthL AlignRight " " 5 battery
                                 , date "%a, %d. %b"
                                 ]
                  }
