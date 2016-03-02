@@ -3,6 +3,7 @@
 module Main (main) where
 
 import XMonad
+import XMonad.Actions.WindowBringer (gotoMenu)
 import XMonad.Hooks.DynamicLog      ( defaultPP
                                     , dzenColor
                                     , dzenEscape
@@ -35,6 +36,7 @@ defaults = defaultConfig
   , focusFollowsMouse  = False
   } `additionalKeys`
   [ ((controlMask .|. mod1Mask, xK_l), spawn "xscreensaver-command -lock")
+  , ((mod4Mask, xK_o), gotoMenu)
   ]
 
 
