@@ -5,29 +5,24 @@ module Main (main) where
 import XMonad
 import XMonad.Actions.WindowBringer (gotoMenu)
 import XMonad.Hooks.DynamicLog      ( defaultPP
-                                    , dzenColor
-                                    , dzenEscape
-                                    , pad
+                                    , shorten
                                     , statusBar
+                                    , wrap
+                                    , xmobarColor
                                     , PP(..)
                                     )
 import XMonad.Hooks.ManageDocks     (AvoidStruts)
 import XMonad.Layout.LayoutModifier (ModifiedLayout)
 import XMonad.Util.EZConfig         (additionalKeys)
-import XMonad.Util.Font             (Align(..))
 import XMonad.Util.Loggers          ( battery
-                                    , date
-                                    , dzenColorL
-                                    , fixedWidthL
-                                    , logTitle
-                                    , padL
                                     , wrapL
+                                    , xmobarColorL
                                     )
+import XMonad.Util.WorkspaceCompare (getSortByXineramaPhysicalRule)
 
 
 main :: IO ()
-main = do
-  xmonad =<< mydzen defaults
+main = xmonad =<< myxmobar defaults
 
 
 defaults = defaultConfig
@@ -39,38 +34,26 @@ defaults = defaultConfig
   , ((mod4Mask, xK_o), gotoMenu)
   ]
 
+myxmobar :: LayoutClass l Window
+       => XConfig l -> IO (XConfig (ModifiedLayout AvoidStruts l))
+myxmobar conf =
+  statusBar "xmobar" myPP toggleStrutsKey conf
+  where
+    toggleStrutsKey XConfig{modMask = modm} = (modm, xK_b )
 
-mydzen :: LayoutClass l Window
-     => XConfig l -> IO (XConfig (ModifiedLayout AvoidStruts l))
-mydzen conf = statusBar ("dzen2 " ++ flags) myPP toggle conf
- where
-    font  = " -fn 'Hack-9'"
-    color = " -fg '#EEEEEE' -bg '#000000' "
-    misc  = " -e 'onstart=lower' -ta l "
-    flags = font ++ color ++ misc
-    toggle XConfig{modMask = modm} = (modm, xK_b)
-
-
-myPP :: PP
-myPP = defaultPP { ppCurrent  = dzenColor "black"   "white" . pad
-                 , ppVisible  = dzenColor "black"   "#555555" . pad
-                 , ppHidden   = dzenColor "#cccccc" "black" . pad
-                 , ppHiddenNoWindows = const ""
-                 , ppUrgent   = dzenColor "red" "yellow" . pad
-                 , ppWsSep    = ""
-                 , ppSep      = " | "
-                 , ppLayout   = dzenColor "#cccccc" "black" .
-                                (\ x -> pad $ case x of
-                                          "TilePrime Horizontal" -> "TTT"
-                                          "TilePrime Vertical"   -> "[]="
-                                          "Hinted Full"          -> "[ ]"
-                                          _                      -> x
-                                )
-                 , ppTitle    = \_ -> "" -- ("^bg(#000000) " ++) . dzenEscape
-                 , ppExtras   = [ fixedWidthL AlignCenter " " 80 $ logTitle
-                                , dzenColorL "green" "#2A4C3F"
-                                    $ wrapL "[" "]"
-                                    $ fixedWidthL AlignRight " " 5 battery
-                                , date "%a, %d. %b"
-                                ]
+myPP:: PP
+myPP = defaultPP { ppCurrent = xmobarColor "yellow" "" . wrap "[" "]"
+                 , ppExtras  = [xmobarColorL "green" "#2A4C3F" $ wrapL "[" "]" battery]
+                 , ppSep     = " | "
+                 , ppSort    = getSortByXineramaPhysicalRule
+                 , ppTitle   = xmobarColor "white"  "" . alignM 60
+                 , ppVisible = wrap "(" ")"
+                 , ppUrgent  = xmobarColor "red" "yellow"
                  }
+
+
+alignM :: Int -> String -> String
+alignM width txt
+  | length txt < width  = txt ++ replicate (width - length txt) ' '
+  | length txt == width = txt
+  | otherwise           = shorten width txt
