@@ -4,7 +4,10 @@ module Main (main) where
 
 import XMonad
 import XMonad.Actions.WindowBringer (gotoMenu)
+import XMonad.Actions.UpdatePointer ( updatePointer
+                                    , PointerPosition(..))
 import XMonad.Hooks.DynamicLog      ( defaultPP
+                                    , dynamicLog
                                     , shorten
                                     , statusBar
                                     , wrap
@@ -29,6 +32,7 @@ defaults = defaultConfig
   { borderWidth        = 2
   , modMask            = mod4Mask
   , focusFollowsMouse  = False
+  , logHook            = dynamicLog >> updatePointer (Relative 0.95 0.95)
   } `additionalKeys`
   [ ((controlMask .|. mod1Mask, xK_l), spawn "xscreensaver-command -lock")
   , ((mod4Mask, xK_o), gotoMenu)
@@ -42,12 +46,14 @@ myxmobar conf =
     toggleStrutsKey XConfig{modMask = modm} = (modm, xK_b )
 
 myPP:: PP
-myPP = defaultPP { ppCurrent = xmobarColor "yellow" "" . wrap "[" "]"
+myPP = defaultPP { ppCurrent = xmobarColor "yellow" "#666600" . wrap "[" "]"
                  , ppExtras  = [xmobarColorL "green" "#2A4C3F" $ wrapL "[" "]" battery]
                  , ppSep     = " | "
+                 , ppWsSep   = ""
                  , ppSort    = getSortByXineramaPhysicalRule
                  , ppTitle   = xmobarColor "white"  "" . alignM 60
-                 , ppVisible = wrap "(" ")"
+                 , ppVisible = xmobarColor "#cccccc" "#666600". wrap "." "."
+                 , ppHidden  = wrap " " " "
                  , ppUrgent  = xmobarColor "red" "yellow"
                  }
 
