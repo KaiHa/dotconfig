@@ -193,17 +193,17 @@ zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 # ### Precmd / preexec:                                                      #
 # ### ####################################################################{{{1
 
-# ### Set xterm / rxvt title:
-# preexec_xterm_title() {
-#     [[ "$TERM" != "xterm" ]] && [[ "$TERM" == "${TERM#rxvt}" ]] && return
-#     print -nR $'\033]0;'$1$'\a'
-# }
-# precmd_xterm_title() {
-#     [[ "$TERM" != "xterm" ]] && [[ "$TERM" == "${TERM#rxvt}" ]] && return
-#     print -nR $'\033]0;'Terminal$'\a'
-# }
-# preexec_functions=( ${preexec_functions} preexec_xterm_title )
-# precmd_functions=(  ${precmd_functions}  precmd_xterm_title )
+### Set xterm / rxvt title:
+preexec_xterm_title() {
+    [[ "$TERM" != "xterm" ]] && [[ "$TERM" == "${TERM#rxvt}" ]] && return
+    print -nR $'\033]0;'$1$'\a'
+}
+precmd_xterm_title() {
+    [[ "$TERM" != "xterm" ]] && [[ "$TERM" == "${TERM#rxvt}" ]] && return
+    print -nR $'\033]0;'Terminal$'\a'
+}
+preexec_functions=( ${preexec_functions} preexec_xterm_title )
+precmd_functions=(  ${precmd_functions}  precmd_xterm_title )
 
 # ### Set screen's window title:
 # preexec_screen_window_title() {
