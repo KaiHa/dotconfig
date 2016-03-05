@@ -2,11 +2,12 @@
 
 module Main (main) where
 
+import Data.String.Utils            ( replace)
 import XMonad
-import XMonad.Hooks.FadeInactive    (fadeInactiveLogHook)
-import XMonad.Actions.WindowBringer (gotoMenu)
+import XMonad.Actions.CycleWS       ( toggleWS)
 import XMonad.Actions.UpdatePointer ( updatePointer
                                     , PointerPosition(..))
+import XMonad.Actions.WindowBringer ( gotoMenu)
 import XMonad.Hooks.DynamicLog      ( defaultPP
                                     , dynamicLog
                                     , shorten
@@ -15,10 +16,12 @@ import XMonad.Hooks.DynamicLog      ( defaultPP
                                     , xmobarColor
                                     , PP(..)
                                     )
-import XMonad.Hooks.ManageDocks     (AvoidStruts)
-import XMonad.Layout.LayoutModifier (ModifiedLayout)
-import XMonad.Util.EZConfig         (additionalKeys)
-import XMonad.Util.WorkspaceCompare (getSortByXineramaPhysicalRule)
+import XMonad.Hooks.FadeInactive    ( fadeInactiveLogHook)
+import XMonad.Hooks.ManageDocks     ( AvoidStruts)
+import XMonad.Layout.LayoutModifier ( ModifiedLayout)
+import XMonad.Layout.Magnifier      ( magnifiercz')
+import XMonad.Util.EZConfig         ( additionalKeys)
+import XMonad.Util.WorkspaceCompare ( getSortByXineramaPhysicalRule)
 
 
 main :: IO ()
@@ -27,15 +30,19 @@ main = xmonad =<< myxmobar defaults
 
 defaults = defaultConfig
   { borderWidth        = 2
-  , modMask            = mod4Mask
   , focusFollowsMouse  = False
+  , layoutHook         = magnifiercz' 1.02 (Tall 1 (3/100) (1/2))
+                         ||| Tall 1 (3/100) (1/2)
+                         ||| Mirror (Tall 1 (3/100) (1/2)) ||| Full
   , logHook            = do
-                         fadeInactiveLogHook 0.8
+                         fadeInactiveLogHook 0.85
                          dynamicLog
                          updatePointer (Relative 0.95 0.95)
+  , modMask            = mod4Mask
   } `additionalKeys`
   [ ((controlMask .|. mod1Mask, xK_l), spawn "xscreensaver-command -lock")
-  , ((mod4Mask, xK_o), gotoMenu)
+  , ((mod4Mask, xK_o),                 gotoMenu)
+  , ((mod4Mask, xK_Escape),            toggleWS)
   ]
 
 myxmobar :: LayoutClass l Window
@@ -47,6 +54,7 @@ myxmobar conf =
 
 myPP:: PP
 myPP = defaultPP { ppCurrent = xmobarColor "yellow" "#666600" . wrap "[" "]"
+                 , ppLayout  = replace "NoMaster " ""
                  , ppSep     = " | "
                  , ppWsSep   = ""
                  , ppSort    = getSortByXineramaPhysicalRule
