@@ -1,6 +1,27 @@
-source /usr/share/doc/mutt/examples/colors.default
+# -*-muttrc-*-
 
-color sidebar_new red white
-color sidebar_flagged black white
-color header brightcolor22 white "^Subject:"
-color header color18 white "^From:"
+color sidebar_new red default
+color sidebar_flagged black default
+color header brightcolor22 default "^Subject:"
+color header color18 default "^From:"
+
+
+color hdrdefault blue default
+color quoted blue default
+color signature red default
+color attachment red default
+color message brightred default
+color error brightred default
+color indicator brightyellow red
+color status brightgreen blue
+color tree black default
+color normal black default
+color markers red default
+color search default black
+color tilde brightmagenta default
+color index blue default ~F
+color index red default "~N|~O"
+
+
+color body brightblack default '\*+[^*]+\*+'
+color body brightblack default '_+[^_]+_+'
