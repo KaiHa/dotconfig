@@ -3,6 +3,7 @@
 module Main (main) where
 
 import XMonad
+import XMonad.Hooks.FadeInactive    (fadeInactiveLogHook)
 import XMonad.Actions.WindowBringer (gotoMenu)
 import XMonad.Actions.UpdatePointer ( updatePointer
                                     , PointerPosition(..))
@@ -28,7 +29,10 @@ defaults = defaultConfig
   { borderWidth        = 2
   , modMask            = mod4Mask
   , focusFollowsMouse  = False
-  , logHook            = dynamicLog >> updatePointer (Relative 0.95 0.95)
+  , logHook            = do
+                         fadeInactiveLogHook 0.8
+                         dynamicLog
+                         updatePointer (Relative 0.95 0.95)
   } `additionalKeys`
   [ ((controlMask .|. mod1Mask, xK_l), spawn "xscreensaver-command -lock")
   , ((mod4Mask, xK_o), gotoMenu)
