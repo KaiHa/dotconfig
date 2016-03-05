@@ -17,10 +17,6 @@ import XMonad.Hooks.DynamicLog      ( defaultPP
 import XMonad.Hooks.ManageDocks     (AvoidStruts)
 import XMonad.Layout.LayoutModifier (ModifiedLayout)
 import XMonad.Util.EZConfig         (additionalKeys)
-import XMonad.Util.Loggers          ( battery
-                                    , wrapL
-                                    , xmobarColorL
-                                    )
 import XMonad.Util.WorkspaceCompare (getSortByXineramaPhysicalRule)
 
 
@@ -41,25 +37,17 @@ defaults = defaultConfig
 myxmobar :: LayoutClass l Window
        => XConfig l -> IO (XConfig (ModifiedLayout AvoidStruts l))
 myxmobar conf =
-  statusBar "xmobar" myPP toggleStrutsKey conf
+  statusBar "xmobar ~/.config/xmonad/xmobarrc" myPP toggleStrutsKey conf
   where
     toggleStrutsKey XConfig{modMask = modm} = (modm, xK_b )
 
 myPP:: PP
 myPP = defaultPP { ppCurrent = xmobarColor "yellow" "#666600" . wrap "[" "]"
-                 , ppExtras  = [xmobarColorL "green" "#2A4C3F" $ wrapL "[" "]" battery]
                  , ppSep     = " | "
                  , ppWsSep   = ""
                  , ppSort    = getSortByXineramaPhysicalRule
-                 , ppTitle   = xmobarColor "white"  "" . alignM 60
+                 , ppTitle   = xmobarColor "white"  "" . shorten 60
                  , ppVisible = xmobarColor "#cccccc" "#666600". wrap "." "."
                  , ppHidden  = wrap " " " "
                  , ppUrgent  = xmobarColor "red" "yellow"
                  }
-
-
-alignM :: Int -> String -> String
-alignM width txt
-  | length txt < width  = txt ++ replicate (width - length txt) ' '
-  | length txt == width = txt
-  | otherwise           = shorten width txt
