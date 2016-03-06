@@ -43,7 +43,10 @@ defaults = defaultConfig
   [ ((controlMask .|. mod1Mask, xK_l), spawn "xscreensaver-command -lock")
   , ((mod4Mask, xK_o),                 gotoMenu)
   , ((mod4Mask, xK_Escape),            toggleWS)
+  , ((noModMask, xK_LowerVol),         spawn "amixer -D pulse sset Master 4%-")
+  , ((noModMask, xK_RaiseVol),         spawn "amixer -D pulse sset Master 4%+")
   ]
+
 
 myxmobar :: LayoutClass l Window
        => XConfig l -> IO (XConfig (ModifiedLayout AvoidStruts l))
@@ -51,6 +54,7 @@ myxmobar conf =
   statusBar "xmobar ~/.config/xmonad/xmobarrc" myPP toggleStrutsKey conf
   where
     toggleStrutsKey XConfig{modMask = modm} = (modm, xK_b )
+
 
 myPP:: PP
 myPP = defaultPP { ppCurrent = xmobarColor "yellow" "#666600" . wrap "[" "]"
@@ -63,3 +67,8 @@ myPP = defaultPP { ppCurrent = xmobarColor "yellow" "#666600" . wrap "[" "]"
                  , ppHidden  = wrap " " " "
                  , ppUrgent  = xmobarColor "red" "yellow"
                  }
+
+
+xK_LowerVol, xK_RaiseVol :: KeySym
+xK_LowerVol = stringToKeysym "XF86AudioLowerVolume"
+xK_RaiseVol = stringToKeysym "XF86AudioRaiseVolume"
