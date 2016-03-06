@@ -1,7 +1,7 @@
 xsetroot -xcf /usr/share/icons/Adwaita/cursors/left_ptr 16
 xcompmgr &
 xset b off
-feh --bg-fill ~/Pictures/background &
+feh --bg-center ~/.config/xmonad/background &
 xscreensaver -nosplash &
 setxkbmap us nodeadkeys
 setxkbmap -option "compose:menu,caps:escape,shift:both_capslock"
