@@ -48,7 +48,7 @@ Config {
                              , "--low"      , "green"
                              , "--normal"   , "orange"
                              , "--high"     , "red"
-                             ] 10
+                             ] 30
 
         -- cpu activity monitor
         , Run MultiCpu       [ "--template" , "<total0>/<total1>%"
@@ -57,7 +57,7 @@ Config {
                              , "--low"      , "green"
                              , "--normal"   , "orange"
                              , "--high"     , "red"
-                             ] 10
+                             ] 30
 
         -- cpu core temperature monitor
         , Run CoreTemp       [ "--template" , "<core0>/<core1>°C"
@@ -66,7 +66,7 @@ Config {
                              , "--low"      , "green"
                              , "--normal"   , "orange"
                              , "--high"     , "red"
-                             ] 50
+                             ] 100
 
         -- memory usage monitor
         , Run Memory         [ "--template" ,"Mem: <usedratio>%"
@@ -75,7 +75,7 @@ Config {
                              , "--low"      , "green"
                              , "--normal"   , "orange"
                              , "--high"     , "red"
-                             ] 10
+                             ] 30
 
         -- battery monitor
         , Run Battery        [ "--template" , "⎨<acstatus>⎟"
@@ -92,10 +92,10 @@ Config {
                                        , "-O"	, "<fc=#dAA520,#006600>Charging <left>%</fc>"
                                        -- charged status
                                        , "-i"	, "<fc=green,#006600>Charged</fc>"
-                             ] 50
+                             ] 100
 
         -- time and date indicator
-        , Run Date           "<fc=#ABABAB>%F (%a)</fc> <fc=#DDDDDD>%T</fc>" "date" 10
+        , Run Date           "<fc=#ABABAB>%a, %-d. %b</fc> <fc=#DDDDDD>%H:%M</fc>" "date" 30
 
         -- keyboard layout indicator
         , Run Kbd            [("us", "<fc=#999999>us</fc>")]
