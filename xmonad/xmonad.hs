@@ -43,8 +43,8 @@ defaults = defaultConfig
   [ ((controlMask .|. mod1Mask, xK_l), spawn "xscreensaver-command -lock")
   , ((mod4Mask, xK_o),                 gotoMenu)
   , ((mod4Mask, xK_Escape),            toggleWS)
-  , ((noModMask, xK_LowerVol),         spawn "amixer -D pulse sset Master 4%-")
-  , ((noModMask, xK_RaiseVol),         spawn "amixer -D pulse sset Master 4%+")
+  , ((noModMask, xK_LowerVol),         spawn "amixer -D pulse sset Master 2%-")
+  , ((noModMask, xK_RaiseVol),         spawn "amixer -D pulse sset Master 2%+")
   ]
 
 
