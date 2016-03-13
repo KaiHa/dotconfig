@@ -19,7 +19,7 @@ import XMonad.Hooks.DynamicLog      ( defaultPP
 import XMonad.Hooks.FadeInactive    ( fadeInactiveLogHook)
 import XMonad.Hooks.ManageDocks     ( AvoidStruts)
 import XMonad.Layout.LayoutModifier ( ModifiedLayout)
-import XMonad.Layout.Magnifier      ( magnifiercz')
+import XMonad.Layout.Magnifier      ( magnifiercz)
 import XMonad.Util.EZConfig         ( additionalKeys)
 import XMonad.Util.WorkspaceCompare ( getSortByXineramaPhysicalRule)
 
@@ -31,11 +31,11 @@ main = xmonad =<< myxmobar defaults
 defaults = defaultConfig
   { borderWidth        = 2
   , focusFollowsMouse  = False
-  , layoutHook         = magnifiercz' 1.02 (Tall 1 (3/100) (1/2))
-                         ||| Tall 1 (3/100) (1/2)
-                         ||| Mirror (Tall 1 (3/100) (1/2)) ||| Full
+  , layoutHook         = Tall 1 (3/100) (1/2) ||| Full
+                         ||| Mirror (Tall 1 (3/100) (1/2))
+                         ||| magnifiercz 1.5 (Tall 1 (3/100) (1/2))
   , logHook            = do
-                         fadeInactiveLogHook 0.85
+                         fadeInactiveLogHook 0.9
                          dynamicLog
                          updatePointer (Relative 0.95 0.95)
   , modMask            = mod4Mask
