@@ -40,7 +40,7 @@ defaults = defaultConfig
                          updatePointer (Relative 0.95 0.95)
   , modMask            = mod4Mask
   } `additionalKeys`
-  [ ((controlMask .|. mod1Mask, xK_l), spawn "xscreensaver-command -lock")
+  [ ((controlMask .|. mod1Mask, xK_l), spawn "xautolock -locknow")
   , ((mod4Mask, xK_o),                 gotoMenu)
   , ((mod4Mask, xK_Escape),            toggleWS)
   , ((noModMask, xK_LowerVol),         spawn "amixer -D pulse sset Master 2%-")
