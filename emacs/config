@@ -13,7 +13,6 @@
  ;; If there is more than one, they won't work right.
  '(browse-url-browser-function (quote browse-url-generic))
  '(browse-url-generic-program "sensible-browser")
- '(edts-man-root "/home/harriesk/.emacs.d/edts/doc/R7B")
  '(epg-gpg-program "/usr/bin/gpg2")
  '(fic-highlighted-words (quote ("FIXME" "TODO" "BUG" "KLUDGE" "XXX" "HACK")))
  '(gnutls-verify-error t)
@@ -57,8 +56,7 @@
 ;;;; Install missing packages ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (or (file-exists-p package-user-dir) (package-refresh-contents))
 
-(ensure-package-installed 'edts
-                          'evil
+(ensure-package-installed 'evil
                           'fic-mode
                           'helm
                           'hideshowvis
@@ -81,17 +79,3 @@
 ;; custom key-bindings
 (global-set-key (kbd "C-x g") 'magit-status)
 (global-set-key (kbd "M-/") 'hippie-expand)
-
-
-(add-hook 'erlang-mode-hook 'my-erlang-mode-hook)
-(defun my-erlang-mode-hook ()
-  (setq hs-special-modes-alist
-	(cons '(erlang-mode
-		"^\\([a-z][a-zA-Z0-9_]*\\|'[^\n']*[^\\]'\\)\\s *(" nil "%"
-		erlang-end-of-clause) hs-special-modes-alist))
-  (hs-minor-mode 1)
-  (define-key evil-motion-state-map "K" 'erlang-man-function))
-
-(add-hook 'after-init-hook 'my-after-init-hook)
-(defun my-after-init-hook ()
-    (require 'edts-start))
