@@ -4,6 +4,9 @@
 #  "+ML/Debian/Announce" \
 #  "+[Google Mail]/All Mail"
 
+set sidebar_visible = yes
+set sidebar_width = 18
+
 macro index,pager B '<enter-command>toggle sidebar_visible<enter>'
 
 # ctrl-n, ctrl-p to select next, prev folder
