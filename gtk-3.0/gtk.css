@@ -10,3 +10,15 @@ TerminalWindow .notebook tab {
 TerminalWindow .notebook tab:active {
   background-color: #BFB;
 }
+
+/* Hide border around evince */
+.window-frame, .window-frame:backdrop {
+ box-shadow: 0 0 0 black;
+ border-style: none;
+ margin: 0;
+ border-radius: 0;
+}
+
+.titlebar {
+ border-radius: 0;
+}
