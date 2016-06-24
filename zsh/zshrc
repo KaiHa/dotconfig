@@ -401,7 +401,7 @@ alias e="emacsclient -nw"
 alias E="emacsclient -c --no-wait"
 alias pwgen="pwgen --secure --symbols 10"
 
-. /usr/share/powerline/bindings/zsh/powerline.zsh
+. /run/current-system/sw/lib/python3.5/site-packages/powerline/bindings/zsh/powerline.zsh
 
 zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
 
