@@ -5,17 +5,15 @@ module Main (main) where
 import Data.String.Utils            ( replace)
 import XMonad
 import XMonad.Actions.CycleWS       ( toggleWS)
-import XMonad.Actions.UpdatePointer ( updatePointer
-                                    , PointerPosition(..))
 import XMonad.Actions.WindowBringer ( gotoMenu)
-import XMonad.Hooks.DynamicLog      ( defaultPP
-                                    , dynamicLog
+import XMonad.Hooks.DynamicLog      ( dynamicLog
                                     , shorten
                                     , statusBar
                                     , wrap
                                     , xmobarColor
                                     , PP(..)
                                     )
+import XMonad.Hooks.ManageDocks     ( docksEventHook )
 import XMonad.Hooks.FadeInactive    ( fadeInactiveLogHook)
 import XMonad.Hooks.ManageDocks     ( AvoidStruts)
 import XMonad.Layout.LayoutModifier ( ModifiedLayout)
@@ -28,17 +26,18 @@ main :: IO ()
 main = xmonad =<< myxmobar defaults
 
 
-defaults = defaultConfig
+defaults = def
   { borderWidth        = 2
   , focusFollowsMouse  = False
+  , handleEventHook    = mconcat [docksEventHook, handleEventHook def]
   , layoutHook         = Tall 1 (3/100) (1/2) ||| Full
                          ||| Mirror (Tall 1 (3/100) (1/2))
                          ||| magnifiercz 1.5 (Tall 1 (3/100) (1/2))
   , logHook            = do
                          fadeInactiveLogHook 0.9
                          dynamicLog
-                         updatePointer (Relative 0.95 0.95)
   , modMask            = mod4Mask
+  , terminal           = "urxvtc"
   } `additionalKeys`
   [ ((controlMask .|. mod1Mask, xK_l), spawn "xautolock -locknow")
   , ((mod4Mask, xK_o),                 gotoMenu)
@@ -57,16 +56,16 @@ myxmobar conf =
 
 
 myPP:: PP
-myPP = defaultPP { ppCurrent = xmobarColor "yellow" "#666600" . wrap "[" "]"
-                 , ppLayout  = replace "NoMaster " ""
-                 , ppSep     = " | "
-                 , ppWsSep   = ""
-                 , ppSort    = getSortByXineramaPhysicalRule
-                 , ppTitle   = xmobarColor "white"  "" . shorten 60
-                 , ppVisible = xmobarColor "#cccccc" "#666600". wrap "." "."
-                 , ppHidden  = wrap " " " "
-                 , ppUrgent  = xmobarColor "red" "yellow"
-                 }
+myPP = def { ppCurrent = xmobarColor "yellow" "#666600" . wrap "[" "]"
+           , ppLayout  = replace "NoMaster " ""
+           , ppSep     = " | "
+           , ppWsSep   = ""
+           , ppSort    = getSortByXineramaPhysicalRule
+           , ppTitle   = xmobarColor "white"  "" . shorten 60
+           , ppVisible = xmobarColor "#cccccc" "#666600". wrap "." "."
+           , ppHidden  = wrap " " " "
+           , ppUrgent  = xmobarColor "red" "yellow"
+           }
 
 
 xK_LowerVol, xK_RaiseVol :: KeySym
