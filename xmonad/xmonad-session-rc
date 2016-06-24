@@ -1,11 +1,12 @@
-xsetroot -xcf /usr/share/icons/Adwaita/cursors/left_ptr 16
+xsetroot -cursor_name left_ptr
 xcompmgr &
 xset b off
 xset dpms 300 300 300
 feh --bg-center ~/.config/xmonad/background &
-xautolock -locker slock -notify 5 -time 6 &
 setxkbmap us nodeadkeys
 setxkbmap -option "compose:menu,caps:escape,shift:both_capslock"
-$(gnome-keyring-daemon --start --daemonize)
+eval $(gpg-agent --daemon --enable-ssh-support)
+urxvtd --quiet --opendisplay --fork
 powerline-daemon -q
 emacs --daemon
+xmonad
