@@ -13,10 +13,10 @@ Config {
    -- layout
    , sepChar =  "%"   -- delineator between plugin names and straight text
    , alignSep = "}{"  -- separator between left-right alignment
-   , template = "%StdinReader% }{ <fc=green,#006600>%battery%</fc> | <action=`xterm -e top` button=1>CPU: %multicpu% %coretemp%</action> | %memory% | <action=`xterm -e nmtui` button=1>%dynnetwork%</action> | %date% | <action=`~/.config/xmonad/togglekb` button=1><fc=yellow>%kbd%</fc></action> "
+   , template = "%StdinReader% }{ <fc=green,#006600>%battery%</fc> | <action=`xterm -e top` button=1>CPU: %multicpu%</action> | %memory% | <action=`xterm -e nmtui` button=1>%dynnetwork%</action> | %date% | <action=`~/.config/xmonad/togglekb` button=1><fc=yellow>%kbd%</fc></action> "
 
    -- general behavior
-   , lowerOnStart =     True    -- send to bottom of window stack on start
+   , lowerOnStart =     False   -- send to bottom of window stack on start
    , hideOnStart =      False   -- start with window unmapped (hidden)
    , allDesktops =      True    -- show on all desktops
    , overrideRedirect = True    -- set the Override Redirect flag (Xlib)
@@ -58,15 +58,6 @@ Config {
                              , "--normal"   , "orange"
                              , "--high"     , "red"
                              ] 30
-
-        -- cpu core temperature monitor
-        , Run CoreTemp       [ "--template" , "<core0>/<core1>°C"
-                             , "--Low"      , "70"        -- units: °C
-                             , "--High"     , "80"        -- units: °C
-                             , "--low"      , "green"
-                             , "--normal"   , "orange"
-                             , "--high"     , "red"
-                             ] 100
 
         -- memory usage monitor
         , Run Memory         [ "--template" ,"Mem: <usedratio>%"
