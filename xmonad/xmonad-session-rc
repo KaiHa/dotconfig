@@ -9,4 +9,5 @@ eval $(gpg-agent --daemon --enable-ssh-support)
 urxvtd --quiet --opendisplay --fork
 powerline-daemon -q
 emacs --daemon
+usermount &
 xmonad
