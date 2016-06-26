@@ -1,7 +1,9 @@
 URxvt.boldFont:         xft:Hack-Bold:pixelsize=12:weight=bold,xft:Symbola
 URxvt.font:             xft:Hack-Regular:pixelsize=12,xft:Symbola
 URxvt.italicFont:       xft:Hack-RegularOblique:pixelsize=12:slant=italic,xft:Symbola
+URxvt.keysym.C-Down:    font-size:decrease
+URxvt.keysym.C-Up:      font-size:increase
 URxvt.matcher.button:   1
-URxvt.perl-ext:         default,matcher
+URxvt.perl-ext:         default,font-size,matcher
 URxvt.scrollBar:        false
 URxvt.url-launcher:     firefox
