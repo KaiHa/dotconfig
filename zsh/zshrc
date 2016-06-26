@@ -36,13 +36,13 @@ zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 setopt prompt_subst
 autoload -Uz vcs_info; vcs_info 2>/dev/null && precmd() { vcs_info }
 # ### Configure vcs_info to be colorful:
-zstyle ':vcs_info:*' actionformats ' %K{0}%F{15}  %b%F{3}|%F{1}%a%f %k'
-zstyle ':vcs_info:*' formats ' %K{0}%F{15}  %b %f%k'
+zstyle ':vcs_info:*' actionformats ' %K{0}%F{7}  %b%F{3}|%F{1}%a%f %k'
+zstyle ':vcs_info:*' formats ' %K{0}%F{7}  %b %f%k'
 zstyle ':vcs_info:(sv[nk]|bzr):*' branchformat '%b%F{1}:%F{3}%r'
 
 autoload -Uz colors && colors
-PROMPT="%B%K{22}%F{156} %m %#%f%k%b%F{22}%f "
-RPROMPT="%F{4}%3~%f\${vcs_info_msg_0_}"
+PROMPT="%B%K{4}%F{7} %m %#%f%k%b%F{4}%f "
+RPROMPT="%F{5}%3~%f\${vcs_info_msg_0_}"
 
 
 
