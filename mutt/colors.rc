@@ -12,8 +12,8 @@ color signature red default
 color attachment red default
 color message brightred default
 color error brightred default
-color indicator brightyellow red
-color status brightgreen blue
+color indicator white red
+color status white blue
 color tree black default
 color normal black default
 color markers red default
