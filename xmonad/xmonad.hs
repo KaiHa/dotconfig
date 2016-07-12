@@ -36,7 +36,6 @@ defaults = defaultConfig
                          ||| magnifiercz 1.5 (Tall 1 (3/100) (1/2))
   , logHook            = do
                          fadeInactiveLogHook 0.9
-                         dynamicLog
                          updatePointer (Relative 0.95 0.95)
   , modMask            = mod4Mask
   } `additionalKeys`
