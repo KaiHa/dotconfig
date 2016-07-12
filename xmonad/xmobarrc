@@ -13,7 +13,7 @@ Config {
    -- layout
    , sepChar =  "%"   -- delineator between plugin names and straight text
    , alignSep = "}{"  -- separator between left-right alignment
-   , template = "%StdinReader% }{ <fc=green,#006600>%battery%</fc> | <action=`xterm -e top` button=1>CPU: %multicpu%</action> | %memory% | <action=`xterm -e nmtui` button=1>%dynnetwork%</action> | %date% | <action=`~/.config/xmonad/togglekb` button=1><fc=yellow>%kbd%</fc></action> "
+   , template = "%StdinReader% }{ <fc=green,#006600>%battery%</fc> | <action=`xterm -e top` button=1>CPU: %multicpu%</action> | %memory% | <action=`xterm -e nmtui` button=1>%dynnetwork%</action> | %date% | <action=`~/.config/xmonad/togglekb` button=1><fc=yellow>%kbd%</fc></action> |     "
 
    -- general behavior
    , lowerOnStart =     False   -- send to bottom of window stack on start

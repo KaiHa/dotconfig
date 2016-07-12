@@ -35,7 +35,6 @@ defaults = def
                          ||| magnifiercz 1.5 (Tall 1 (3/100) (1/2))
   , logHook            = do
                          fadeInactiveLogHook 0.9
-                         dynamicLog
   , modMask            = mod4Mask
   , terminal           = "urxvtc"
   } `additionalKeys`
