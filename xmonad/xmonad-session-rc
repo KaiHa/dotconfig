@@ -9,3 +9,5 @@ setxkbmap -option "compose:menu,caps:escape,shift:both_capslock"
 $(gnome-keyring-daemon --start --daemonize)
 powerline-daemon -q
 emacs --daemon
+stalonetray &
+nitrokey-app &
