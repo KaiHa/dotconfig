@@ -396,6 +396,7 @@ alias c="toilet --termwidth --gay -f bigmono9"
 alias e="emacsclient -nw"
 alias E="emacsclient -c --no-wait"
 alias pwgen="pwgen --secure --symbols 10"
+alias nixos-list-generations="sudo nix-env -p /nix/var/nix/profiles/system --list-generations"
 
 zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
 
