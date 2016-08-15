@@ -6,6 +6,7 @@ import Data.String.Utils            ( replace)
 import XMonad
 import XMonad.Actions.CycleWS       ( toggleWS)
 import XMonad.Actions.WindowBringer ( gotoMenu)
+import XMonad.Actions.WindowGo
 import XMonad.Hooks.DynamicLog      ( dynamicLog
                                     , shorten
                                     , statusBar
@@ -43,6 +44,7 @@ defaults = def
   , ((mod4Mask, xK_Escape),            toggleWS)
   , ((noModMask, xK_LowerVol),         spawn "amixer -D pulse sset Master 2%-")
   , ((noModMask, xK_RaiseVol),         spawn "amixer -D pulse sset Master 2%+")
+  , ((noModMask, xK_Launch2),          runOrRaise "firefox" (className =? "Firefox"))
   ]
 
 
@@ -68,5 +70,7 @@ myPP = def { ppCurrent = xmobarColor "yellow" "#666600" . wrap "[" "]"
 
 
 xK_LowerVol, xK_RaiseVol :: KeySym
-xK_LowerVol = stringToKeysym "XF86AudioLowerVolume"
-xK_RaiseVol = stringToKeysym "XF86AudioRaiseVolume"
+xK_LowerVol    = stringToKeysym "XF86AudioLowerVolume"
+xK_RaiseVol    = stringToKeysym "XF86AudioRaiseVolume"
+xK_ScreenSaver = stringToKeysym "XF86ScreenSaver"
+xK_Launch2     = stringToKeysym "XF86Launch2"
