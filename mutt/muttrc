@@ -33,6 +33,8 @@ set move = no  #Stop asking to move read messages to mbox!
 set imap_keepalive = 900
 
 set editor="emacsclient -nw"
+set sort=threads
+set strict_threads=yes
 
 bind editor <space> noop
 bind pager gg top
