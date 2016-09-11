@@ -31,6 +31,7 @@
  '(calendar-week-start-day 1)
  '(epg-gpg-program "/usr/bin/gpg2")
  '(european-calendar-style t)
+ '(explicit-shell-file-name "/run/current-system/sw/bin/bash")
  '(fic-highlighted-words (quote ("FIXME" "TODO" "BUG" "KLUDGE" "XXX" "HACK")))
  '(gnutls-verify-error t)
  '(haskell-mode-hook
@@ -43,6 +44,7 @@
  '(hs-hide-comments-when-hiding-all nil)
  '(indent-tabs-mode nil)
  '(inhibit-startup-screen t)
+ '(magit-git-executable "/run/current-system/sw/bin/git")
  '(mouse-wheel-scroll-amount (quote (1 ((shift) . 5) ((control)))))
  '(org-agenda-files (quote ("~/Documents")))
  '(org-catch-invisible-edits (quote show-and-error))
