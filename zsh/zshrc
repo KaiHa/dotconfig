@@ -392,7 +392,9 @@ compdef md=mkdir
 # [[ -r ~/.zshrc.local ]] && . ~/.zshrc.local || true
 
 bindkey "OA" history-beginning-search-backward
+bindkey "p"  history-beginning-search-backward
 bindkey "OB" history-beginning-search-forward
+bindkey "n"  history-beginning-search-forward
 
 compdef gpg2=gpg
 alias mutt="TERM=xterm-256color mutt"
