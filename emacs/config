@@ -39,6 +39,7 @@
                              (lambda nil
                                (ghc-init)))) t)
  '(haskell-tags-on-save t)
+ '(help-window-select t)
  '(hs-hide-comments-when-hiding-all nil)
  '(indent-tabs-mode nil)
  '(inhibit-startup-screen t)
@@ -50,6 +51,7 @@
     (("melpa-stable" . "https://stable.melpa.org/packages/")
      ("melpa" . "https://melpa.org/packages/")
      ("gnu" . "https://elpa.gnu.org/packages/"))))
+ '(read-file-name-completion-ignore-case t)
  '(require-final-newline t)
  '(savehist-mode t)
  '(show-paren-mode t)
@@ -63,7 +65,8 @@
  '(default ((t (:family "Hack" :foundry "bitstream" :slant normal :weight normal :height 98 :width normal))))
  '(hideshowvis-hidable-face ((t (:foreground "#888"))))
  '(hs-face ((t (:background "#ff8" :slant italic :height 0.8))))
- '(hs-fringe-face ((t (:background "#ff8" :foreground "#888")))))
+ '(hs-fringe-face ((t (:background "#ff8" :foreground "#888"))))
+ '(mode-line ((t (:background "#FF8888" :foreground "black" :box (:line-width -1 :style released-button))))))
 
 
 
@@ -93,8 +96,6 @@
 (add-hook 'prog-mode-hook #'hideshowvis-minor-mode)
 (hideshowvis-symbols)
 
-(server-start)
-
 ;; custom key-bindings
 (global-set-key (kbd "C-x g") 'magit-status)
 (global-set-key (kbd "M-/")   'hippie-expand)
@@ -102,3 +103,5 @@
 (global-set-key (kbd "C-c c") 'org-capture)
 (global-set-key (kbd "C-c a") 'org-agenda)
 (global-set-key (kbd "C-c b") 'org-iswitchb)
+(define-key minibuffer-local-map (kbd "M-p") 'previous-complete-history-element)
+(define-key minibuffer-local-map (kbd "M-n") 'next-complete-history-element)
