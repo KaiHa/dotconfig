@@ -15,6 +15,10 @@
  '(browse-url-generic-program "sensible-browser")
  '(epg-gpg-program "/usr/bin/gpg2")
  '(european-calendar-style t)
+ '(fci-rule-color "orange")
+ '(fci-rule-column 80)
+ '(fci-rule-use-dashes t)
+ '(fci-rule-width 3)
  '(fic-highlighted-words (quote ("FIXME" "TODO" "BUG" "KLUDGE" "XXX" "HACK")))
  '(gnutls-verify-error t)
  '(haskell-mode-hook
@@ -66,6 +70,7 @@
 (or (file-exists-p package-user-dir) (package-refresh-contents))
 
 (ensure-package-installed 'evil
+                          'fill-column-indicator
                           'fic-mode
                           'helm
                           'hideshowvis
