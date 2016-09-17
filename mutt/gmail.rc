@@ -1,0 +1,31 @@
+set folder = 'imaps://imap.gmail.com:993'
+
+set from = 'kai.harries@gmail.com'
+set imap_user = 'kai.harries@gmail.com'
+set imap_pass = `cat ~/.mutt/.password`
+
+set spoolfile = '+INBOX'
+set postponed = '+[Google Mail]/Drafts'
+set trash = '+[Google Mail]/Trash'
+
+set smtp_url = 'smtp://kai.harries@smtp.gmail.com:587/'
+set smtp_pass = `cat ~/.mutt/.password`
+
+macro index,pager y "<save-message>=[Google Mail]/All Mail<enter>" "Archive message"
+macro index,pager d "<save-message>=[Google Mail]/Trash<enter>" "Move message to Trash"
+macro index,pager gi "<change-folder>=INBOX<enter>" "Go to the Inbox"
+macro index,pager gA "<change-folder>=[Google Mail]/All Mail<enter>" "Go to the All Mail"
+macro index,pager gD "<change-folder>=[Google Mail]/Drafts<enter>" "Go to the Drafts"
+macro index,pager gS "<change-folder>=[Google Mail]/Sent Mail<enter>" "Go to the Sent Mail"
+macro index,pager gJ "<change-folder>=[Google Mail]/Spam<enter>" "Go to Junk/Spam"
+macro index,pager gT "<change-folder>=[Google Mail]/Trash<enter>" "Go to Trash"
+macro index,pager gd "<change-folder>=ML/Debian<enter>" "Go to the folder ML/Debian"
+macro index,pager ga "<change-folder>=ML/Debian/Announce<enter>" "Go to the folder ML/Debian/Announce"
+macro index,pager ge "<change-folder>=ML/Debian/Embedded<enter>" "Go to the folder ML/Debian/Embedded"
+macro index,pager gh "<change-folder>=ML/Haskell<enter>" "Go to the folder ML/Haskell"
+macro index,pager gg "<change-folder>=ML/GitHub<enter>" "Go to the folder ML/GitHub"
+macro index,pager gj "<change-folder>=Promotions/Jobs<enter>" "Go to the folder Promotions/Jobs"
+macro index,pager gm "<change-folder>=ML<enter>" "Go to the folder ML"
+macro index,pager gp "<change-folder>=Promotions<enter>" "Go to the folder Promotions"
+macro index,pager gv "<change-folder>=Promotions/Veranstaltungen<enter>" "Go to the folder Promotions/Veranstaltungen"
+macro index,pager gr "<change-folder>=Reminder<enter>" "Go to the folder Reminder"

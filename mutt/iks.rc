@@ -1,0 +1,10 @@
+set folder = 'imaps://imap.strato.de:993'
+
+set from = 'kai.harries@iksmail.de'
+set imap_user = 'kai.harries@iksmail.de'
+set imap_pass = `cat ~/.mutt/.iks.password`
+
+set spoolfile = '+INBOX'
+
+set smtp_url = 'smtp://kai.harries@smtp.strato.de:465/'
+set smtp_pass = `cat ~/.mutt/.iks.password`
