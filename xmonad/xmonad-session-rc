@@ -9,4 +9,5 @@ urxvtd --quiet --opendisplay --fork
 usermount &
 stalonetray &
 nitrokey-app &
+urxvt -name kuake -kuake-hotkey F12 -geometry 120x28+90+100 &
 xmonad

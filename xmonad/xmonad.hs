@@ -32,6 +32,7 @@ defaults = def
   , manageHook         = composeAll
                            [ (className =? "Firefox") --> doShift "web"
                            , (className =? "Emacs")   --> doShift "emacs"
+                           , (appName   =? "kuake")   --> doFloat
                            ]
   , modMask            = mod4Mask
   , startupHook        = windows $ W.view "web"
