@@ -5,7 +5,7 @@
 #  "+[Google Mail]/All Mail"
 
 set sidebar_visible = yes
-set sidebar_width = 18
+set sidebar_width = 24
 
 macro index,pager B '<enter-command>toggle sidebar_visible<enter>'
 
