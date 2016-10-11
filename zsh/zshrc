@@ -44,6 +44,11 @@ autoload -Uz colors && colors
 PROMPT="%B%K{4}%F{7} %m %#%f%k%b%F{4}%f "
 RPROMPT="%F{5}%3~%f\${vcs_info_msg_0_}"
 
+if ps $PPID | grep mc
+then
+    PROMPT="$ "
+    RPROMPT=""
+fi
 
 
 
