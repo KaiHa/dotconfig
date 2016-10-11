@@ -50,6 +50,7 @@
  '(inhibit-startup-screen t)
  '(ispell-dictionary "de_DE")
  '(magit-git-executable "/run/current-system/sw/bin/git")
+ '(menu-bar-mode nil)
  '(mouse-wheel-scroll-amount (quote (1 ((shift) . 5) ((control)))))
  '(org-agenda-files (quote ("~/Documents")))
  '(org-catch-invisible-edits (quote show-and-error))
