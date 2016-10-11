@@ -113,6 +113,7 @@
 (hideshowvis-symbols)
 
 (add-to-list 'auto-mode-alist '("/mutt-" . text-mode))
+(add-to-list 'evil-emacs-state-modes 'interactive-haskell-mode)
 
 ;; custom key-bindings
 (global-set-key (kbd "C-x g") 'magit-status)
