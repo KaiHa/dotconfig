@@ -63,6 +63,7 @@
  '(read-file-name-completion-ignore-case t)
  '(require-final-newline t)
  '(savehist-mode t)
+ '(scroll-bar-mode nil)
  '(show-paren-mode t)
  '(tool-bar-mode nil)
  '(truncate-lines t))
