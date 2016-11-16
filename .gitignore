@@ -10,10 +10,13 @@
 !/git/
 !/gnupg/
 !/lbdb/
+!/mc/
 !/mutt/
 !/mysetup
 !/vim/
 !/ssh/
 !/xmonad/
 !/zsh/
+!/Xdefaults
+mc/hotlist
 TAGS
