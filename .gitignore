@@ -10,6 +10,7 @@
 !/git/
 !/gnupg/
 !/lbdb/
+!/mc/
 !/mutt/
 !/mysetup
 !/vim/
@@ -17,4 +18,5 @@
 !/xmonad/
 !/zsh/
 !/Xdefaults
+mc/hotlist
 TAGS
