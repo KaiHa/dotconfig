@@ -10,5 +10,6 @@ usermount &
 stalonetray &
 nitrokey-app &
 blueman-applet &
+xcompmgr &
 urxvt -name kuake -kuake-hotkey F12 -geometry 140x40+200+100 &
 xmonad
