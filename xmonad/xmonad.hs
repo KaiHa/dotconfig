@@ -29,6 +29,7 @@ defaults = def
   , layoutHook         = Tall 1 (3/100) (1/2) ||| Full
                          ||| Mirror (Tall 1 (3/100) (1/2))
                          ||| magnifiercz 1.5 (Tall 1 (3/100) (1/2))
+  , logHook            = fadeInactiveLogHook 0.9
   , manageHook         = composeAll
                            [ (className =? "Firefox") --> doShift "web"
                            , (className =? "Emacs")   --> doShift "emacs"
