@@ -35,20 +35,23 @@ defaults = def
                            , (appName   =? "kuake")   --> doFloat
                            ]
   , modMask            = mod4Mask
-  , startupHook        = windows $ W.view "web"
+  , startupHook        = windows $ W.view "1"
   , terminal           = "urxvtc"
   , workspaces         = ["1", "2", "3", "4", "5", "6", "7", "8", "emacs", "web"]
   } `additionalKeys`
-  [ ((mod4Mask,                 xK_0),       windows $ W.greedyView "web")
-  , ((mod4Mask .|. shiftMask,   xK_0),       windows $ W.shift "web")
-  , ((controlMask .|. mod1Mask, xK_l),       spawn "xautolock -locknow")
-  , ((mod4Mask,                 xK_o),       gotoMenu)
-  , ((mod4Mask,                 xK_Escape),  toggleWS)
-  , ((mod4Mask,                 xK_F8),      spawn "amixer sset Master 2%-")
-  , ((mod4Mask,                 xK_F9),      spawn "amixer sset Master 2%+")
-  , ((mod4Mask .|. mod1Mask,    xK_Return),  spawn "urxvtc -bg black -fg white")
-  , ((noModMask,                xK_Launch2), runOrRaise "firefox" (className =? "Firefox"))
-  , ((noModMask,                xK_Launch3), raiseMaybe (spawn "emacsclient -c") (className =? "Emacs"))
+  [ ((mod4Mask,                 xK_0),          windows $ W.greedyView "web")
+  , ((mod4Mask .|. shiftMask,   xK_0),          windows $ W.shift "web")
+  , ((controlMask .|. mod1Mask, xK_l),          spawn "physlock")
+  , ((mod4Mask,                 xK_o),          gotoMenu)
+  , ((mod4Mask,                 xK_Escape),     toggleWS)
+  , ((noModMask,                xK_Mute),       spawn "amixer sset Master toggle")
+  , ((noModMask,                xK_LowerVol),   spawn "amixer sset Master 2%-")
+  , ((noModMask,                xK_RaiseVol),   spawn "amixer sset Master 2%+")
+  , ((noModMask,                xK_BrightUp),   spawn "xbacklight -inc 5")
+  , ((noModMask,                xK_BrightDown), spawn "xbacklight -dec 5")
+  , ((mod4Mask .|. mod1Mask,    xK_Return),     spawn "urxvtc -bg black -fg white")
+  , ((noModMask,                xK_Launch2),    runOrRaise "firefox" (className =? "Firefox"))
+  , ((noModMask,                xK_Launch3),    raiseMaybe (spawn "emacsclient -c") (className =? "Emacs"))
   ]
 
 
@@ -76,6 +79,9 @@ myPP = def { L.ppCurrent = L.xmobarColor "yellow" "#666600" . L.wrap "[" "]"
 xK_LowerVol, xK_RaiseVol :: KeySym
 xK_LowerVol    = stringToKeysym "XF86AudioLowerVolume"
 xK_RaiseVol    = stringToKeysym "XF86AudioRaiseVolume"
+xK_Mute        = stringToKeysym "XF86AudioMute"
 xK_ScreenSaver = stringToKeysym "XF86ScreenSaver"
 xK_Launch2     = stringToKeysym "XF86Launch2"
 xK_Launch3     = stringToKeysym "XF86Launch3"
+xK_BrightUp    = stringToKeysym "XF86MonBrightnessUp"
+xK_BrightDown  = stringToKeysym "XF86MonBrightnessDown"
