@@ -2,6 +2,7 @@
 
 module Main (main) where
 
+import           Adapt2Environment
 import           Data.String.Utils (replace)
 import           XMonad
 import           XMonad.Actions.CycleWS (toggleWS)
@@ -15,6 +16,7 @@ import           XMonad.Layout.LayoutModifier (ModifiedLayout)
 import           XMonad.Layout.Magnifier (magnifiercz)
 import qualified XMonad.StackSet as W
 import           XMonad.Util.EZConfig (additionalKeys)
+import           XMonad.Util.SpawnOnce
 import           XMonad.Util.WorkspaceCompare (getSortByXineramaPhysicalRule)
 
 
@@ -36,28 +38,30 @@ defaults = def
                            , (appName   =? "kuake")   --> doFloat
                            ]
   , modMask            = mod4Mask
-  , startupHook        = windows $ W.view "1"
+  , startupHook        = startup
   , terminal           = "urxvtc"
   , workspaces         = ["1", "2", "3", "4", "5", "6", "7", "8", "emacs", "web"]
-  } `additionalKeys`
-  [ ((mod4Mask,                 xK_0),          windows $ W.greedyView "web")
-  , ((mod4Mask .|. shiftMask,   xK_0),          windows $ W.shift "web")
-  , ((controlMask .|. mod1Mask, xK_l),          spawn "physlock")
-  , ((mod4Mask,                 xK_o),          gotoMenu)
-  , ((mod4Mask,                 xK_Escape),     toggleWS)
-  , ((noModMask,                xK_Mute),       spawn "amixer sset Master toggle")
-  , ((noModMask,                xK_LowerVol),   spawn "amixer sset Master 2%-")
-  , ((noModMask,                xK_RaiseVol),   spawn "amixer sset Master 2%+")
-  , ((noModMask,                xK_BrightUp),   spawn "xbacklight -inc 5")
-  , ((noModMask,                xK_BrightDown), spawn "xbacklight -dec 5")
-  , ((mod4Mask .|. mod1Mask,    xK_Return),     spawn "urxvtc -bg black -fg white")
-  , ((noModMask,                xK_Launch2),    runOrRaise "firefox" (className =? "Firefox"))
-  , ((noModMask,                xK_Launch3),    raiseMaybe (spawn "emacsclient -c") (className =? "Emacs"))
-  ]
+  } `additionalKeys` shortcuts
 
 
-myxmobar :: LayoutClass l Window
-       => XConfig l -> IO (XConfig (ModifiedLayout AvoidStruts l))
+startup :: X ()
+startup = do
+  adapt2environment
+  spawn "setxkbmap us -option 'compose:prsc,caps:escape,shift:both_capslock'"
+  spawn "xset b off dpms 300 300 300"
+  spawn "feh --bg-center ~/.config/xmonad/background"
+  spawnOnce "xcompmgr"
+  spawnOnce "urxvtd --quiet --opendisplay --fork"
+  spawnOnce "urxvt -name kuake -kuake-hotkey F12 -geometry 140x40+200+100"
+  spawnOnce "stalonetray"
+  spawnOnce "nitrokey-app"
+  spawnOnce "blueman-applet"
+  spawnOnce "usermount"  -- automount of removable media
+  windows $ W.view "1"
+  spawn "xsetroot -cursor_name left_ptr"
+
+
+myxmobar :: LayoutClass l Window => XConfig l -> IO (XConfig (ModifiedLayout AvoidStruts l))
 myxmobar conf =
   L.statusBar "xmobar ~/.config/xmonad/xmobarrc" myPP toggleStrutsKey conf
   where
@@ -77,12 +81,29 @@ myPP = def { L.ppCurrent = L.xmobarColor "yellow" "#666600" . L.wrap "[" "]"
            }
 
 
-xK_LowerVol, xK_RaiseVol :: KeySym
-xK_LowerVol    = stringToKeysym "XF86AudioLowerVolume"
-xK_RaiseVol    = stringToKeysym "XF86AudioRaiseVolume"
-xK_Mute        = stringToKeysym "XF86AudioMute"
-xK_ScreenSaver = stringToKeysym "XF86ScreenSaver"
-xK_Launch2     = stringToKeysym "XF86Launch2"
-xK_Launch3     = stringToKeysym "XF86Launch3"
-xK_BrightUp    = stringToKeysym "XF86MonBrightnessUp"
-xK_BrightDown  = stringToKeysym "XF86MonBrightnessDown"
+shortcuts :: [((KeyMask, KeySym), X ())]
+shortcuts =
+  [ ((mod4Mask,                 xK_0),          windows $ W.greedyView "web")
+  , ((mod4Mask .|. shiftMask,   xK_0),          windows $ W.shift "web")
+  , ((controlMask .|. mod1Mask, xK_l),          spawn "physlock")
+  , ((mod4Mask,                 xK_o),          gotoMenu)
+  , ((mod4Mask,                 xK_Escape),     toggleWS)
+  , ((noModMask,                xK_Mute),       spawn "amixer sset Master toggle")
+  , ((noModMask,                xK_LowerVol),   spawn "amixer sset Master 2%-")
+  , ((noModMask,                xK_RaiseVol),   spawn "amixer sset Master 2%+")
+  , ((noModMask,                xK_BrightUp),   spawn "xbacklight -inc 5")
+  , ((noModMask,                xK_BrightDown), spawn "xbacklight -dec 5")
+  , ((mod4Mask .|. mod1Mask,    xK_Return),     spawn "urxvtc -bg black -fg white")
+  , ((noModMask,                xK_Launch2),    runOrRaise "firefox" (className =? "Firefox"))
+  , ((noModMask,                xK_Launch3),    raiseMaybe (spawn "emacsclient -c") (className =? "Emacs"))
+  , ((controlMask,              xK_space),      spawn "~/.config/xmonad/togglekb")
+  ]
+  where
+    xK_LowerVol    = stringToKeysym "XF86AudioLowerVolume"
+    xK_RaiseVol    = stringToKeysym "XF86AudioRaiseVolume"
+    xK_Mute        = stringToKeysym "XF86AudioMute"
+    xK_ScreenSaver = stringToKeysym "XF86ScreenSaver"
+    xK_Launch2     = stringToKeysym "XF86Launch2"
+    xK_Launch3     = stringToKeysym "XF86Launch3"
+    xK_BrightUp    = stringToKeysym "XF86MonBrightnessUp"
+    xK_BrightDown  = stringToKeysym "XF86MonBrightnessDown"

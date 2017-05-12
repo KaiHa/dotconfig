@@ -1,15 +1,2 @@
-xsetroot -cursor_name left_ptr
-xset b off
-xset dpms 300 300 300
-feh --bg-center ~/.config/xmonad/background &
-setxkbmap us nodeadkeys
-setxkbmap -option "compose:prsc,caps:escape,shift:both_capslock"
 eval $(gpg-agent --daemon --enable-ssh-support)
-urxvtd --quiet --opendisplay --fork
-usermount &
-stalonetray &
-nitrokey-app &
-blueman-applet &
-xcompmgr &
-urxvt -name kuake -kuake-hotkey F12 -geometry 140x40+200+100 &
 xmonad
