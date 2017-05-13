@@ -36,6 +36,7 @@ defaults = def
                            [ (className =? "Firefox") --> doShift "web"
                            , (className =? "Emacs")   --> doShift "emacs"
                            , (appName   =? "kuake")   --> doFloat
+                           , (appName   =? "wttr.in") --> doFloat
                            ]
   , modMask            = mod4Mask
   , startupHook        = startup
@@ -52,7 +53,7 @@ startup = do
   spawn "feh --bg-center ~/.config/xmonad/background"
   spawnOnce "xcompmgr"
   spawnOnce "urxvtd --quiet --opendisplay --fork"
-  spawnOnce "urxvt -name kuake -kuake-hotkey F12 -geometry 140x40+200+100"
+  spawnOnce "urxvt -name kuake -title kuake -kuake-hotkey F12 -geometry 140x40+200+100"
   spawnOnce "stalonetray"
   spawnOnce "nitrokey-app"
   spawnOnce "blueman-applet"
@@ -95,15 +96,17 @@ shortcuts =
   , ((noModMask,                xK_BrightDown), spawn "xbacklight -dec 5")
   , ((mod4Mask .|. mod1Mask,    xK_Return),     spawn "urxvtc -bg black -fg white")
   , ((noModMask,                xK_Launch2),    runOrRaise "firefox" (className =? "Firefox"))
-  , ((noModMask,                xK_Launch3),    raiseMaybe (spawn "emacsclient -c") (className =? "Emacs"))
+  , ((noModMask,                xK_Launch1),    raiseMaybe (spawn "emacsclient -c") (className =? "Emacs"))
   , ((controlMask,              xK_space),      spawn "~/.config/xmonad/togglekb")
+  , ((noModMask,                xK_Display),    adapt2environment)
   ]
   where
     xK_LowerVol    = stringToKeysym "XF86AudioLowerVolume"
     xK_RaiseVol    = stringToKeysym "XF86AudioRaiseVolume"
     xK_Mute        = stringToKeysym "XF86AudioMute"
     xK_ScreenSaver = stringToKeysym "XF86ScreenSaver"
+    xK_Launch1     = stringToKeysym "XF86Launch1"
     xK_Launch2     = stringToKeysym "XF86Launch2"
-    xK_Launch3     = stringToKeysym "XF86Launch3"
     xK_BrightUp    = stringToKeysym "XF86MonBrightnessUp"
     xK_BrightDown  = stringToKeysym "XF86MonBrightnessDown"
+    xK_Display     = stringToKeysym "XF86Display"

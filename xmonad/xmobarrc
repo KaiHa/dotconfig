@@ -1,8 +1,6 @@
 -- -*- mode: haskell -*-
 
 Config {
-
-   -- appearance
      font =         "xft:Hack:size=9:bold:antialias=true"
    , bgColor =      "black"
    , fgColor =      "#999999"
@@ -13,82 +11,78 @@ Config {
    -- layout
    , sepChar =  "%"   -- delineator between plugin names and straight text
    , alignSep = "}{"  -- separator between left-right alignment
-   , template = "%StdinReader% }{ <fc=green,#006600>%battery%</fc> | <action=`urxvt -e top` button=1>CPU: %multicpu%</action> | <action=`urxvt -hold -e vnstat` button=1>%dynnetwork%</action> | <action=`urxvt -fg white -bg black -e wetter` button=1>%date%</action> | <action=`~/.config/xmonad/togglekb` button=1><fc=yellow>%kbd%</fc></action> |     "
+   , template = "%StdinReader% }{\
+                \%battery%| \
+                \<action=`urxvt -e top` button=1>%multicpu%</action> | \
+                \%memory% | \
+                \<action=`urxvt -hold -e vnstat` button=1>%dynnetwork%</action> | \
+                \%disku% | \
+                \<action=`urxvt -fg white -bg black -geometry 130x42+150+15 -title wttr.in -name wttr.in -e bash -c 'curl wttr.in/hildesheim; read'` button=1>%date%</action> | \
+                \<action=`~/.config/xmonad/togglekb` button=1><fc=yellow>%kbd%</fc> (<fc=white>%locks%</fc>)</action> |     "
 
-   -- general behavior
-   , lowerOnStart =     True   -- send to bottom of window stack on start
+
+   , lowerOnStart =     True    -- send to bottom of window stack on start
    , hideOnStart =      False   -- start with window unmapped (hidden)
    , allDesktops =      True    -- show on all desktops
    , overrideRedirect = True    -- set the Override Redirect flag (Xlib)
    , pickBroadest =     False   -- choose widest display (multi-monitor)
    , persistent =       True    -- enable/disable hiding (True = disabled)
 
-   -- plugins
-   --   Numbers can be automatically colored according to their value. xmobar
-   --   decides color based on a three-tier/two-cutoff system, controlled by
-   --   command options:
-   --     --Low sets the low cutoff
-   --     --High sets the high cutoff
-   --
-   --     --low sets the color below --Low cutoff
-   --     --normal sets the color between --Low and --High cutoffs
-   --     --High sets the color above --High cutoff
-   --
-   --   The --template option controls how the plugin is displayed. Text
-   --   color can be set by enclosing in <fc></fc> tags. For more details
-   --   see http://projects.haskell.org/xmobar/#system-monitor-plugins.
    , commands =
-
-        -- weather monitor
         [ Run StdinReader
         -- network activity monitor (dynamic interface resolution)
-        , Run DynNetwork     [ "--template" , "<dev>: ↑<tx>kB/s↓<rx>kB/s"
+        , Run DynNetwork     [ "--template" , "<dev> ↑<tx>kB/s↓<rx>kB/s"
                              , "--Low"      ,  "100000"
                              , "--High"     , "2000000"
                              , "--low"      , "green"
                              , "--normal"   , "orange"
                              , "--high"     , "red"
-                             ] 30
+                             ] 20
 
         -- cpu activity monitor
-        , Run MultiCpu       [ "--template" , "<total0>/<total1>%"
-                             , "--Low"      , "50"         -- units: %
-                             , "--High"     , "85"         -- units: %
+        , Run MultiCpu       [ "--template" , "<icon=/home/kai/.xmonad/icons/cpu.xbm/><autototal>%"
                              , "--low"      , "green"
                              , "--normal"   , "orange"
                              , "--high"     , "red"
-                             ] 30
+                             , "--ppad"     , "2"
+                             ] 20
 
         -- memory usage monitor
-        , Run Memory         [ "--template" ,"Mem: <usedratio>%"
-                             , "--Low"      , "20"        -- units: %
-                             , "--High"     , "90"        -- units: %
-                             , "--low"      , "green"
+        , Run Memory         [ "--template" ,"<icon=/home/kai/.xmonad/icons/mem.xbm/><usedratio>%"
+                             , "--low"      , "white"
                              , "--normal"   , "orange"
                              , "--high"     , "red"
-                             ] 30
+                             , "--ppad"     , "3"
+                             ] 20
 
         -- battery monitor
-        , Run Battery        [ "--template" , "⎨<acstatus>⎟"
-                             , "--Low"      , "10"        -- units: %
-                             , "--High"     , "80"        -- units: %
+        , Run Battery        [ "--template" , "<fc=green><icon=/home/kai/.xmonad/icons/battery_left.xbm/>\
+                                                        \<fc=green,#006600><acstatus></fc>\
+                                                        \<icon=/home/kai/.xmonad/icons/battery_right.xbm/></fc>"
                              , "--low"      , "red,#006600"
                              , "--normal"   , "orange,#006600"
                              , "--high"     , "green,#006600"
 
                              , "--" -- battery specific options
                                        -- discharging status
-                                       , "-o"	, "<left>% (<timeleft>)"
+                                       , "-o"	, " <left>% <timeleft> "
                                        -- AC "on" status
-                                       , "-O"	, "<fc=#dAA520,#006600>Charging <left>%</fc>"
+                                       , "-O"	, "<fc=#dAA520,#006600> <icon=/home/kai/.xmonad/icons/power_plugged.xbm/> <left>% </fc>"
                                        -- charged status
-                                       , "-i"	, "<fc=green,#006600>Charged</fc>"
+                                       , "-i"	, "<fc=green,#006600> <icon=/home/kai/.xmonad/icons/power_plugged.xbm/> </fc>"
                              ] 100
 
+        , Run DiskU [("/", "/=<usedp>%")] [ "--high"     , "red"
+                                          , "--normal"   , "orange"
+                                          , "--low"      , "white"
+                                          ] 50
+
         -- time and date indicator
-        , Run Date           "<fc=#ABABAB>%a, %-d. %b</fc> <fc=#DDDDDD>%H:%M</fc>" "date" 30
+        , Run Date           "<fc=#ABABAB>%a, %-d. %b</fc> <fc=white>%H:%M:%S</fc>" "date" 10
 
         -- keyboard layout indicator
         , Run Kbd            [("us", "<fc=#999999>us</fc>")]
+
+        , Run Locks
         ]
    }

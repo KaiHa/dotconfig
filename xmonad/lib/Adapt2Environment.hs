@@ -11,8 +11,8 @@ adapt2environment :: X ()
 adapt2environment =
   isConnected DP1 >>= \c ->
   if c
-    then xrandr [m DP1,   m Mode2560x1440, m LVDS1, m Off]
-    else xrandr [m LVDS1, m Mode1366x768,  m DP1  , m Off]
+    then xrandr [m DP1,   m Auto, m LVDS1, m Off]
+    else xrandr [m LVDS1, m Auto, m DP1  , m Off]
   where
     m :: Option_ a => a -> Option
     m = MkOption
@@ -38,8 +38,9 @@ instance Option_ Output where
 
 
 data Mode = Mode1024x768
-          | Mode1366x768
-          | Mode2560x1440
+          | Mode1366x768  -- x230 Laptop
+          | Mode2560x1440 -- Dell Display
+          | Auto
           | Off
           deriving (Eq, Ord)
 
@@ -47,6 +48,7 @@ instance Option_ Mode where
   toOption Mode1024x768  = ["--mode", "1024x768"]
   toOption Mode1366x768  = ["--mode", "1366x768"]
   toOption Mode2560x1440 = ["--mode", "2560x1440"]
+  toOption Auto          = ["--auto"]
   toOption Off           = ["--off"]
 
 
