@@ -2,17 +2,19 @@
 
 module Adapt2Environment (adapt2environment) where
 
+import           Control.Monad
 import           Data.List
 import           XMonad
 import           XMonad.Util.Run
 
 
 adapt2environment :: X ()
-adapt2environment =
-  isConnected DP1 >>= \c ->
-  if c
+adapt2environment = do
+  isConnected DP1 >>= \c -> if c
     then xrandr [m DP1,   m Auto, m LVDS1, m Off]
     else xrandr [m LVDS1, m Auto, m DP1  , m Off]
+  void $ runProcessWithInput "killall" ["stalonetray"] ""
+  spawn "stalonetray"
   where
     m :: Option_ a => a -> Option
     m = MkOption
@@ -26,7 +28,7 @@ isConnected o = any matchesOutput <$> xrandr'
 
 
 xrandr :: [Option] -> X ()
-xrandr o = spawn $ "xrandr " ++ unwords (concatMap toOption o)
+xrandr o = void $ runProcessWithInput "xrandr" (concatMap toOption o) ""
 
 
 data Output = LVDS1
