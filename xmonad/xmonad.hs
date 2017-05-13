@@ -37,6 +37,7 @@ defaults = def
                            , (className =? "Emacs")   --> doShift "emacs"
                            , (appName   =? "kuake")   --> doFloat
                            , (appName   =? "wttr.in") --> doFloat
+                           , (appName   =? "gimp")    --> doFloat
                            ]
   , modMask            = mod4Mask
   , startupHook        = startup
