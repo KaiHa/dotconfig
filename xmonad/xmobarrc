@@ -16,8 +16,8 @@ Config {
                 \<action=`urxvt -e top` button=1>%multicpu%</action> \
                 \%memory% \
                 \%disku% \
-                \<action=`urxvt -hold -e vnstat` button=1>%dynnetwork%</action> | \
-                \<action=`urxvt -fg white -bg black -geometry 130x42+150+15 -title wttr.in -name wttr.in -e bash -c 'curl wttr.in/hildesheim; read'` button=1>%date%</action> | \
+                \<action=`urxvt -hold -e vnstat` button=1>%dynnetwork%</action>  \
+                \<action=`urxvt -fg white -bg black -geometry 130x42+150+15 -title wttr.in -name wttr.in -e bash -c 'curl wttr.in/hildesheim; read'` button=1>%date%</action>  \
                 \<action=`~/.config/xmonad/togglekb` button=1><fc=yellow>%kbd%</fc> (<fc=white>%locks%</fc>)</action> \
                 \<fc=white>%default:Master%</fc>       "
 

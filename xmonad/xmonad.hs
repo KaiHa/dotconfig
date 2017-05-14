@@ -73,7 +73,7 @@ myxmobar conf =
 myPP:: L.PP
 myPP = def { L.ppCurrent = L.xmobarColor "yellow" "#666600" . L.wrap "[" "]"
            , L.ppLayout  = \_ -> ""
-           , L.ppSep     = " | "
+           , L.ppSep     = "| "
            , L.ppWsSep   = ""
            , L.ppSort    = getSortByXineramaPhysicalRule
            , L.ppTitle   = L.xmobarColor "white"  "" . L.shorten 60
