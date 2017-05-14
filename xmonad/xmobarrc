@@ -1,7 +1,7 @@
 -- -*- mode: haskell -*-
 
 Config {
-     font =         "xft:Hack:size=9:bold:antialias=true"
+     font =         "xft:Hack:size=10:bold:antialias=true"
    , bgColor =      "black"
    , fgColor =      "#999999"
    , position =     Top
@@ -12,14 +12,14 @@ Config {
    , sepChar =  "%"   -- delineator between plugin names and straight text
    , alignSep = "}{"  -- separator between left-right alignment
    , template = "%StdinReader% }{\
-                \%battery%| \
-                \<action=`urxvt -e top` button=1>%multicpu%</action> | \
-                \%memory% | \
+                \%battery%\
+                \<action=`urxvt -e top` button=1>%multicpu%</action> \
+                \%memory% \
+                \%disku% \
                 \<action=`urxvt -hold -e vnstat` button=1>%dynnetwork%</action> | \
-                \%disku% | \
                 \<action=`urxvt -fg white -bg black -geometry 130x42+150+15 -title wttr.in -name wttr.in -e bash -c 'curl wttr.in/hildesheim; read'` button=1>%date%</action> | \
-                \<action=`~/.config/xmonad/togglekb` button=1><fc=yellow>%kbd%</fc> (<fc=white>%locks%</fc>)</action> | \
-                \<fc=white>%default:Master%</fc> |       "
+                \<action=`~/.config/xmonad/togglekb` button=1><fc=yellow>%kbd%</fc> (<fc=white>%locks%</fc>)</action> \
+                \<fc=white>%default:Master%</fc>       "
 
 
    , lowerOnStart =     True    -- send to bottom of window stack on start
@@ -53,27 +53,26 @@ Config {
                              , "--low"      , "white"
                              , "--normal"   , "orange"
                              , "--high"     , "red"
-                             , "--ppad"     , "3"
                              ] 20
 
         -- battery monitor
         , Run Battery        [ "--template" , "<fc=green><icon=/home/kai/.xmonad/icons/battery_left.xbm/>\
-                                                        \<fc=green,#006600><acstatus></fc>\
+                                                        \<fc=green,#005500><acstatus></fc>\
                                                         \<icon=/home/kai/.xmonad/icons/battery_right.xbm/></fc>"
-                             , "--low"      , "red,#006600"
-                             , "--normal"   , "orange,#006600"
-                             , "--high"     , "green,#006600"
+                             , "--low"      , "red,#005500"
+                             , "--normal"   , "orange,#005500"
+                             , "--high"     , "green,#005500"
 
                              , "--" -- battery specific options
                                        -- discharging status
                                        , "-o"	, " <left>% <timeleft> "
                                        -- AC "on" status
-                                       , "-O"	, "<fc=#dAA520,#006600> <icon=/home/kai/.xmonad/icons/power_plugged.xbm/> <left>% </fc>"
+                                       , "-O"	, "<fc=#dAA520,#005500> <icon=/home/kai/.xmonad/icons/power_plugged.xbm/> <left>% </fc>"
                                        -- charged status
-                                       , "-i"	, "<fc=green,#006600> <icon=/home/kai/.xmonad/icons/power_plugged.xbm/> </fc>"
+                                       , "-i"	, "<fc=green,#005500> <icon=/home/kai/.xmonad/icons/power_plugged.xbm/> </fc>"
                              ] 100
 
-        , Run DiskU [("/", "/=<usedp>%")] [ "--high"     , "red"
+        , Run DiskU [("/", "<icon=/home/kai/.xmonad/icons/disk.xbm/><usedp>%")] [ "--high"     , "red"
                                           , "--normal"   , "orange"
                                           , "--low"      , "white"
                                           ] 50
