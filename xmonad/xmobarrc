@@ -32,7 +32,7 @@ Config {
    , commands =
         [ Run StdinReader
         -- network activity monitor (dynamic interface resolution)
-        , Run DynNetwork     [ "--template" , "<dev> ↑<tx>kB/s↓<rx>kB/s"
+        , Run DynNetwork     [ "--template" , "<dev> <fc=white>↑</fc><tx> <fc=white>↓</fc><rx>kB/s"
                              , "--Low"      ,  "100000"
                              , "--High"     , "2000000"
                              , "--low"      , "green"
