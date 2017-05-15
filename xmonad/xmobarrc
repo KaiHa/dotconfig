@@ -45,7 +45,7 @@ Config {
                              , "--low"      , "green"
                              , "--normal"   , "orange"
                              , "--high"     , "red"
-                             , "--ppad"     , "2"
+                             , "--minwidth" , "2"
                              ] 20
 
         -- memory usage monitor
