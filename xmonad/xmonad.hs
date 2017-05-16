@@ -71,14 +71,13 @@ myxmobar conf =
 
 
 myPP:: L.PP
-myPP = def { L.ppCurrent = L.xmobarColor "yellow" "#666600" . L.wrap "[" "]"
+myPP = def { L.ppCurrent = L.xmobarColor "yellow" "#666600" . L.wrap "[<fn=1>" "</fn>]"
            , L.ppLayout  = \_ -> ""
-           , L.ppSep     = "| "
-           , L.ppWsSep   = ""
+           , L.ppSep     = " | "
            , L.ppSort    = getSortByXineramaPhysicalRule
-           , L.ppTitle   = L.xmobarColor "white"  "" . L.shorten 60
-           , L.ppVisible = L.xmobarColor "#cccccc" "#666600". L.wrap "." "."
-           , L.ppHidden  = L.wrap " " " "
+           , L.ppTitle   = L.wrap "<fn=2>" "</fn>" . L.xmobarColor "white"  "" . L.shorten 100
+           , L.ppVisible = L.xmobarColor "#cccccc" "#666600". L.wrap ".<fn=1>" "</fn>."
+           , L.ppHidden  = L.wrap "<fn=1>" "</fn>"
            , L.ppUrgent  = L.xmobarColor "red" "yellow"
            }
 

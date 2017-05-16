@@ -2,6 +2,9 @@
 
 Config {
      font =         "xft:Hack:size=10:bold:antialias=true"
+     additionalFonts = [ "xft:Nimbus Sans:size=10:bold:antialias=true"
+                       , "xft:Nimbus Sans:size=10:bold:antialias=true:slant=italic"
+                       ]
    , bgColor =      "black"
    , fgColor =      "#999999"
    , position =     Top
@@ -12,7 +15,7 @@ Config {
    , sepChar =  "%"   -- delineator between plugin names and straight text
    , alignSep = "}{"  -- separator between left-right alignment
    , template = "%StdinReader% }{\
-                \%battery%\
+                \<fn=1>%battery%</fn>\
                 \<action=`urxvt -e top` button=1>%multicpu%</action> \
                 \%memory% \
                 \%disku% \
@@ -33,7 +36,7 @@ Config {
    , commands =
         [ Run StdinReader
         -- network activity monitor (dynamic interface resolution)
-        , Run DynNetwork     [ "--template" , "<dev> <fc=white>↑</fc><tx> <fc=white>↓</fc><rx>kB/s"
+        , Run DynNetwork     [ "--template" , "<fn=2><dev> </fn><fc=white>↑</fc><tx> <fc=white>↓</fc><rx><fn=1>kB/s</fn>"
                              , "--Low"      ,  "100000"
                              , "--High"     , "2000000"
                              , "--low"      , "green"
@@ -85,7 +88,7 @@ Config {
                                           ] 50
 
         -- time and date indicator
-        , Run Date           "<fc=#ABABAB>%a, %-d. %b</fc> <fc=white>%H:%M</fc>:%S" "date" 10
+        , Run Date           "<fn=1><fc=#ABABAB>%a, %-d. %b</fc> <fc=white>%H:%M</fc>:%S</fn>" "date" 10
 
         -- keyboard layout indicator
         , Run Kbd            [("us", "<fc=#999999>us</fc>")]
