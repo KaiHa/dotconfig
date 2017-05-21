@@ -49,6 +49,7 @@
  '(indent-tabs-mode nil)
  '(inhibit-startup-screen t)
  '(ispell-dictionary "de_DE")
+ '(magit-diff-refine-hunk (quote all))
  '(magit-git-executable "/run/current-system/sw/bin/git")
  '(menu-bar-mode nil)
  '(mouse-wheel-scroll-amount (quote (1 ((shift) . 5) ((control)))))
