@@ -2,7 +2,6 @@ folder-hook 'gmail.com' 'source ~/.config/mutt/gmail.rc'
 folder-hook 'strato.de' 'source ~/.config/mutt/iks.rc'
 # switch to default account on startup
 source ~/.config/mutt/gmail.rc
-#source ~/.config/mutt/iks.rc
 
 source ~/.config/mutt/gpg.rc
 source ~/.config/mutt/sidebar.rc
