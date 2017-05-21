@@ -94,7 +94,8 @@ shortcuts =
   , ((noModMask,                xK_BrightUp),   spawn "xbacklight -inc 5")
   , ((noModMask,                xK_BrightDown), spawn "xbacklight -dec 5")
   , ((mod4Mask .|. mod1Mask,    xK_Return),     spawn "urxvtc -bg black -fg white")
-  , ((noModMask,                xK_Launch2),    runOrRaise "firefox" (className =? "Firefox"))
+  , ((noModMask,                xK_Launch6),    runOrRaise "firefox" (className =? "Firefox"))
+  , ((noModMask,                xK_Launch5),    raiseMaybe (spawn "emacsclient -c") (className =? "Emacs"))
   , ((noModMask,                xK_Launch1),    raiseMaybe (spawn "emacsclient -c") (className =? "Emacs"))
   , ((controlMask,              xK_space),      spawn "~/.config/xmonad/togglekb")
   , ((noModMask,                xK_Display),    adapt2environment)
@@ -105,7 +106,8 @@ shortcuts =
     xK_Mute        = stringToKeysym "XF86AudioMute"
     xK_ScreenSaver = stringToKeysym "XF86ScreenSaver"
     xK_Launch1     = stringToKeysym "XF86Launch1"
-    xK_Launch2     = stringToKeysym "XF86Launch2"
+    xK_Launch5     = stringToKeysym "XF86Launch5"
+    xK_Launch6     = stringToKeysym "XF86Launch6"
     xK_BrightUp    = stringToKeysym "XF86MonBrightnessUp"
     xK_BrightDown  = stringToKeysym "XF86MonBrightnessDown"
     xK_Display     = stringToKeysym "XF86Display"
