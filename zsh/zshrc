@@ -402,7 +402,6 @@ alias c="toilet --termwidth --gay -f bigmono9"
 alias e="emacsclient -nw"
 alias E="emacsclient -c --no-wait"
 alias pwgen="pwgen --secure --symbols 10"
-alias mc="source $(dirname $(readlink -f $(which mc)))/../libexec/mc/mc-wrapper.sh"
 
 export EDITOR=vim
 
