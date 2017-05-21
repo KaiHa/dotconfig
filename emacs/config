@@ -42,7 +42,7 @@
    (quote
     (imenu-add-menubar-index turn-on-eldoc-mode turn-on-haskell-indentation
                              (lambda nil
-                               (ghc-init)))) t)
+                               (ghc-init)))))
  '(haskell-tags-on-save t)
  '(help-window-select t)
  '(hs-hide-comments-when-hiding-all nil)
@@ -62,7 +62,8 @@
      ("gnu" . "https://elpa.gnu.org/packages/"))))
  '(package-selected-packages
    (quote
-    (nix-mode haskell-mode magit hideshowvis helm fic-mode fill-column-indicator evil)))
+    (scion ghc nix-mode haskell-mode magit hideshowvis helm fic-mode fill-column-indicator evil)))
+ '(password-cache-expiry 300)
  '(read-file-name-completion-ignore-case t)
  '(require-final-newline t)
  '(savehist-mode t)
