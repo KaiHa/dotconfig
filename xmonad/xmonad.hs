@@ -49,7 +49,6 @@ defaults = def
 startup :: X ()
 startup = do
   adapt2environment
-  spawn "setxkbmap us -option 'compose:prsc,caps:escape,shift:both_capslock'"
   spawn "xset b off dpms 300 300 300"
   spawn "feh --bg-center ~/.config/xmonad/background"
   spawnOnce "xcompmgr"

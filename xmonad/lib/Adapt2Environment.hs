@@ -11,8 +11,10 @@ import           XMonad.Util.Run
 adapt2environment :: X ()
 adapt2environment = do
   isConnected DP1 >>= \c -> if c
-    then xrandr [m DP1,   m Auto, m LVDS1, m Off]
-    else xrandr [m LVDS1, m Auto, m DP1  , m Off]
+    then do xrandr [m DP1,   m Auto, m LVDS1, m Off]
+            xkbmap ContextMenu
+    else do xrandr [m LVDS1, m Auto, m DP1  , m Off]
+            xkbmap PrintScreen
   void $ runProcessWithInput "killall" ["stalonetray"] ""
   spawn "stalonetray"
   where
@@ -29,6 +31,13 @@ isConnected o = any matchesOutput <$> xrandr'
 
 xrandr :: [Option] -> X ()
 xrandr o = void $ runProcessWithInput "xrandr" (concatMap toOption o) ""
+
+
+xkbmap :: ComposeKey -> X ()
+xkbmap composeKey = spawn $
+  "setxkbmap us -option 'compose:"
+  ++ show composeKey
+  ++",caps:escape,shift:both_capslock'"
 
 
 data Output = LVDS1
@@ -53,6 +62,14 @@ instance Option_ Mode where
   toOption Auto          = ["--auto"]
   toOption Off           = ["--off"]
 
+
+data ComposeKey = PrintScreen
+                | ContextMenu
+                deriving (Eq, Ord)
+
+instance Show ComposeKey where
+  show PrintScreen = "prsc"
+  show ContextMenu = "menu"
 
 
 class Option_ a where
