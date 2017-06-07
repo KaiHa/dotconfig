@@ -38,10 +38,11 @@ Config {
         -- network activity monitor (dynamic interface resolution)
         , Run DynNetwork     [ "--template" , "<fn=2><dev> </fn><fc=white>↑</fc><tx> <fc=white>↓</fc><rx><fn=1>kB/s</fn>"
                              , "--Low"      ,  "100000"
-                             , "--High"     , "2000000"
+                             , "--High"     , "1400000"
                              , "--low"      , "green"
                              , "--normal"   , "orange"
                              , "--high"     , "red"
+                             , "--minwidth" , "4"
                              ] 20
 
         , Run Wireless "wlp3s0" [ "--template", "<qualityvbar>"
