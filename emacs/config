@@ -37,6 +37,7 @@
  '(fci-rule-use-dashes t)
  '(fci-rule-width 3)
  '(fic-highlighted-words (quote ("FIXME" "TODO" "BUG" "KLUDGE" "XXX" "HACK")))
+ '(frame-background-mode (quote light))
  '(gnutls-verify-error t)
  '(haskell-mode-hook
    (quote
