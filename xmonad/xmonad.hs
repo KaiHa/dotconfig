@@ -53,7 +53,7 @@ startup = do
   spawn "feh --bg-center ~/.config/xmonad/background"
   spawnOnce "xcompmgr"
   spawnOnce "urxvtd --quiet --opendisplay --fork"
-  spawnOnce "urxvt -name kuake -title kuake -kuake-hotkey F12 -geometry 140x40+200+100"
+  spawnOnce "urxvt -name kuake -title kuake -kuake-hotkey F12 -geometry 140x40+200+100 -e byobu"
   spawnOnce "stalonetray"
   spawnOnce "nitrokey-app"
   spawnOnce "blueman-applet"
