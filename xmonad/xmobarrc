@@ -21,7 +21,7 @@ Config {
                 \%disku% \
                 \<action=`urxvt -hold -e vnstat` button=1>%dynnetwork%</action> \
                 \%wlp3s0wi%  \
-                \<action=`urxvt -fg white -bg black -geometry 130x42+150+15 -title wttr.in -name wttr.in -e bash -c 'curl wttr.in/hildesheim; read'` button=1>%date%</action>  \
+                \<action=`urxvt -fg white -bg black -geometry 130x43+150+15 -title wttr.in -name wttr.in -e bash -c 'curl wttr.in/hildesheim; read'` button=1>%date%</action>  \
                 \<action=`~/.config/xmonad/togglekb` button=1><fc=yellow>%kbd%</fc> (<fc=white>%locks%</fc>)</action> \
                 \<fc=white>%default:Master%</fc>       "
 
