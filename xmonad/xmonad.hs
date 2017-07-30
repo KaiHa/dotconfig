@@ -74,7 +74,7 @@ myPP = def { L.ppCurrent = L.xmobarColor "yellow" "#666600" . L.wrap "[<fn=1>" "
            , L.ppLayout  = \_ -> ""
            , L.ppSep     = " | "
            , L.ppSort    = getSortByXineramaPhysicalRule
-           , L.ppTitle   = L.wrap "<fn=2>" "</fn>" . L.xmobarColor "white"  "" . L.shorten 100
+           , L.ppTitle   = L.wrap "<fn=3>" "</fn>" . L.xmobarColor "white"  "" . L.shorten 100
            , L.ppVisible = L.xmobarColor "#cccccc" "#666600". L.wrap ".<fn=1>" "</fn>."
            , L.ppHidden  = L.wrap "<fn=1>" "</fn>"
            , L.ppUrgent  = L.xmobarColor "red" "yellow"

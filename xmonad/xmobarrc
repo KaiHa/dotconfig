@@ -4,6 +4,7 @@ Config {
      font =         "xft:Hack:size=10:bold:antialias=true"
      additionalFonts = [ "xft:Nimbus Sans:size=10:bold:antialias=true"
                        , "xft:Nimbus Sans:size=10:bold:antialias=true:slant=italic"
+                       , "xft:Nimbus Sans:size=10:antialias=true:slant=italic"
                        ]
    , bgColor =      "black"
    , fgColor =      "#999999"
