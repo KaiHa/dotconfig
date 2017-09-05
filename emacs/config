@@ -130,3 +130,19 @@
 (global-set-key (kbd "C-c b") 'org-iswitchb)
 (define-key minibuffer-local-map (kbd "M-p") 'previous-complete-history-element)
 (define-key minibuffer-local-map (kbd "M-n") 'next-complete-history-element)
+
+;; my functions ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(defun set-comment-char (char)
+  "Set comment character for current buffer."
+  (interactive "sComment char: ")
+  (setq comment-start char)
+  (font-lock-add-keywords nil `((,(concat comment-start ".+") . font-lock-comment-face)))
+  (font-lock-mode 0)
+  (font-lock-mode 1))
+
+(defun unset-all-font-lock-keywords ()
+  "Unset all font lock keywords for current buffer."
+  (interactive)
+  (font-lock-add-keywords nil () 'set)
+  (font-lock-mode 0)
+  (font-lock-mode 1))
