@@ -29,7 +29,6 @@
      (quote font-lock-face)
      (quote font-lock-function-name-face))))
  '(calendar-week-start-day 1)
- '(epg-gpg-program "/run/current-system/sw/bin/gpg2")
  '(european-calendar-style t)
  '(explicit-shell-file-name "/run/current-system/sw/bin/bash")
  '(fci-rule-color "orange")
@@ -130,6 +129,12 @@
 (global-set-key (kbd "C-c b") 'org-iswitchb)
 (define-key minibuffer-local-map (kbd "M-p") 'previous-complete-history-element)
 (define-key minibuffer-local-map (kbd "M-n") 'next-complete-history-element)
+
+
+;; needed for switching between nixos-17.03 and 17.09
+(if (file-exists-p "/run/current-system/sw/bin/gpg2")
+    (setq epg-gpg-program "/run/current-system/sw/bin/gpg2")
+    (setq epg-gpg-program "/run/current-system/sw/bin/gpg"))
 
 ;; my functions ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (defun set-comment-char (char)
