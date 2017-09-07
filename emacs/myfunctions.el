@@ -1,4 +1,3 @@
-;; Create TAGS file
 (defun create-tags (dir-name)
   "Create tags file."
   (interactive "DDirectory: ")
@@ -6,14 +5,18 @@
    (format "ctags -e -R %s" (directory-file-name dir-name))))
 
 
-;; Assure every given package in packages is installed
-(defun ensure-package-installed (&rest packages)
-  "Assure every package is installed, ask for installation if it’s not.\n\nReturn a list of installed packages or nil for every skipped package."
-  (mapcar
-   (lambda (package)
-     (if (package-installed-p package)
-         nil
-       (if (y-or-n-p (format "Package %s is missing. Install it? " package))
-           (package-install package)
-         package)))
-   packages))
+(defun set-comment-char (char)
+  "Set comment character for current buffer."
+  (interactive "sComment char: ")
+  (setq comment-start char)
+  (font-lock-add-keywords nil `((,(concat comment-start ".+") . font-lock-comment-face)))
+  (font-lock-mode 0)
+  (font-lock-mode 1))
+
+
+(defun unset-all-font-lock-keywords ()
+  "Unset all font lock keywords for current buffer."
+  (interactive)
+  (font-lock-add-keywords nil () 'set)
+  (font-lock-mode 0)
+  (font-lock-mode 1))

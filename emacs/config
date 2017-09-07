@@ -4,6 +4,8 @@
 ;;  M-/    code-completion (hippie-expand)
 ;;  M-s o  list all lines that match (occur)
 
+(require 'package)
+(package-initialize)
 
 ;;;; Do NOT edit this ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (custom-set-variables
@@ -30,6 +32,7 @@
      (quote font-lock-function-name-face))))
  '(calendar-week-start-day 1)
  '(european-calendar-style t)
+ '(evil-mode t)
  '(explicit-shell-file-name "/run/current-system/sw/bin/bash")
  '(fci-rule-color "orange")
  '(fci-rule-column 80)
@@ -44,6 +47,7 @@
                              (lambda nil
                                (ghc-init)))))
  '(haskell-tags-on-save t)
+ '(helm-mode t)
  '(help-window-select t)
  '(hs-hide-comments-when-hiding-all nil)
  '(indent-tabs-mode nil)
@@ -63,7 +67,7 @@
      ("gnu" . "https://elpa.gnu.org/packages/"))))
  '(package-selected-packages
    (quote
-    (scion ghc nix-mode haskell-mode magit hideshowvis helm fic-mode fill-column-indicator evil)))
+    (evil editorconfig flycheck-rust rust-mode scion ghc nix-mode haskell-mode magit hideshowvis helm fic-mode fill-column-indicator)))
  '(password-cache-expiry 300)
  '(read-file-name-completion-ignore-case t)
  '(require-final-newline t)
@@ -86,31 +90,10 @@
  '(org-headline-done ((t (:foreground "RosyBrown" :strike-through t)))))
 
 
-
 ;;;; Edit this instead ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(require 'package)
-(package-initialize)
 (load-file "~/.config/emacs/myfunctions.el")
 
-;;;; Install missing packages ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(or (file-exists-p package-user-dir) (package-refresh-contents))
-
-(ensure-package-installed 'evil
-                          'fill-column-indicator
-                          'fic-mode
-                          'helm
-                          'hideshowvis
-                          'magit)
-
-;;;; All packages should be available at this point ;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(package-initialize)
-(require 'evil)
-(require 'helm-config)
-
-(evil-mode t)
-(helm-mode t)
 (column-number-mode t)
-;; hide-show-mode (folding)
 (add-hook 'prog-mode-hook #'hs-minor-mode)
 (add-hook 'prog-mode-hook #'hideshowvis-minor-mode)
 (add-hook 'text-mode-hook #'auto-fill-mode)
@@ -135,19 +118,3 @@
 (if (file-exists-p "/run/current-system/sw/bin/gpg2")
     (setq epg-gpg-program "/run/current-system/sw/bin/gpg2")
     (setq epg-gpg-program "/run/current-system/sw/bin/gpg"))
-
-;; my functions ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(defun set-comment-char (char)
-  "Set comment character for current buffer."
-  (interactive "sComment char: ")
-  (setq comment-start char)
-  (font-lock-add-keywords nil `((,(concat comment-start ".+") . font-lock-comment-face)))
-  (font-lock-mode 0)
-  (font-lock-mode 1))
-
-(defun unset-all-font-lock-keywords ()
-  "Unset all font lock keywords for current buffer."
-  (interactive)
-  (font-lock-add-keywords nil () 'set)
-  (font-lock-mode 0)
-  (font-lock-mode 1))
