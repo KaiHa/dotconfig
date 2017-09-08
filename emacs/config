@@ -75,7 +75,7 @@
      ("gnu" . "https://elpa.gnu.org/packages/"))))
  '(package-selected-packages
    (quote
-    (ivy-hydra ivy-historian counsel ivy evil editorconfig flycheck-rust rust-mode scion ghc nix-mode haskell-mode magit hideshowvis fic-mode fill-column-indicator)))
+    (hideshowvis ivy-hydra ivy-historian counsel ivy evil editorconfig flycheck-rust rust-mode scion ghc nix-mode haskell-mode magit fic-mode fill-column-indicator)))
  '(password-cache-expiry 300)
  '(read-file-name-completion-ignore-case t)
  '(require-final-newline t)
@@ -106,9 +106,10 @@
 ;;;; Edit this instead ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (load-file "~/.config/emacs/myfunctions.el")
 
+(evil-mode t)
+
 (column-number-mode t)
 (add-hook 'prog-mode-hook #'hs-minor-mode)
-(add-hook 'prog-mode-hook #'hideshowvis-minor-mode)
 (add-hook 'text-mode-hook #'auto-fill-mode)
 (add-hook 'text-mode-hook #'flyspell-mode)
 (hideshowvis-symbols)
