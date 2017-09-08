@@ -33,11 +33,12 @@ defaults = def
                          ||| magnifiercz 1.5 (Tall 1 (3/100) (1/2))
   , logHook            = fadeInactiveLogHook 0.9
   , manageHook         = composeAll
-                           [ (className =? "Firefox") --> doShift "web"
-                           , (className =? "Emacs")   --> doShift "emacs"
-                           , (appName   =? "kuake")   --> doFloat
-                           , (appName   =? "wttr.in") --> doFloat
-                           , (appName   =? "gimp")    --> doFloat
+                           [ (className =? "Firefox")  --> doShift "web"
+                           , (className =? "Emacs")    --> doShift "emacs"
+                           , (appName   =? "gimp")     --> doFloat
+                           , (appName   =? "kuake")    --> doFloat
+                           , (appName   =? "pinentry") --> doFloat
+                           , (appName   =? "wttr.in")  --> doFloat
                            ]
   , modMask            = mod4Mask
   , startupHook        = startup
