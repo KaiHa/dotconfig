@@ -47,12 +47,20 @@
                              (lambda nil
                                (ghc-init)))))
  '(haskell-tags-on-save t)
- '(helm-mode t)
  '(help-window-select t)
+ '(historian-mode t)
  '(hs-hide-comments-when-hiding-all nil)
  '(indent-tabs-mode nil)
  '(inhibit-startup-screen t)
  '(ispell-dictionary "de_DE")
+ '(ivy-count-format "(%d/%d) ")
+ '(ivy-historian-mode t)
+ '(ivy-mode t)
+ '(ivy-sort-matches-functions-alist
+   (quote
+    ((t . ivy--prefix-sort)
+     (ivy-switch-buffer . ivy-sort-function-buffer))))
+ '(ivy-use-virtual-buffers t)
  '(magit-diff-refine-hunk (quote all))
  '(magit-git-executable "/run/current-system/sw/bin/git")
  '(menu-bar-mode nil)
@@ -67,7 +75,7 @@
      ("gnu" . "https://elpa.gnu.org/packages/"))))
  '(package-selected-packages
    (quote
-    (evil editorconfig flycheck-rust rust-mode scion ghc nix-mode haskell-mode magit hideshowvis helm fic-mode fill-column-indicator)))
+    (ivy-hydra ivy-historian counsel ivy evil editorconfig flycheck-rust rust-mode scion ghc nix-mode haskell-mode magit hideshowvis fic-mode fill-column-indicator)))
  '(password-cache-expiry 300)
  '(read-file-name-completion-ignore-case t)
  '(require-final-newline t)
@@ -86,6 +94,11 @@
  '(hideshowvis-hidable-face ((t (:foreground "#888"))))
  '(hs-face ((t (:background "#ff8" :slant italic :height 0.8))))
  '(hs-fringe-face ((t (:background "#ff8" :foreground "#888"))))
+ '(ivy-current-match ((t (:background "yellow" :foreground "black"))))
+ '(ivy-minibuffer-match-face-1 ((t (:foreground "dim gray"))))
+ '(ivy-minibuffer-match-face-2 ((t (:foreground "black" :weight bold))))
+ '(ivy-minibuffer-match-face-3 ((t (:foreground "black" :weight bold))))
+ '(ivy-minibuffer-match-face-4 ((t (:foreground "black" :weight bold))))
  '(mode-line ((t (:background "#FF8888" :foreground "black" :box (:line-width -1 :style released-button)))))
  '(org-headline-done ((t (:foreground "RosyBrown" :strike-through t)))))
 
@@ -104,12 +117,15 @@
 (add-to-list 'evil-emacs-state-modes 'interactive-haskell-mode)
 
 ;; custom key-bindings
-(global-set-key (kbd "C-x g") 'magit-status)
-(global-set-key (kbd "M-/")   'hippie-expand)
-(global-set-key (kbd "C-c l") 'org-store-link)
-(global-set-key (kbd "C-c c") 'org-capture)
-(global-set-key (kbd "C-c a") 'org-agenda)
-(global-set-key (kbd "C-c b") 'org-iswitchb)
+(global-set-key (kbd "M-x")     'counsel-M-x)
+(global-set-key (kbd "C-x C-f") 'counsel-find-file)
+(global-set-key (kbd "C-s")     'swiper)
+(global-set-key (kbd "C-x g")   'magit-status)
+(global-set-key (kbd "M-/")     'hippie-expand)
+(global-set-key (kbd "C-c l")   'org-store-link)
+(global-set-key (kbd "C-c c")   'org-capture)
+(global-set-key (kbd "C-c a")   'org-agenda)
+(global-set-key (kbd "C-c b")   'org-iswitchb)
 (define-key minibuffer-local-map (kbd "M-p") 'previous-complete-history-element)
 (define-key minibuffer-local-map (kbd "M-n") 'next-complete-history-element)
 
