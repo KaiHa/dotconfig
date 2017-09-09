@@ -26,6 +26,7 @@ lnk ~/.config/mutt/mailcap  ~/.mailcap
 lnk ~/.config/mutt/muttrc   ~/.muttrc
 lnk ~/.config/ssh           ~/.ssh
 lnk ~/.config/stalonetrayrc ~/.stalonetrayrc
+lnk ~/.config/tmux.conf     ~/.tmux.conf
 lnk ~/.config/vim           ~/.vim
 lnk ~/.config/vim/vimrc     ~/.vimrc
 lnk ~/.config/xmonad        ~/.xmonad
