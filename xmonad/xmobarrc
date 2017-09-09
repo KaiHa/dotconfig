@@ -17,7 +17,7 @@ Config {
    , alignSep = "}{"  -- separator between left-right alignment
    , template = "%StdinReader% }{\
                 \<fn=1>%battery%</fn>\
-                \<action=`urxvt -e top` button=1>%multicpu%</action> \
+                \<action=`urxvt -e top` button=1>%loadavg%</action> \
                 \%memory% \
                 \%disku% \
                 \<action=`urxvt -hold -e vnstat` button=1>%dynnetwork%</action> \
@@ -44,28 +44,24 @@ Config {
                              , "--normal"   , "orange"
                              , "--high"     , "red"
                              , "--minwidth" , "4"
-                             ] 20
+                             ] 50
 
         , Run Wireless "wlp3s0" [ "--template", "<qualityvbar>"
                                 , "--low"      , "red"
                                 , "--normal"   , "orange"
                                 , "--high"     , "green"
-                                ] 20
+                                ] 50
 
-        -- cpu activity monitor
-        , Run MultiCpu       [ "--template" , "<icon=/home/kai/.xmonad/icons/cpu.xbm/><autototal>%"
-                             , "--low"      , "green"
-                             , "--normal"   , "orange"
-                             , "--high"     , "red"
-                             , "--minwidth" , "2"
-                             ] 20
+        , Run Com "awk"      [ "{print \"<icon=/home/kai/.xmonad/icons/cpu.xbm/>\" $1, $2, $3}"
+                             , "/proc/loadavg"
+                             ] "loadavg" 50
 
         -- memory usage monitor
         , Run Memory         [ "--template" ,"<icon=/home/kai/.xmonad/icons/mem.xbm/><usedratio>%"
                              , "--low"      , "white"
                              , "--normal"   , "orange"
                              , "--high"     , "red"
-                             ] 20
+                             ] 50
 
         -- battery monitor
         , Run Battery        [ "--template" , "<fc=green><icon=/home/kai/.xmonad/icons/battery_left.xbm/>\
@@ -82,7 +78,7 @@ Config {
                                        , "-O"	, "<fc=#dAA520,#005500> <icon=/home/kai/.xmonad/icons/power_plugged.xbm/> <left>% </fc>"
                                        -- charged status
                                        , "-i"	, "<fc=green,#005500> <icon=/home/kai/.xmonad/icons/power_plugged.xbm/> </fc>"
-                             ] 100
+                             ] 150
 
         , Run DiskU [("/", "<icon=/home/kai/.xmonad/icons/disk.xbm/><usedp>%")] [ "--high"     , "red"
                                           , "--normal"   , "orange"
@@ -90,7 +86,7 @@ Config {
                                           ] 50
 
         -- time and date indicator
-        , Run Date           "<fn=1><fc=#ABABAB>%a, %-d. %b</fc> <fc=white>%H:%M</fc>:%S</fn>" "date" 10
+        , Run Date           "<fn=1><fc=#ABABAB>%a, %-d. %b</fc> <fc=white>%H:%M</fc></fn>" "date" 50
 
         -- keyboard layout indicator
         , Run Kbd            [("us", "<fc=#999999>us</fc>")]
@@ -101,6 +97,6 @@ Config {
                                               , "--off",  "<icon=/home/kai/.xmonad/icons/sound_off.xbm/>"
                                               , "--onc",  "#999999"
                                               , "--offc", "#FF9999"
-                                        ] 10
+                                        ] 50
         ]
    }
