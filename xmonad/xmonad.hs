@@ -6,6 +6,7 @@ import           Adapt2Environment
 import           Data.String.Utils (replace)
 import           XMonad
 import           XMonad.Actions.CycleWS (toggleWS)
+import           XMonad.Actions.UpdatePointer
 import           XMonad.Actions.WindowBringer (gotoMenu)
 import           XMonad.Actions.WindowGo (runOrRaise, raiseMaybe)
 import qualified XMonad.Hooks.DynamicLog as L
@@ -31,7 +32,9 @@ defaults = def
   , layoutHook         = Tall 1 (3/100) (1/2) ||| Full
                          ||| Mirror (Tall 1 (3/100) (1/2))
                          ||| magnifiercz 1.5 (Tall 1 (3/100) (1/2))
-  , logHook            = fadeInactiveLogHook 0.9
+  , logHook            = do
+                         fadeInactiveLogHook 0.9
+                         updatePointer (0.5, 0.5) (0.9, 0.9)
   , manageHook         = composeAll
                            [ (className =? "Firefox")  --> doShift "web"
                            , (className =? "Emacs")    --> doShift "emacs"
