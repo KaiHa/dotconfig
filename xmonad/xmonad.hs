@@ -62,6 +62,7 @@ startup = do
   spawnOnce "nitrokey-app"
   spawnOnce "blueman-applet"
   spawnOnce "usermount"  -- automount of removable media
+  spawnOnce "unclutter --timeout 3"
   windows $ W.view "1"
   spawn "xsetroot -cursor_name left_ptr"
 
