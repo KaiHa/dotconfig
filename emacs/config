@@ -75,10 +75,11 @@
      ("gnu" . "https://elpa.gnu.org/packages/"))))
  '(package-selected-packages
    (quote
-    (hideshowvis ivy-hydra ivy-historian counsel ivy evil editorconfig flycheck-rust rust-mode scion ghc nix-mode haskell-mode magit fic-mode fill-column-indicator)))
+    (ivy-rtags rtags hideshowvis ivy-hydra ivy-historian counsel ivy evil editorconfig flycheck-rust rust-mode scion ghc nix-mode haskell-mode magit fic-mode fill-column-indicator)))
  '(password-cache-expiry 300)
  '(read-file-name-completion-ignore-case t)
  '(require-final-newline t)
+ '(rtags-process-flags "--socket-file=~/.rdm")
  '(savehist-mode t)
  '(scroll-bar-mode nil)
  '(show-paren-mode t)
@@ -112,6 +113,8 @@
 (add-hook 'prog-mode-hook #'hs-minor-mode)
 (add-hook 'text-mode-hook #'auto-fill-mode)
 (add-hook 'text-mode-hook #'flyspell-mode)
+(add-hook 'c-mode-hook    'rtags-start-process-unless-running)
+(add-hook 'c++-mode-hook  'rtags-start-process-unless-running)
 (hideshowvis-symbols)
 
 (add-to-list 'auto-mode-alist '("/mutt-" . text-mode))
