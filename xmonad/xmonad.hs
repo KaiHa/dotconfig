@@ -90,7 +90,7 @@ shortcuts :: [((KeyMask, KeySym), X ())]
 shortcuts =
   [ ((mod4Mask,                 xK_0),          windows $ W.greedyView "web")
   , ((mod4Mask .|. shiftMask,   xK_0),          windows $ W.shift "web")
-  , ((controlMask .|. mod1Mask, xK_l),          spawn "physlock")
+  , ((controlMask .|. mod1Mask, xK_l),          spawn "sudo physlock -d")
   , ((mod4Mask,                 xK_o),          gotoMenu)
   , ((mod4Mask,                 xK_Escape),     toggleWS)
   , ((noModMask,                xK_Mute),       spawn "amixer sset Master toggle")
