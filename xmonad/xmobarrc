@@ -1,10 +1,11 @@
 -- -*- mode: haskell -*-
 
 Config {
-     font =         "xft:Hack:size=10:bold:antialias=true"
+     font =         "xft:Hack:size=10:antialias=true"
      additionalFonts = [ "xft:Nimbus Sans:size=10:bold:antialias=true"
                        , "xft:Nimbus Sans:size=10:bold:antialias=true:slant=italic"
                        , "xft:Nimbus Sans:size=10:antialias=true:slant=italic"
+                       , "xft:Nimbus Sans:size=10:antialias=true"
                        ]
    , bgColor =      "black"
    , fgColor =      "#999999"
@@ -16,7 +17,7 @@ Config {
    , sepChar =  "%"   -- delineator between plugin names and straight text
    , alignSep = "}{"  -- separator between left-right alignment
    , template = "%StdinReader% }{\
-                \<fn=1>%battery%</fn>\
+                \<fn=0>%battery%</fn>\
                 \<action=`urxvt -e top` button=1>%loadavg%</action> \
                 \%memory% \
                 \%disku% \
@@ -86,7 +87,7 @@ Config {
                                           ] 50
 
         -- time and date indicator
-        , Run Date           "<fn=1><fc=#ABABAB>%a, %-d. %b</fc> <fc=white>%H:%M</fc></fn>" "date" 50
+        , Run Date           "<fn=4><fc=#ABABAB>%a, %-d. %b</fc></fn> <fn=1><fc=white>%H:%M</fc></fn>" "date" 50
 
         -- keyboard layout indicator
         , Run Kbd            [("us", "<fc=#999999>us</fc>")]
