@@ -52,7 +52,7 @@ Config {
                                 , "--high"     , "green"
                                 ] 50
 
-        , Run Com "awk"      [ "{print \"<icon=/home/kai/.xmonad/icons/cpu.xbm/>\" $1, $2, $3}"
+        , Run Com "awk"      [ "{print \"<icon=/home/kai/.xmonad/icons/cpu.xbm/><fc=white>\" $1, $2, $3\"</fc>\"}"
                              , "/proc/loadavg"
                              ] "loadavg" 50
 
