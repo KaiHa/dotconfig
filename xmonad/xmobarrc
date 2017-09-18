@@ -9,8 +9,8 @@ Config {
                        ]
    , bgColor =      "black"
    , fgColor =      "#999999"
-   , position =     Top
-   , border =       BottomB
+   , position =     Bottom
+   , border =       NoBorder
    , borderColor =  "#646464"
 
    -- layout
