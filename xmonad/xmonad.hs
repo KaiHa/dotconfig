@@ -13,6 +13,7 @@ import qualified XMonad.Hooks.DynamicLog as L
 import           XMonad.Hooks.FadeInactive (fadeInactiveLogHook)
 import           XMonad.Hooks.ManageDocks (AvoidStruts)
 import           XMonad.Hooks.ManageDocks (docksEventHook)
+import           XMonad.Hooks.ManageHelpers
 import           XMonad.Layout.LayoutModifier (ModifiedLayout)
 import           XMonad.Layout.Magnifier (magnifiercz)
 import qualified XMonad.StackSet as W
@@ -39,7 +40,7 @@ defaults = def
                            [ (className =? "Firefox")  --> doShift "web"
                            , (className =? "Emacs")    --> doShift "emacs"
                            , (appName   =? "gimp")     --> doFloat
-                           , (appName   =? "kuake")    --> doFloat
+                           , (appName   =? "kuake")    --> doSideFloat NC
                            , (appName   =? "pinentry") --> doFloat
                            , (appName   =? "wttr.in")  --> doFloat
                            ]
@@ -57,7 +58,7 @@ startup = do
   spawn "feh --bg-center ~/.config/xmonad/background"
   spawnOnce "xcompmgr"
   spawnOnce "urxvtd --quiet --opendisplay --fork"
-  spawnOnce "urxvt -name kuake -title kuake -kuake-hotkey F12 -geometry 140x40+200+100 -e tmux new-session -s Q"
+  spawnOnce "urxvt -name kuake -title kuake -kuake-hotkey F12 -geometry 140x40+0+0 -e tmux new-session -s Q"
   spawnOnce "stalonetray"
   spawnOnce "nitrokey-app"
   spawnOnce "blueman-applet"
