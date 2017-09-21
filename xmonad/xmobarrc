@@ -9,9 +9,8 @@ Config {
                        ]
    , bgColor =      "black"
    , fgColor =      "#999999"
-   , position =     Bottom
+   , position =     BottomSize L 100 16
    , border =       NoBorder
-   , borderColor =  "#646464"
 
    -- layout
    , sepChar =  "%"   -- delineator between plugin names and straight text
@@ -25,7 +24,7 @@ Config {
                 \%wlp3s0wi%  \
                 \<action=`urxvt -fg white -bg black -geometry 130x43+150+15 -title wttr.in -name wttr.in -e bash -c 'curl wttr.in/hildesheim; read'` button=1>%date%</action>  \
                 \<action=`~/.config/xmonad/togglekb` button=1><fc=yellow>%kbd%</fc> (<fc=white>%locks%</fc>)</action> \
-                \<fc=white>%default:Master%</fc>       "
+                \<fc=white>%default:Master%</fc>         "
 
 
    , lowerOnStart =     True    -- send to bottom of window stack on start
