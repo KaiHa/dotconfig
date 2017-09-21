@@ -14,6 +14,7 @@ import           XMonad.Hooks.FadeInactive (fadeInactiveLogHook)
 import           XMonad.Hooks.ManageDocks (AvoidStruts)
 import           XMonad.Hooks.ManageDocks (docksEventHook)
 import           XMonad.Hooks.ManageHelpers
+import           XMonad.Layout.Grid
 import           XMonad.Layout.LayoutModifier (ModifiedLayout)
 import           XMonad.Layout.Magnifier (magnifiercz)
 import qualified XMonad.StackSet as W
@@ -30,7 +31,7 @@ defaults = def
   { borderWidth        = 2
   , focusFollowsMouse  = True
   , handleEventHook    = mconcat [docksEventHook, handleEventHook def]
-  , layoutHook         = Tall 1 (3/100) (1/2) ||| Full
+  , layoutHook         = Tall 1 (3/100) (1/2) ||| Full ||| Grid
                          ||| Mirror (Tall 1 (3/100) (1/2))
                          ||| magnifiercz 1.5 (Tall 1 (3/100) (1/2))
   , logHook            = do
