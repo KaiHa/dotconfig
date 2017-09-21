@@ -1,8 +1,8 @@
 background "#000000"
-geometry 3x1-0-0
+geometry 3x1-1-0
 icon_size 16
 kludges force_icons_size
-max_geometry 2x1-0+0
+max_geometry 3x1
 skip_taskbar true
 sticky true
 window_type desktop
