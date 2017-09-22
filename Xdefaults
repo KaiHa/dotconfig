@@ -1,7 +1,10 @@
-URxvt.boldFont:         xft:Hack-Bold:pixelsize=12:weight=bold,xft:Symbola
-URxvt.font:             xft:Hack-Regular:pixelsize=12,xft:Symbola
+URxvt.boldFont:         xft:Hack:style=Bold:pixelsize=12, \
+                        xft:Symbola:style=Regular:pixelsize=8
+URxvt.font:             xft:Hack:style=Regular:pixelsize=12, \
+                        xft:Symbola:style=Regular:pixelsize=8
+URxvt.italicFont:       xft:Hack:style=Italic:pixelsize=12, \
+                        xft:Symbola:style=Regular:pixelsize=8
 URxvt.intensityStyles:  false
-URxvt.italicFont:       xft:Hack-RegularOblique:pixelsize=12:slant=italic,xft:Symbola
 URxvt.keysym.C-Down:    font-size:decrease
 URxvt.keysym.C-Up:      font-size:increase
 URxvt.keysym.M-Escape:  perl:keyboard-select:activate
@@ -21,5 +24,8 @@ xmessage*font:          -gnu-unifont-medium-r-normal-sans-16-160-75-75-c-80-iso1
 !! black
 *.color0:       #1c1e1c
 *.color8:       #343835
+!! green
+*.color2:       #4cac64
+*.color10:      #5acc77
 !! blue
 *.color4:       #5a77cc
