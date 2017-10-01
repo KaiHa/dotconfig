@@ -1,6 +1,7 @@
 [user]
     email = kai.harries@gmail.com
     name = Kai Harries
+    signingkey = 9BF317AAADF833085154BEB55B9AFA98996CC931
 [color]
     branch = auto
     status = auto
