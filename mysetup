@@ -20,7 +20,6 @@ mkdir -p ~/.mutt
 
 lnk ~/.config/Xdefaults     ~/.Xdefaults
 lnk ~/.config/emacs/config  ~/.emacs
-lnk ~/.config/gnupg         ~/.gnupg
 lnk ~/.config/lbdb/lbdbrc   ~/.lbdbrc
 lnk ~/.config/mutt/mailcap  ~/.mailcap
 lnk ~/.config/mutt/muttrc   ~/.muttrc
