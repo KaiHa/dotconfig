@@ -16,6 +16,7 @@ lnk()
 }
 
 mkdir -p ~/.cache/vim
+mkdir -p ~/.mutt
 
 lnk ~/.config/Xdefaults     ~/.Xdefaults
 lnk ~/.config/emacs/config  ~/.emacs
