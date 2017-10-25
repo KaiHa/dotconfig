@@ -18,7 +18,6 @@ lnk()
 mkdir -p ~/.cache/vim
 
 lnk ~/.config/Xdefaults     ~/.Xdefaults
-lnk ~/.config/byobu         ~/.byobu
 lnk ~/.config/emacs/config  ~/.emacs
 lnk ~/.config/gnupg         ~/.gnupg
 lnk ~/.config/lbdb/lbdbrc   ~/.lbdbrc
