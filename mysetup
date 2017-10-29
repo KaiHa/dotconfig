@@ -11,25 +11,28 @@ lnk()
             echo "warning: not overwriting existing file $2"
         fi
     else
+        mkdir -p $(dirname $2)
         ln -s "$1" "$2"
     fi
 }
 
 mkdir -p ~/.cache/vim
-mkdir -p ~/.mutt
 
-lnk ~/.config/Xdefaults     ~/.Xdefaults
-lnk ~/.config/emacs/config  ~/.emacs
-lnk ~/.config/lbdb/lbdbrc   ~/.lbdbrc
-lnk ~/.config/mutt/mailcap  ~/.mailcap
-lnk ~/.config/mutt/muttrc   ~/.muttrc
-lnk ~/.config/ssh           ~/.ssh
-lnk ~/.config/stalonetrayrc ~/.stalonetrayrc
-lnk ~/.config/tmux.conf     ~/.tmux.conf
-lnk ~/.config/vim           ~/.vim
-lnk ~/.config/vim/vimrc     ~/.vimrc
-lnk ~/.config/xmonad        ~/.xmonad
+lnk ~/.config/Xdefaults                ~/.Xdefaults
+lnk ~/.config/emacs/config             ~/.emacs
+lnk ~/.config/lbdb/lbdbrc              ~/.lbdbrc
+lnk ~/.config/mutt/mailcap             ~/.mailcap
+lnk ~/.config/mutt/muttrc              ~/.muttrc
+lnk ~/.config/notmuch/hooks/post-new   ~/.mail/.notmuch/hooks/post-new
+lnk ~/.config/notmuch/notmuch-config   ~/.notmuch-config
+lnk ~/.config/ssh                      ~/.ssh
+lnk ~/.config/stalonetrayrc            ~/.stalonetrayrc
+lnk ~/.config/tmux.conf                ~/.tmux.conf
+lnk ~/.config/vim                      ~/.vim
+lnk ~/.config/vim/vimrc                ~/.vimrc
+lnk ~/.config/xmonad                   ~/.xmonad
 lnk ~/.config/xmonad/xmonad-session-rc ~/.xsession
-lnk ~/.config/zsh/zshrc     ~/.zshrc
+lnk ~/.config/zsh/zshrc                ~/.zshrc
 
+mkdir -p ~/.mutt
 gpg2 --decrypt ~/.config/mutt/aliases.txt.gpg > ~/.mutt/aliases.txt

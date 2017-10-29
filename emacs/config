@@ -32,6 +32,9 @@
      (quote font-lock-function-name-face))))
  '(calendar-week-start-day 1)
  '(european-calendar-style t)
+ '(evil-emacs-state-modes
+   (quote
+    (archive-mode bbdb-mode biblio-selection-mode bookmark-bmenu-mode bookmark-edit-annotation-mode browse-kill-ring-mode bzr-annotate-mode calc-mode cfw:calendar-mode completion-list-mode Custom-mode custom-theme-choose-mode debugger-mode delicious-search-mode desktop-menu-blist-mode desktop-menu-mode doc-view-mode dvc-bookmarks-mode dvc-diff-mode dvc-info-buffer-mode dvc-log-buffer-mode dvc-revlist-mode dvc-revlog-mode dvc-status-mode dvc-tips-mode ediff-mode ediff-meta-mode efs-mode Electric-buffer-menu-mode emms-browser-mode emms-mark-mode emms-metaplaylist-mode emms-playlist-mode ess-help-mode etags-select-mode fj-mode fundamental-mode gc-issues-mode gdb-breakpoints-mode gdb-disassembly-mode gdb-frames-mode gdb-locals-mode gdb-memory-mode gdb-registers-mode gdb-threads-mode gist-list-mode git-commit-mode git-rebase-mode gnus-article-mode gnus-browse-mode gnus-group-mode gnus-server-mode gnus-summary-mode google-maps-static-mode ibuffer-mode interactive-haskell-mode jde-javadoc-checker-report-mode magit-cherry-mode magit-diff-mode magit-log-mode magit-log-select-mode magit-popup-mode magit-popup-sequence-mode magit-process-mode magit-reflog-mode magit-refs-mode magit-revision-mode magit-stash-mode magit-stashes-mode magit-status-mode magit-mode magit-branch-manager-mode magit-commit-mode magit-key-mode magit-rebase-mode magit-wazzup-mode mh-folder-mode monky-mode mu4e-main-mode mu4e-headers-mode mu4e-view-mode notmuch-hello-mode notmuch-message-mode notmuch-search-mode notmuch-show-mode notmuch-tree-mode occur-mode org-agenda-mode package-menu-mode pdf-outline-buffer-mode pdf-view-mode proced-mode rcirc-mode rebase-mode recentf-dialog-mode reftex-select-bib-mode reftex-select-label-mode reftex-toc-mode sldb-mode slime-inspector-mode slime-thread-control-mode slime-xref-mode sr-buttons-mode sr-mode sr-tree-mode sr-virtual-mode tar-mode tetris-mode tla-annotate-mode tla-archive-list-mode tla-bconfig-mode tla-bookmarks-mode tla-branch-list-mode tla-browse-mode tla-category-list-mode tla-changelog-mode tla-follow-symlinks-mode tla-inventory-file-mode tla-inventory-mode tla-lint-mode tla-logs-mode tla-revision-list-mode tla-revlog-mode tla-tree-lint-mode tla-version-list-mode twittering-mode urlview-mode vc-annotate-mode vc-dir-mode vc-git-log-view-mode vc-hg-log-view-mode vc-svn-log-view-mode vm-mode vm-summary-mode w3m-mode wab-compilation-mode xgit-annotate-mode xgit-changelog-mode xgit-diff-mode xgit-revlog-mode xhg-annotate-mode xhg-log-mode xhg-mode xhg-mq-mode xhg-mq-sub-mode xhg-status-extra-mode interactive-haskell-mode)))
  '(evil-mode t)
  '(explicit-shell-file-name "/run/current-system/sw/bin/bash")
  '(fci-rule-color "orange")
@@ -64,7 +67,91 @@
  '(magit-diff-refine-hunk (quote all))
  '(magit-git-executable "/run/current-system/sw/bin/git")
  '(menu-bar-mode nil)
+ '(message-completion-alist
+   (quote
+    (("^\\(To\\|CC\\|BCC\\):" . notmuch-address-expand-name)
+     ("^\\(Newsgroups\\|Followup-To\\|Posted-To\\|Gcc\\):" . message-expand-group)
+     ("^\\(Resent-\\)?\\(To\\|B?Cc\\):" . message-expand-name)
+     ("^\\(Reply-To\\|From\\|Mail-Followup-To\\|Mail-Copies-To\\):" . message-expand-name)
+     ("^\\(Disposition-Notification-To\\|Return-Receipt-To\\):" . message-expand-name))))
  '(mouse-wheel-scroll-amount (quote (1 ((shift) . 5) ((control)))))
+ '(notmuch-address-selection-function
+   (lambda
+     (prompt collection initial-input)
+     (completing-read prompt
+                      (cons initial-input collection)
+                      nil t nil
+                      (quote notmuch-address-history))))
+ '(notmuch-saved-searches
+   (quote
+    ((:name "inbox" :query "tag:inbox" :key "i")
+     (:name "unread" :query "tag:unread" :key "u")
+     (:name "flagged" :query "tag:flagged" :key "f")
+     (:name "sent" :query "tag:sent" :key "t")
+     (:name "drafts" :query "tag:draft" :key "d")
+     (:name "all mail" :query "*" :key "a")
+     (:name "note2me" :query "from:kai.harries@gmail.com to:kai.harries@gmail.com"))))
+ '(notmuch-search-oldest-first t)
+ '(notmuch-show-logo nil)
+ '(notmuch-tag-formats
+   (quote
+    (("unread"
+      (propertize tag
+                  (quote face)
+                  (quote notmuch-tag-unread)))
+     ("flagged"
+      (notmuch-tag-format-image-data tag
+                                     (notmuch-tag-star-icon)))
+     ("inbox")
+     ("signed")
+     ("sent"
+      (notmuch-apply-face tag
+                          (quote
+                           (:weight normal :foreground "dim gray"))))
+     ("todo"
+      (notmuch-apply-face tag
+                          (quote
+                           (:weight bold :foreground "red" :background "yellow1"))))
+     ("p"
+      (notmuch-apply-face tag
+                          (quote
+                           (:weight bold :foreground "forest green"))))
+     ("attachment"
+      (notmuch-tag-format-image-data tag "<?xml version=\"1.0\" encoding=\"utf-8\"?>
+<!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.1//EN\" \"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd\">
+<svg version=\"1.1\" id=\"Layer_1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" x=\"0px\" y=\"0px\"
+	 width=\"16px\" height=\"16px\" viewBox=\"0 0 512 512\" enable-background=\"new 0 0 512 512\" xml:space=\"preserve\">
+<path fill=\"#020202\" d=\"M379.393,8.543c-33.979-3.743-69.229,5.566-96.807,25.786c-10.318,7.301-18.959,16.602-27.89,25.464
+	C189.26,125.269,123.783,190.716,58.327,256.173c-6.584,6.662-13.469,13.062-19.326,20.412
+	c-22.459,27.347-33.669,63.547-30.818,98.807c2.289,30.827,15.186,60.812,36.239,83.475c22.857,25.213,55.294,41.455,89.167,44.665
+	c33.911,3.607,68.89-6.167,96.353-26.279c4.494-3.297,8.696-6.936,12.777-10.713l0.197-0.039c0.677-0.684,1.342-1.352,1.997-2.007
+	c4.386-4.151,8.655-8.432,13.004-12.609c0.389-0.379,0.743-0.744,1.075-1.101c4.54-4.359,9.12-8.771,14.366-14.064
+	c5.712-5.692,5.653-15.768-0.097-21.412c-7.398-7.467-14.847-14.904-22.313-22.303c-5.818-5.906-16.302-5.751-21.916,0.358
+	c-2.958,2.983-5.915,5.967-8.873,8.949c-7.467,7.118-14.795,14.383-22.434,21.314c-20.432,17.775-50.454,23.352-75.948,14.235
+	c-18.881-6.594-34.979-20.753-43.842-38.692c-14.595-28.481-8.951-65.689,13.664-88.391
+	c72.807-72.981,145.769-145.808,218.653-218.712c20.373-20.559,52.781-27.647,79.973-17.892
+	c18.959,6.458,34.969,20.771,43.861,38.672c14.4,28.074,9.145,64.633-12.713,87.421c-36.491,36.888-73.099,73.67-109.646,110.5
+	c-4.859,5.043-11.957,7.933-18.979,7.128c-10.58-0.641-19.859-9.62-20.975-20.133c-1.096-7.282,1.735-14.864,7.04-19.907
+	c27.19-27.454,54.353-54.926,81.544-82.369c5.712-5.692,5.653-15.768-0.097-21.412c-7.398-7.467-14.847-14.905-22.313-22.304
+	c-5.818-5.906-16.302-5.75-21.916,0.359c-24.95,25.165-49.882,50.339-74.843,75.494c-4.945,5.101-10.201,9.94-14.438,15.67
+	c-15.225,19.764-20.821,46.489-15.069,70.741c6.061,27.308,26.677,50.814,52.908,60.502c29.857,11.753,66.087,4.479,89.021-18.008
+	c33.105-33.155,66.048-66.475,99.086-99.698c7.535-7.66,15.419-15.04,22.004-23.564c21.314-27.075,31.894-62.285,29.121-96.623
+	c-2.26-30.848-15.167-60.821-36.161-83.552C445.015,28.113,412.965,11.84,379.393,8.543\"/>
+</svg>")))))
+ '(notmuch-tagging-keys
+   (quote
+    (("a" notmuch-archive-tags "Archive")
+     ("u" notmuch-show-mark-read-tags "Mark read")
+     ("f"
+      ("+flagged")
+      "Flag")
+     ("s"
+      ("+spam" "-inbox")
+      "Mark as spam")
+     ("d"
+      ("+trash" "-inbox")
+      "Delete"))))
  '(org-agenda-files (quote ("~/Documents")))
  '(org-catch-invisible-edits (quote show-and-error))
  '(org-fontify-done-headline t)
@@ -82,7 +169,10 @@
  '(rtags-process-flags "--socket-file=~/.rdm")
  '(savehist-mode t)
  '(scroll-bar-mode nil)
+ '(send-mail-function (quote smtpmail-send-it))
  '(show-paren-mode t)
+ '(smtpmail-smtp-server "smtp.gmail.com")
+ '(smtpmail-smtp-service 25)
  '(tool-bar-mode nil)
  '(truncate-lines t))
 (custom-set-faces
@@ -101,6 +191,12 @@
  '(ivy-minibuffer-match-face-3 ((t (:foreground "black" :weight bold))))
  '(ivy-minibuffer-match-face-4 ((t (:foreground "black" :weight bold))))
  '(mode-line ((t (:background "#FF8888" :foreground "black" :box (:line-width -1 :style released-button)))))
+ '(notmuch-crypto-decryption ((t (:background "purple" :foreground "white"))))
+ '(notmuch-crypto-signature-bad ((t (:background "IndianRed1" :foreground "black"))))
+ '(notmuch-crypto-signature-unknown ((t (:background "IndianRed1" :foreground "black"))))
+ '(notmuch-search-flagged-face ((t nil)))
+ '(notmuch-tag-added ((t (:underline "forest green"))))
+ '(notmuch-tag-face ((t (:foreground "navy blue" :weight normal))))
  '(org-headline-done ((t (:foreground "RosyBrown" :strike-through t)))))
 
 
@@ -108,6 +204,7 @@
 (load-file "~/.config/emacs/myfunctions.el")
 
 (evil-mode t)
+(require 'org-notmuch (concat (getenv "EMACS_ORG_CONTRIB_DIR") "org-notmuch.el"))
 
 (column-number-mode t)
 (add-hook 'prog-mode-hook #'hs-minor-mode)
@@ -118,7 +215,6 @@
 (hideshowvis-symbols)
 
 (add-to-list 'auto-mode-alist '("/mutt-" . text-mode))
-(add-to-list 'evil-emacs-state-modes 'interactive-haskell-mode)
 
 ;; custom key-bindings
 (global-set-key (kbd "M-x")     'counsel-M-x)
@@ -130,6 +226,7 @@
 (global-set-key (kbd "C-c c")   'org-capture)
 (global-set-key (kbd "C-c a")   'org-agenda)
 (global-set-key (kbd "C-c b")   'org-iswitchb)
+(global-set-key (kbd "C-x n")   'notmuch)
 (define-key minibuffer-local-map (kbd "M-p") 'previous-complete-history-element)
 (define-key minibuffer-local-map (kbd "M-n") 'next-complete-history-element)
 
