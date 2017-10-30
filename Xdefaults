@@ -18,14 +18,5 @@ URxvt.visualBell:       true
 xmessage*font:          -gnu-unifont-medium-r-normal-sans-16-160-75-75-c-80-iso10646-1
 
 !! Color settings !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-*.foreground:   #343835
-*.background:   #f0f4f5
-*.cursorColor:  #343835
-!! black
-*.color0:       #1c1e1c
-*.color8:       #343835
-!! green
-*.color2:       #4cac64
-*.color10:      #5acc77
 !! blue
 *.color4:       #5a77cc
