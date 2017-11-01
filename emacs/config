@@ -66,6 +66,7 @@
  '(ivy-use-virtual-buffers t)
  '(magit-diff-refine-hunk (quote all))
  '(magit-git-executable "/run/current-system/sw/bin/git")
+ '(mail-host-address "gmail.com")
  '(menu-bar-mode nil)
  '(message-completion-alist
    (quote
@@ -264,7 +265,9 @@
  '(smtpmail-smtp-server "smtp.gmail.com")
  '(smtpmail-smtp-service 25)
  '(tool-bar-mode nil)
- '(truncate-lines t))
+ '(truncate-lines t)
+ '(user-full-name "Kai Harries")
+ '(user-mail-address "kai.harries@gmail.com"))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
