@@ -197,7 +197,8 @@
  '(notmuch-search-flagged-face ((t nil)))
  '(notmuch-tag-added ((t (:underline "forest green"))))
  '(notmuch-tag-face ((t (:foreground "navy blue" :weight normal))))
- '(org-headline-done ((t (:foreground "RosyBrown" :strike-through t)))))
+ '(org-headline-done ((t (:foreground "RosyBrown" :strike-through t))))
+ '(region ((t (:background "navajo white")))))
 
 
 ;;;; Edit this instead ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
