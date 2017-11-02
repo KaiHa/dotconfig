@@ -242,7 +242,16 @@
       "Mark as spam")
      ("d"
       ("+trash" "-inbox")
-      "Delete"))))
+      "Delete")
+     ("e"
+      ("+expires")
+      "Expires")
+     ("m"
+      ("+mute" "-inbox")
+      "Mute")
+     ("t"
+      ("+todo")
+      "ToDo"))))
  '(org-agenda-files (quote ("~/Documents")))
  '(org-catch-invisible-edits (quote show-and-error))
  '(org-fontify-done-headline t)
