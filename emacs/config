@@ -55,7 +55,7 @@
  '(hs-hide-comments-when-hiding-all nil)
  '(indent-tabs-mode nil)
  '(inhibit-startup-screen t)
- '(ispell-dictionary "de_DE")
+ '(ispell-dictionary "en_US")
  '(ivy-count-format "(%d/%d) ")
  '(ivy-historian-mode t)
  '(ivy-mode t)
