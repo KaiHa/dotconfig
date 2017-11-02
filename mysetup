@@ -23,6 +23,7 @@ lnk ~/.config/emacs/config             ~/.emacs
 lnk ~/.config/lbdb/lbdbrc              ~/.lbdbrc
 lnk ~/.config/mutt/mailcap             ~/.mailcap
 lnk ~/.config/mutt/muttrc              ~/.muttrc
+lnk ~/.config/notmuch/hooks/pre-new    ~/.mail/.notmuch/hooks/pre-new
 lnk ~/.config/notmuch/hooks/post-new   ~/.mail/.notmuch/hooks/post-new
 lnk ~/.config/notmuch/notmuch-config   ~/.notmuch-config
 lnk ~/.config/ssh                      ~/.ssh
