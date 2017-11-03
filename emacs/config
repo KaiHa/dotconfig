@@ -229,7 +229,77 @@
 	c-15.225,19.764-20.821,46.489-15.069,70.741c6.061,27.308,26.677,50.814,52.908,60.502c29.857,11.753,66.087,4.479,89.021-18.008
 	c33.105-33.155,66.048-66.475,99.086-99.698c7.535-7.66,15.419-15.04,22.004-23.564c21.314-27.075,31.894-62.285,29.121-96.623
 	c-2.26-30.848-15.167-60.821-36.161-83.552C445.015,28.113,412.965,11.84,379.393,8.543\"/>
-</svg>")))))
+</svg>"))
+     ("mute"
+      (notmuch-tag-format-image-data tag "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?>
+<svg:svg
+   xmlns:dc=\"http://purl.org/dc/elements/1.1/\"
+   xmlns:cc=\"http://creativecommons.org/ns#\"
+   xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"
+   xmlns:svg=\"http://www.w3.org/2000/svg\"
+   xmlns:sodipodi=\"http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd\"
+   xmlns:inkscape=\"http://www.inkscape.org/namespaces/inkscape\"
+   width=\"24\"
+   height=\"16\"
+   viewBox=\"0 0 357.10008 238.06672\"
+   version=\"1.1\"
+   id=\"svg60\"
+   sodipodi:docname=\"mute.svg\"
+   inkscape:version=\"0.92.2 (5c3e80d, 2017-08-06)\">
+  <svg:metadata
+     id=\"metadata66\">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about=\"\">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource=\"http://purl.org/dc/dcmitype/StillImage\" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </svg:metadata>
+  <svg:defs
+     id=\"defs64\" />
+  <sodipodi:namedview
+     pagecolor=\"#ffffff\"
+     bordercolor=\"#666666\"
+     borderopacity=\"1\"
+     objecttolerance=\"10\"
+     gridtolerance=\"10\"
+     guidetolerance=\"10\"
+     inkscape:pageopacity=\"0\"
+     inkscape:pageshadow=\"2\"
+     inkscape:window-width=\"2556\"
+     inkscape:window-height=\"1417\"
+     id=\"namedview62\"
+     showgrid=\"false\"
+     scale-x=\"14.87917\"
+     inkscape:zoom=\"12.552083\"
+     inkscape:cx=\"48.39834\"
+     inkscape:cy=\"48\"
+     inkscape:window-x=\"0\"
+     inkscape:window-y=\"0\"
+     inkscape:window-maximized=\"0\"
+     inkscape:current-layer=\"svg60\" />
+  <div
+     id=\"saka-gui-root\">
+    <div>
+      <div>
+        <style />
+      </div>
+    </div>
+  </div>
+  <svg:path
+     d=\"M 322.20262,17.637732 V 194.63774 l -93.8,-20.5 v 20.3 c 0,14.4 -10.4,24 -26.4,24 h -76.8 c -16,0 -26.399997,-9.6 -26.399997,-24 v -48.54 l -47,-10.25 v 11.93 h -12.14 V 64.647732 h 12.14 v 11.89 z m -117.4,176.800008 v -25.4 l -82.6,-18 v 43.4 z\"
+     id=\"path58\"
+     inkscape:connector-curvature=\"0\"
+     style=\"fill:#808080\" />
+  <svg:path
+     style=\"fill:#ff0000;stroke:#ff0000;stroke-width:29.75834;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:none;opacity:0.83\"
+     d=\"M 21.3371,21.139535 337.83742,219.10041\"
+     id=\"path68\"
+     inkscape:connector-curvature=\"0\" />
+</svg:svg>")))))
  '(notmuch-tagging-keys
    (quote
     (("a" notmuch-archive-tags "Archive")
