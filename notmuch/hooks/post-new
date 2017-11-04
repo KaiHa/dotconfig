@@ -13,7 +13,8 @@ notmuch tag -new +nixos            -- tag:new and to:nix-devel@googlegroups.com
 notmuch tag -new +haskell          -- tag:new and to:haskell@haskell.org
 notmuch tag -new +debian           -- tag:new and to:@lists.debian.org
 notmuch tag -new +expires          -- tag:new and to:TECHNIK-SALON@listserv.uni-hannover.de
-notmuch tag -new                   -- tag:new and from:info@mail.immowelt.de
+notmuch tag -new +fritzbox         -- tag:new and from:postmaster.rob@gmail.com "FRITZ!Box"
+notmuch tag -new +immo             -- tag:new and from:info@mail.immowelt.de
 notmuch tag -new                   -- tag:new and tag:spam
 
 # All other mails are tagged with `p`
