@@ -7,8 +7,8 @@ Config {
                        , "xft:Nimbus Sans:size=10:antialias=true:slant=italic"
                        , "xft:Nimbus Sans:size=10:antialias=true"
                        ]
-   , bgColor =      "black"
-   , fgColor =      "#999999"
+   , bgColor =      "#E4E4E4"
+   , fgColor =      "#090909"
    , position =     BottomSize L 100 16
    , border =       NoBorder
 
@@ -23,8 +23,8 @@ Config {
                 \<action=`urxvt -hold -e vnstat` button=1>%dynnetwork%</action> \
                 \%wlp3s0wi%  \
                 \<action=`urxvt -fg white -bg black -geometry 130x43+150+15 -title wttr.in -name wttr.in -e bash -c 'curl wttr.in/hildesheim; read'` button=1>%date%</action>  \
-                \<action=`~/.config/xmonad/togglekb` button=1><fc=yellow>%kbd%</fc> (<fc=white>%locks%</fc>)</action> \
-                \<fc=white>%default:Master%</fc>         "
+                \<action=`~/.config/xmonad/togglekb` button=1><fc=#005555>%kbd%</fc> (<fc=black>%locks%</fc>)</action> \
+                \<fc=dimgray>%default:Master%</fc>         "
 
 
    , lowerOnStart =     True    -- send to bottom of window stack on start
@@ -37,66 +37,66 @@ Config {
    , commands =
         [ Run StdinReader
         -- network activity monitor (dynamic interface resolution)
-        , Run DynNetwork     [ "--template" , "<fn=2><dev> </fn><fc=white>↑</fc><tx> <fc=white>↓</fc><rx><fn=1>kB/s</fn>"
+        , Run DynNetwork     [ "--template" , "<fn=2><dev> </fn><fc=black>↑</fc><tx> <fc=black>↓</fc><rx><fn=1>kB/s</fn>"
                              , "--Low"      ,  "100000"
                              , "--High"     , "1400000"
-                             , "--low"      , "green"
-                             , "--normal"   , "orange"
-                             , "--high"     , "red"
+                             , "--low"      , "darkgreen"
+                             , "--normal"   , "darkgoldenrod"
+                             , "--high"     , "orangered"
                              , "--minwidth" , "4"
                              ] 50
 
         , Run Wireless "wlp3s0" [ "--template", "<qualityvbar>"
                                 , "--low"      , "red"
-                                , "--normal"   , "orange"
-                                , "--high"     , "green"
+                                , "--normal"   , "darkgoldenrod"
+                                , "--high"     , "dimgray"
                                 ] 50
 
-        , Run Com "awk"      [ "{print \"<icon=/home/kai/.xmonad/icons/cpu.xbm/><fc=white>\" $1, $2, $3\"</fc>\"}"
+        , Run Com "awk"      [ "{print \"<icon=/home/kai/.xmonad/icons/cpu.xbm/><fc=black>\" $1, $2, $3\"</fc>\"}"
                              , "/proc/loadavg"
                              ] "loadavg" 50
 
         -- memory usage monitor
         , Run Memory         [ "--template" ,"<icon=/home/kai/.xmonad/icons/mem.xbm/><usedratio>%"
-                             , "--low"      , "white"
-                             , "--normal"   , "orange"
-                             , "--high"     , "red"
+                             , "--low"      , "black"
+                             , "--normal"   , "darkgoldenrod"
+                             , "--high"     , "orangered"
                              ] 50
 
         -- battery monitor
-        , Run Battery        [ "--template" , "<fc=green><icon=/home/kai/.xmonad/icons/battery_left.xbm/>\
-                                                        \<fc=green,#005500><acstatus></fc>\
+        , Run Battery        [ "--template" , "<fc=gray><icon=/home/kai/.xmonad/icons/battery_left.xbm/>\
+                                                        \<fc=black,gray><acstatus></fc>\
                                                         \<icon=/home/kai/.xmonad/icons/battery_right.xbm/></fc>"
-                             , "--low"      , "red,#005500"
-                             , "--normal"   , "orange,#005500"
-                             , "--high"     , "green,#005500"
+                             , "--low"      , "red,gray"
+                             , "--normal"   , "yellow,gray"
+                             , "--high"     , "black,gray"
 
                              , "--" -- battery specific options
                                        -- discharging status
                                        , "-o"	, " <left>% <timeleft> "
                                        -- AC "on" status
-                                       , "-O"	, "<fc=#dAA520,#005500> <icon=/home/kai/.xmonad/icons/power_plugged.xbm/> <left>% </fc>"
+                                       , "-O"	, "<fc=yellow,gray> <icon=/home/kai/.xmonad/icons/power_plugged.xbm/> <left>% </fc>"
                                        -- charged status
-                                       , "-i"	, "<fc=green,#005500> <icon=/home/kai/.xmonad/icons/power_plugged.xbm/> </fc>"
+                                       , "-i"	, "<fc=forestgreen,gray> <icon=/home/kai/.xmonad/icons/power_plugged.xbm/> </fc>"
                              ] 150
 
-        , Run DiskU [("/", "<icon=/home/kai/.xmonad/icons/disk.xbm/><usedp>%")] [ "--high"     , "red"
-                                          , "--normal"   , "orange"
-                                          , "--low"      , "white"
+        , Run DiskU [("/", "<icon=/home/kai/.xmonad/icons/disk.xbm/><usedp>%")] [ "--high"     , "orangered"
+                                          , "--normal"   , "darkgoldenrod"
+                                          , "--low"      , "black"
                                           ] 50
 
         -- time and date indicator
-        , Run Date           "<fn=4><fc=#ABABAB>%a, %-d. %b</fc></fn> <fn=1><fc=white>%H:%M</fc></fn>" "date" 50
+        , Run Date           "<fn=4><fc=#454545>%a, %-d. %b</fc></fn> <fn=1><fc=black>%H:%M</fc></fn>" "date" 50
 
         -- keyboard layout indicator
-        , Run Kbd            [("us", "<fc=#999999>us</fc>")]
+        , Run Kbd            [("us", "<fc=#454545>us</fc>")]
 
         , Run Locks
         , Run Volume "default" "Master" ["-t", "<status> <volumevbar>"
                                         , "--", "--on",   "<icon=/home/kai/.xmonad/icons/sound_on.xbm/>"
                                               , "--off",  "<icon=/home/kai/.xmonad/icons/sound_off.xbm/>"
-                                              , "--onc",  "#999999"
-                                              , "--offc", "#FF9999"
+                                              , "--onc",  "#454545"
+                                              , "--offc", "#BB5555"
                                         ] 50
         ]
    }

@@ -7,7 +7,7 @@ import           Data.String.Utils (replace)
 import           XMonad
 import           XMonad.Actions.CycleWS (toggleWS)
 import           XMonad.Actions.UpdatePointer
-import           XMonad.Actions.WindowBringer (gotoMenu)
+import           XMonad.Actions.WindowBringer (gotoMenuArgs)
 import           XMonad.Actions.WindowGo (runOrRaise, raiseMaybe)
 import qualified XMonad.Hooks.DynamicLog as L
 import           XMonad.Hooks.FadeInactive (fadeInactiveLogHook)
@@ -56,7 +56,7 @@ startup :: X ()
 startup = do
   adapt2environment
   spawn "xset b off dpms 300 300 300"
-  spawn "feh --bg-center ~/.config/xmonad/background"
+  spawn "feh --image-bg white --bg-center ~/.config/xmonad/background"
   spawnOnce "xcompmgr"
   spawn     "urxvtd --quiet --opendisplay --fork"
   spawn     "urxvt -name kuake -title kuake -kuake-hotkey F12 -geometry 140x40+0+0 -e tmux new-session -s Q"
@@ -77,11 +77,11 @@ myxmobar conf =
 
 
 myPP:: L.PP
-myPP = def { L.ppCurrent = L.xmobarColor "yellow" "#666600" . L.wrap "[<fn=1>" "</fn>]"
+myPP = def { L.ppCurrent = L.xmobarColor "black" "yellow" . L.wrap "[<fn=1>" "</fn>]"
            , L.ppLayout  = \_ -> ""
            , L.ppSep     = " | "
            , L.ppSort    = getSortByXineramaPhysicalRule
-           , L.ppTitle   = L.wrap "<fn=3>" "</fn>" . L.xmobarColor "white"  "" . L.shorten 100
+           , L.ppTitle   = L.wrap "<fn=3>" "</fn>" . L.xmobarColor "black"  "" . L.shorten 100
            , L.ppVisible = L.xmobarColor "#cccccc" "#666600". L.wrap ".<fn=1>" "</fn>."
            , L.ppHidden  = L.wrap "<fn=1>" "</fn>"
            , L.ppUrgent  = L.xmobarColor "red" "yellow"
@@ -93,7 +93,8 @@ shortcuts =
   [ ((mod4Mask,                 xK_0),          windows $ W.greedyView "web")
   , ((mod4Mask .|. shiftMask,   xK_0),          windows $ W.shift "web")
   , ((controlMask .|. mod1Mask, xK_l),          spawn "sudo physlock -d")
-  , ((mod4Mask,                 xK_o),          gotoMenu)
+  , ((mod4Mask,                 xK_o),          gotoMenuArgs ["-nf", "black", "-nb", "#99FF99"])
+  , ((mod4Mask,                 xK_p),          spawn "dmenu_run -nf black -nb '#FFFF66'")
   , ((mod4Mask,                 xK_Escape),     toggleWS)
   , ((noModMask,                xK_Mute),       spawn "amixer sset Master toggle")
   , ((noModMask,                xK_LowerVol),   spawn "amixer sset Master 2%-")
