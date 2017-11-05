@@ -17,5 +17,8 @@ notmuch tag -new +fritzbox         -- tag:new and from:postmaster.rob@gmail.com 
 notmuch tag -new +immo             -- tag:new and from:info@mail.immowelt.de
 notmuch tag -new                   -- tag:new and tag:spam
 
+# Do not process messages sent by me further
+notmuch tag -new                   -- tag:new and tag:sent
+
 # All other mails are tagged with `p`
 notmuch tag -new +inbox +unread +p -- tag:new
