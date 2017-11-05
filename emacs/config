@@ -75,6 +75,8 @@
      ("^\\(Resent-\\)?\\(To\\|B?Cc\\):" . message-expand-name)
      ("^\\(Reply-To\\|From\\|Mail-Followup-To\\|Mail-Copies-To\\):" . message-expand-name)
      ("^\\(Disposition-Notification-To\\|Return-Receipt-To\\):" . message-expand-name))))
+ '(message-forward-as-mime t)
+ '(message-forward-show-mml nil)
  '(mouse-wheel-scroll-amount (quote (1 ((shift) . 5) ((control)))))
  '(notmuch-address-selection-function
    (lambda
