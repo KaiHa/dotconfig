@@ -37,3 +37,31 @@
     (ansi-color-apply-on-region (point-min) (point-max))
     (org-mode)
     (visual-line-mode -1)))
+
+
+;; My version of mime-to-mml which fixes the line endings
+(defun mime-to-mml (&optional handles)
+  "Translate the current buffer (which should be a message) into MML.
+If HANDLES is non-nil, use it instead reparsing the buffer."
+  ;; First decode the head.
+  (save-excursion (icalendar--clean-up-line-endings))
+  (save-restriction
+    (message-narrow-to-head)
+    (let ((rfc2047-quote-decoded-words-containing-tspecials t))
+      (mail-decode-encoded-word-region (point-min) (point-max))))
+  (unless handles
+    (setq handles (mm-dissect-buffer t)))
+  (goto-char (point-min))
+  (search-forward "\n\n" nil t)
+  (delete-region (point) (point-max))
+  (if (stringp (car handles))
+      (mml-insert-mime handles)
+    (mml-insert-mime handles t))
+  (mm-destroy-parts handles)
+  (save-restriction
+    (message-narrow-to-head)
+    ;; Remove them, they are confusing.
+    (message-remove-header "Content-Type")
+    (message-remove-header "MIME-Version")
+    (message-remove-header "Content-Disposition")
+    (message-remove-header "Content-Transfer-Encoding")))
