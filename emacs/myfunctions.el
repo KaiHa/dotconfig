@@ -65,3 +65,21 @@ If HANDLES is non-nil, use it instead reparsing the buffer."
     (message-remove-header "MIME-Version")
     (message-remove-header "Content-Disposition")
     (message-remove-header "Content-Transfer-Encoding")))
+
+
+;; My version of notmuch-show-view-raw-message which fixes the line endings
+(defun notmuch-show-view-raw-message ()
+  "View the original source of the current message."
+  (interactive)
+  (let* ((id (notmuch-show-get-message-id))
+	 (buf (get-buffer-create (concat "*notmuch-raw-" id "*")))
+	 (inhibit-read-only t))
+    (switch-to-buffer buf)
+    (erase-buffer)
+    (let ((coding-system-for-read 'no-conversion))
+      (call-process notmuch-command nil t nil "show" "--format=raw" id))
+    (save-excursion (icalendar--clean-up-line-endings))
+    (goto-char (point-min))
+    (set-buffer-modified-p nil)
+    (setq buffer-read-only t)
+    (view-buffer buf 'kill-buffer-if-not-modified)))
