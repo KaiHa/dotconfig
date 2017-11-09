@@ -83,3 +83,14 @@ If HANDLES is non-nil, use it instead reparsing the buffer."
     (set-buffer-modified-p nil)
     (setq buffer-read-only t)
     (view-buffer buf 'kill-buffer-if-not-modified)))
+
+
+(defun addresssearch (name)
+  "Search for email addresses."
+  (interactive "sSearch for name: ")
+  (insert
+   (nth 0 (split-string
+           (completing-read
+            "Search for name: "
+            (cdr (split-string (shell-command-to-string (concat "lbdbq " name)) "[\r\n]+"))
+            nil t)))))
