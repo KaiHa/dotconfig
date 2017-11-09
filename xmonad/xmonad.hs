@@ -8,7 +8,7 @@ import           XMonad
 import           XMonad.Actions.CycleWS (toggleWS)
 import           XMonad.Actions.UpdatePointer
 import           XMonad.Actions.WindowBringer (gotoMenuArgs)
-import           XMonad.Actions.WindowGo (runOrRaise, raiseMaybe)
+import           XMonad.Actions.WindowGo (runOrRaise, runOrRaiseAndDo, raiseMaybe)
 import qualified XMonad.Hooks.DynamicLog as L
 import           XMonad.Hooks.FadeInactive (fadeInactiveLogHook)
 import           XMonad.Hooks.ManageDocks (AvoidStruts)
@@ -19,6 +19,7 @@ import           XMonad.Layout.LayoutModifier (ModifiedLayout)
 import           XMonad.Layout.Magnifier (magnifiercz)
 import qualified XMonad.StackSet as W
 import           XMonad.Util.EZConfig (additionalKeys)
+import           XMonad.Util.Paste (sendKeyWindow)
 import           XMonad.Util.SpawnOnce
 import           XMonad.Util.WorkspaceCompare (getSortByXineramaPhysicalRule)
 
@@ -105,6 +106,8 @@ shortcuts =
   , ((noModMask,                xK_Launch6),    runOrRaise "firefox" (className =? "Firefox"))
   , ((noModMask,                xK_Launch5),    raiseMaybe (spawn "emacsclient -c") (className =? "Emacs"))
   , ((noModMask,                xK_Launch1),    raiseMaybe (spawn "emacsclient -c") (className =? "Emacs"))
+  , ((noModMask,                xK_Mail),       runOrRaiseAndDo "emacsclient -c" (className =? "Emacs")
+      (\a -> sendKeyWindow controlMask xK_x a >> sendKeyWindow noModMask xK_n a))
   , ((controlMask,              xK_space),      spawn "~/.config/xmonad/togglekb")
   , ((noModMask,                xK_Display),    adapt2environment)
   ]
@@ -116,6 +119,7 @@ shortcuts =
     xK_Launch1     = stringToKeysym "XF86Launch1"
     xK_Launch5     = stringToKeysym "XF86Launch5"
     xK_Launch6     = stringToKeysym "XF86Launch6"
+    xK_Mail        = stringToKeysym "XF86Mail"
     xK_BrightUp    = stringToKeysym "XF86MonBrightnessUp"
     xK_BrightDown  = stringToKeysym "XF86MonBrightnessDown"
     xK_Display     = stringToKeysym "XF86Display"
