@@ -379,6 +379,7 @@
 (load-file "~/.config/emacs/myfunctions.el")
 
 (evil-mode t)
+(require 'notmuch)
 (require 'org-notmuch (concat (getenv "EMACS_ORG_CONTRIB_DIR") "org-notmuch.el"))
 
 (column-number-mode t)
@@ -407,6 +408,18 @@
 (define-key minibuffer-local-map (kbd "M-p") 'previous-complete-history-element)
 (define-key minibuffer-local-map (kbd "M-n") 'next-complete-history-element)
 
+;; notmuch key bindings
+(evil-add-hjkl-bindings notmuch-search-mode-map 'emacs)
+(evil-add-hjkl-bindings notmuch-show-mode-map   'emacs)
+(evil-add-hjkl-bindings notmuch-tree-mode-map   'emacs)
+(define-key notmuch-search-mode-map  (kbd "a") 'notmuch-tag-jump)
+(define-key notmuch-show-mode-map    (kbd "a") 'notmuch-tag-jump)
+(define-key notmuch-tree-mode-map    (kbd "a") 'notmuch-tag-jump)
+(define-key notmuch-search-mode-map  (kbd "g") 'notmuch-jump-search)
+(define-key notmuch-show-mode-map    (kbd "g") 'notmuch-jump-search)
+(define-key notmuch-tree-mode-map    (kbd "g") 'notmuch-jump-search)
+(define-key notmuch-hello-mode-map   (kbd "g") 'notmuch-jump-search)
+(define-key notmuch-search-mode-map  (kbd "L") 'notmuch-search-filter)
 
 ;; needed for switching between nixos-17.03 and 17.09
 (if (file-exists-p "/run/current-system/sw/bin/gpg2")
