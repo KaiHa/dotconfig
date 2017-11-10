@@ -36,6 +36,8 @@
       (shell-command (concat "gcalcli" options "--width 20 calm " month) tmp-buff-name))
     (ansi-color-apply-on-region (point-min) (point-max))
     (org-mode)
+    (view-mode)
+    (evil-motion-state)
     (visual-line-mode -1)))
 
 
