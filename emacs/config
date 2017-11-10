@@ -388,6 +388,7 @@
 (add-hook 'text-mode-hook #'flyspell-mode)
 (add-hook 'c-mode-hook    'rtags-start-process-unless-running)
 (add-hook 'c++-mode-hook  'rtags-start-process-unless-running)
+(add-hook 'view-mode-hook 'evil-motion-state)
 (hideshowvis-symbols)
 
 (add-to-list 'auto-mode-alist '("/mutt-" . text-mode))
