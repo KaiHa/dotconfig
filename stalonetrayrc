@@ -5,4 +5,4 @@ kludges force_icons_size
 max_geometry 3x1
 skip_taskbar true
 sticky true
-window_type desktop
+window_type dock
