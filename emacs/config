@@ -347,7 +347,7 @@
  '(smtpmail-smtp-server "smtp.gmail.com")
  '(smtpmail-smtp-service 25)
  '(tool-bar-mode nil)
- '(tramp-default-proxies-alist (quote ((nil "\\`root\\'" "/ssh:%h:"))))
+ '(tramp-default-proxies-alist (quote (("\\.fritz\\.box" "\\`root\\'" "/ssh:%h:"))))
  '(truncate-lines t)
  '(user-full-name "Kai Harries")
  '(user-mail-address "kai.harries@gmail.com"))
