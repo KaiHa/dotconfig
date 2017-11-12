@@ -7,6 +7,9 @@
 #
 # To enable the below-mentioned features uncomment the according lines.
 
+# Exit immediately when sourced by emacs/tramp
+[[ $TERM == "dumb" ]] && unsetopt zle && PS1='$ ' && return
+
 ### Select emacs like key bindings:
 bindkey -e
 
