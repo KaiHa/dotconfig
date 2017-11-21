@@ -15,7 +15,7 @@ Config {
    -- layout
    , sepChar =  "%"   -- delineator between plugin names and straight text
    , alignSep = "}{"  -- separator between left-right alignment
-   , template = "%StdinReader% }{\
+   , template = "%StdinReader% }{ %XMonadLog% \
                 \<fn=0>%battery%</fn>\
                 \<action=`urxvt -e top` button=1>%loadavg%</action> \
                 \%memory% \
@@ -36,6 +36,7 @@ Config {
 
    , commands =
         [ Run StdinReader
+        , Run XMonadLog
         -- network activity monitor (dynamic interface resolution)
         , Run DynNetwork     [ "--template" , "<fn=2><dev> </fn><fc=black>↑</fc><tx> <fc=black>↓</fc><rx><fn=1>kB/s</fn>"
                              , "--Low"      ,  "100000"

@@ -19,6 +19,7 @@ import           XMonad.Layout.LayoutModifier (ModifiedLayout)
 import           XMonad.Layout.Magnifier (magnifiercz)
 import qualified XMonad.StackSet as W
 import           XMonad.Util.EZConfig (additionalKeys)
+import           XMonad.Util.Loggers (logCmd)
 import           XMonad.Util.Paste (sendKeyWindow)
 import           XMonad.Util.SpawnOnce
 import           XMonad.Util.WorkspaceCompare (getSortByXineramaPhysicalRule)
@@ -38,6 +39,7 @@ defaults = def
   , logHook            = do
                          fadeInactiveLogHook 0.9
                          updatePointer (0.5, 0.5) (0.9, 0.9)
+                         L.dynamicLogString rightPP >>= L.xmonadPropLog
   , manageHook         = composeAll
                            [ (className =? "Firefox")  --> doShift "web"
                            , (className =? "Emacs")    --> doShift "emacs"
@@ -72,22 +74,36 @@ startup = do
 
 myxmobar :: LayoutClass l Window => XConfig l -> IO (XConfig (ModifiedLayout AvoidStruts l))
 myxmobar conf =
-  L.statusBar "xmobar ~/.config/xmonad/xmobarrc" myPP toggleStrutsKey conf
+  L.statusBar "xmobar ~/.config/xmonad/xmobarrc" leftPP toggleStrutsKey conf
   where
     toggleStrutsKey XConfig{modMask = modm} = (modm, xK_b )
 
 
-myPP:: L.PP
-myPP = def { L.ppCurrent = L.xmobarColor "black" "yellow" . L.wrap "[<fn=1>" "</fn>]"
-           , L.ppLayout  = \_ -> ""
-           , L.ppSep     = "<fc=#888888> | </fc>"
-           , L.ppSort    = getSortByXineramaPhysicalRule
-           , L.ppTitle   = L.wrap "<fn=3>" "</fn>" . L.xmobarColor "black"  "" . L.shorten 100
-           , L.ppVisible = L.xmobarColor "#cccccc" "#666600". L.wrap ".<fn=1>" "</fn>."
-           , L.ppHidden  = L.wrap "<fn=1>" "</fn>"
-           , L.ppUrgent  = L.xmobarColor "red" "yellow"
-           }
+leftPP:: L.PP
+leftPP = def { L.ppCurrent = L.xmobarColor "black" "yellow" . L.wrap "[<fn=1>" "</fn>]"
+             , L.ppSep     = "<fc=#888888> | </fc>"
+             , L.ppSort    = getSortByXineramaPhysicalRule
+             , L.ppTitle   = L.wrap "<fn=3>" "</fn>" . L.xmobarColor "black"  "" . L.shorten 100
+             , L.ppVisible = L.xmobarColor "#cccccc" "#666600". L.wrap ".<fn=1>" "</fn>."
+             , L.ppHidden  = L.wrap "<fn=1>" "</fn>"
+             , L.ppUrgent  = L.xmobarColor "red" "yellow" . L.wrap "" "*"
+             , L.ppOrder   =  \(w:_:t:xs) -> [w, t]
+             }
 
+
+rightPP :: L.PP
+rightPP = def { L.ppSep     = "<fc=#888888> | </fc>"
+              , L.ppExtras  = [ notmuch ]
+              , L.ppOrder   = \(_:_:_:xs) -> xs
+              }
+
+
+notmuch = do
+  count <- logCmd "notmuch count tag:inbox and tag:unread"
+  return $ case count of
+    Just "0" -> Nothing
+    Just a   -> Just $ "<fc=#AA0000><icon=/home/kai/.xmonad/icons/mail.xbm/>" ++ a ++ "</fc>"
+    Nothing  -> Nothing
 
 shortcuts :: [((KeyMask, KeySym), X ())]
 shortcuts =
