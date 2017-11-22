@@ -14,6 +14,7 @@ import           XMonad.Hooks.FadeInactive (fadeInactiveLogHook)
 import           XMonad.Hooks.ManageDocks (AvoidStruts)
 import           XMonad.Hooks.ManageDocks (docksEventHook)
 import           XMonad.Hooks.ManageHelpers
+import           XMonad.Hooks.UrgencyHook
 import           XMonad.Layout.Grid
 import           XMonad.Layout.LayoutModifier (ModifiedLayout)
 import           XMonad.Layout.Magnifier (magnifiercz)
@@ -26,7 +27,9 @@ import           XMonad.Util.WorkspaceCompare (getSortByXineramaPhysicalRule)
 
 
 main :: IO ()
-main = xmonad =<< myxmobar defaults
+main = xmonad . withHook =<< myxmobar defaults
+  where
+    withHook = withUrgencyHook (BorderUrgencyHook {urgencyBorderColor = "gold"})
 
 
 defaults = def
@@ -40,6 +43,7 @@ defaults = def
                          fadeInactiveLogHook 0.9
                          updatePointer (0.5, 0.5) (0.9, 0.9)
                          L.dynamicLogString rightPP >>= L.xmonadPropLog
+                         logHook def
   , manageHook         = composeAll
                            [ (className =? "Firefox")  --> doShift "web"
                            , (className =? "Emacs")    --> doShift "emacs"
@@ -86,7 +90,7 @@ leftPP = def { L.ppCurrent = L.xmobarColor "black" "yellow" . L.wrap "[<fn=1>" "
              , L.ppTitle   = L.wrap "<fn=3>" "</fn>" . L.xmobarColor "black"  "" . L.shorten 100
              , L.ppVisible = L.xmobarColor "#cccccc" "#666600". L.wrap ".<fn=1>" "</fn>."
              , L.ppHidden  = L.wrap "<fn=1>" "</fn>"
-             , L.ppUrgent  = L.xmobarColor "red" "yellow" . L.wrap "" "*"
+             , L.ppUrgent  = L.xmobarColor "yellow" "red" . L.wrap "<fn=1>" "*</fn>"
              , L.ppOrder   =  \(w:_:t:xs) -> [w, t]
              }
 
