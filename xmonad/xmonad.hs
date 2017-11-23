@@ -4,6 +4,7 @@ module Main (main) where
 
 import           Adapt2Environment
 import           Data.String.Utils (replace)
+import           Numeric
 import           XMonad
 import           XMonad.Actions.CycleWS (toggleWS)
 import           XMonad.Actions.UpdatePointer
@@ -97,7 +98,7 @@ leftPP = def { L.ppCurrent = L.xmobarColor "black" "yellow" . L.wrap "[<fn=1>" "
 
 rightPP :: L.PP
 rightPP = def { L.ppSep     = "<fc=#888888> | </fc>"
-              , L.ppExtras  = [ notmuch ]
+              , L.ppExtras  = [ notmuch, load ]
               , L.ppOrder   = \(_:_:_:xs) -> xs
               }
 
@@ -108,6 +109,21 @@ notmuch = do
     Just "0" -> Nothing
     Just a   -> Just $ "<fc=#AA0000><icon=/home/kai/.xmonad/icons/mail.xbm/>" ++ a ++ "</fc>"
     Nothing  -> Nothing
+
+
+load = do
+  load <- logCmd "awk '{print $1, $2, $3}' /proc/loadavg"
+  return $ case load of
+    Just load' -> Just $ icon ++ (unwords $ map colorize $ map read $ words load')
+    Nothing    -> Nothing
+  where
+    limit = 0.8 :: Double
+    colorize a =
+      if a < limit
+      then "<fc=black>" ++ showFFloat (Just 2) a "" ++ "</fc>"
+      else "<fc=red>"   ++ showFFloat (Just 2) a "" ++ "</fc>"
+    icon = "<icon=/home/kai/.xmonad/icons/cpu.xbm/>"
+
 
 shortcuts :: [((KeyMask, KeySym), X ())]
 shortcuts =

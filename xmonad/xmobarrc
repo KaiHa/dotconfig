@@ -17,7 +17,6 @@ Config {
    , alignSep = "}{"  -- separator between left-right alignment
    , template = "%StdinReader% }{ %XMonadLog% \
                 \<fn=0>%battery%</fn>\
-                \<action=`urxvt -e top` button=1>%loadavg%</action> \
                 \%memory% \
                 \%disku% \
                 \<action=`urxvt -hold -e vnstat` button=1>%dynnetwork%</action> \
@@ -52,10 +51,6 @@ Config {
                                 , "--normal"   , "darkgoldenrod"
                                 , "--high"     , "dimgray"
                                 ] 50
-
-        , Run Com "awk"      [ "{print \"<icon=/home/kai/.xmonad/icons/cpu.xbm/><fc=black>\" $1, $2, $3\"</fc>\"}"
-                             , "/proc/loadavg"
-                             ] "loadavg" 50
 
         -- memory usage monitor
         , Run Memory         [ "--template" ,"<icon=/home/kai/.xmonad/icons/mem.xbm/><usedratio>%"
