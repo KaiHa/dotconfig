@@ -97,7 +97,7 @@ Config {
                                         , "--", "--on",   "<icon=/home/kai/.xmonad/icons/sound_on.xbm/>"
                                               , "--off",  "<icon=/home/kai/.xmonad/icons/sound_off.xbm/>"
                                               , "--onc",  "#454545"
-                                              , "--offc", "#BB5555"
+                                              , "--offc", "#BB1111"
                                         ] 50
         ]
    }
