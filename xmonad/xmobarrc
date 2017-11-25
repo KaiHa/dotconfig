@@ -9,7 +9,7 @@ Config {
                        ]
    , bgColor =      "#E4E4E4"
    , fgColor =      "#090909"
-   , position =     BottomSize L 100 16
+   , position =     BottomP 0 40
    , border =       NoBorder
 
    -- layout
@@ -23,7 +23,7 @@ Config {
                 \%wlp3s0wi%  \
                 \<action=`urxvt -fg white -bg black -geometry 130x43+150+15 -title wttr.in -name wttr.in -e bash -c 'curl wttr.in/hildesheim; read'` button=1>%date%</action>  \
                 \<action=`~/.config/xmonad/togglekb` button=1><fc=#005555>%kbd%</fc>(<fc=black>%locks%</fc>)</action> \
-                \<fc=dimgray>%default:Master%</fc>     "
+                \<fc=dimgray>%default:Master%</fc>"
 
 
    , lowerOnStart =     True    -- send to bottom of window stack on start
