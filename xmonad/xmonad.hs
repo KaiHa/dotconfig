@@ -64,11 +64,9 @@ startup :: X ()
 startup = do
   adapt2environment
   spawn "xset b off dpms 300 300 300"
-  spawn "feh --image-bg white --bg-center ~/.config/xmonad/background"
   spawnOnce "xcompmgr"
   spawn     "urxvtd --quiet --opendisplay --fork"
   spawn     "urxvt -name kuake -title kuake -kuake-hotkey F12 -geometry 140x40+0+0 -e tmux new-session -s Q"
-  spawnOnce "stalonetray"
   spawnOnce "nitrokey-app"
   spawnOnce "blueman-applet"
   spawnOnce "usermount"  -- automount of removable media

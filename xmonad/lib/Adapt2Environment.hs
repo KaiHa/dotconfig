@@ -17,6 +17,7 @@ adapt2environment = do
             xkbmap PrintScreen
   void $ runProcessWithInput "killall" ["stalonetray"] ""
   spawn "stalonetray"
+  spawn "feh --image-bg white --bg-center ~/.config/xmonad/background"
   where
     m :: Option_ a => a -> Option
     m = MkOption
