@@ -95,7 +95,7 @@ leftPP = def { L.ppCurrent = L.xmobarColor "black" "yellow" . L.wrap "[<fn=1>" "
 
 
 rightPP :: L.PP
-rightPP = def { L.ppSep     = "<fc=#888888> | </fc>"
+rightPP = def { L.ppSep     = " "
               , L.ppExtras  = [ notmuch, load ]
               , L.ppOrder   = \(_:_:_:xs) -> xs
               }
