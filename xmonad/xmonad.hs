@@ -7,6 +7,7 @@ import           Data.String.Utils (replace)
 import           Numeric
 import           XMonad
 import           XMonad.Actions.CycleWS (toggleWS)
+import           XMonad.Actions.GridSelect
 import           XMonad.Actions.UpdatePointer
 import           XMonad.Actions.WindowBringer (gotoMenuArgs)
 import           XMonad.Actions.WindowGo (runOrRaise, runOrRaiseAndDo, raiseMaybe)
@@ -127,6 +128,7 @@ shortcuts :: [((KeyMask, KeySym), X ())]
 shortcuts =
   [ ((mod4Mask,                 xK_0),          windows $ W.greedyView "web")
   , ((mod4Mask .|. shiftMask,   xK_0),          windows $ W.shift "web")
+  , ((mod4Mask,                 xK_h),          goToSelected def)
   , ((controlMask .|. mod1Mask, xK_l),          spawn "sudo physlock -d")
   , ((mod4Mask,                 xK_o),          gotoMenuArgs ["-i", "-nf", "black", "-nb", "#99FF99"])
   , ((mod4Mask,                 xK_p),          spawn "dmenu_run -i -nf black -nb '#FFFF66'")
