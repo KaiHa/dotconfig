@@ -431,6 +431,8 @@
 
 (add-to-list 'auto-mode-alist '("/mutt-" . text-mode))
 
+(setq frame-title-format '(:eval (if (buffer-file-name) "Emacs %f" "Emacs %b")))
+
 ;; custom key-bindings
 (global-set-key (kbd "M-x")     'counsel-M-x)
 (global-set-key (kbd "C-x C-f") 'counsel-find-file)
