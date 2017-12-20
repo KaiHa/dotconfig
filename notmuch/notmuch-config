@@ -48,7 +48,7 @@ primary_email=kai.harries@gmail.com
 #
 [new]
 tags=new
-ignore=.credentials.gmailieer.json;.gmailieer.json
+ignore=.credentials.gmailieer.json;.gmailieer.json;.gmailieer.json.bak
 
 # Search configuration
 #
