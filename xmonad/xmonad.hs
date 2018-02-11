@@ -48,6 +48,7 @@ defaults = def
                          logHook def
   , manageHook         = composeAll
                            [ (className =? "Firefox")  --> doShift "web"
+                           , (className =? "Nightly")  --> doShift "web"
                            , (className =? "Emacs")    --> doShift "emacs"
                            , (appName   =? "gimp")     --> doFloat
                            , (appName   =? "kuake")    --> doSideFloat NC
