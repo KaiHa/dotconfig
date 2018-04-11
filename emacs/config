@@ -78,6 +78,7 @@
  '(message-forward-as-mime t)
  '(message-forward-show-mml (quote best))
  '(mouse-wheel-scroll-amount (quote (1 ((shift) . 5) ((control)))))
+ '(mouse-yank-at-point t)
  '(notmuch-address-selection-function
    (lambda
      (prompt collection initial-input)
