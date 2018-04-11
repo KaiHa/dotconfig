@@ -71,9 +71,9 @@ Config {
                                        -- discharging status
                                        , "-o"	, " <left>% <timeleft> "
                                        -- AC "on" status
-                                       , "-O"	, "<fc=yellow,gray> <icon=/home/kai/.xmonad/icons/power_plugged.xbm/> <left>% </fc>"
+                                       , "-O"	, "<fc=yellow,gray><icon=/home/kai/.xmonad/icons/power_plugged.xbm/><left>% </fc>"
                                        -- charged status
-                                       , "-i"	, "<fc=forestgreen,gray> <icon=/home/kai/.xmonad/icons/power_plugged.xbm/> </fc>"
+                                       , "-i"	, "<fc=forestgreen,gray><icon=/home/kai/.xmonad/icons/power_plugged.xbm/></fc>"
                              ] 150
 
         , Run DiskU [("/", "<icon=/home/kai/.xmonad/icons/disk.xbm/><usedp>%")] [ "--high"     , "orangered"
