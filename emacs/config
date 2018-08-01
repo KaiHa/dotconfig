@@ -376,7 +376,7 @@
      ("gnu" . "https://elpa.gnu.org/packages/"))))
  '(package-selected-packages
    (quote
-    (ivy-rtags rtags hideshowvis ivy-hydra ivy-historian counsel ivy evil editorconfig flycheck-rust rust-mode scion ghc nix-mode haskell-mode magit fic-mode fill-column-indicator)))
+    (hiwin yaml-mode bitbake ivy-rtags rtags hideshowvis ivy-hydra ivy-historian counsel ivy evil editorconfig flycheck-rust rust-mode scion ghc nix-mode haskell-mode magit fic-mode fill-column-indicator)))
  '(password-cache-expiry 300)
  '(read-file-name-completion-ignore-case t)
  '(require-final-newline t)
@@ -399,8 +399,10 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(default ((t (:family "Hack" :foundry "bitstream" :slant normal :weight normal :height 98 :width normal))))
+ '(col-highlight ((t (:background "DarkSeaGreen1"))))
  '(font-lock-comment-face ((t (:foreground "dim gray" :slant italic))))
  '(hideshowvis-hidable-face ((t (:foreground "#888"))))
+ '(hiwin-face ((t (:background "default" :foreground "gray60"))))
  '(hs-face ((t (:background "#ff8" :slant italic :height 0.8))))
  '(hs-fringe-face ((t (:background "#ff8" :foreground "#888"))))
  '(ivy-current-match ((t (:background "yellow" :foreground "black"))))
@@ -409,6 +411,7 @@
  '(ivy-minibuffer-match-face-3 ((t (:foreground "black" :weight bold))))
  '(ivy-minibuffer-match-face-4 ((t (:foreground "black" :weight bold))))
  '(mode-line ((t (:background "#FF8888" :foreground "black" :box (:line-width -1 :style released-button)))))
+ '(mode-line-inactive ((t (:inherit mode-line :background "default" :foreground "grey70" :box (:line-width -1 :color "grey90") :weight light))))
  '(notmuch-crypto-decryption ((t (:background "purple" :foreground "white"))))
  '(notmuch-crypto-signature-bad ((t (:background "IndianRed1" :foreground "black"))))
  '(notmuch-crypto-signature-unknown ((t (:background "IndianRed1" :foreground "black"))))
