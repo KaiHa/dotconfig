@@ -3,7 +3,6 @@
 module Main (main) where
 
 import           Adapt2Environment
-import           Data.String.Utils (replace)
 import           Numeric
 import           XMonad
 import           XMonad.Actions.CycleWS (toggleWS)
