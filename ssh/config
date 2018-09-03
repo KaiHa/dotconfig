@@ -8,3 +8,12 @@ Host *
      ControlMaster auto
      ControlPath /tmp/ssh-%r@%h:%p
      ControlPersist 1800
+
+Host tplink
+     HostName 192.168.1.1
+     IdentityFile ~/.ssh/id_kai
+     User root
+
+Host c20
+     HostName 192.168.1.131
+     IdentityFile ~/.ssh/id_kai
