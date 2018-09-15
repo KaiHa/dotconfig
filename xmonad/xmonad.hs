@@ -1,4 +1,5 @@
 {-# LANGUAGE FlexibleContexts #-}
+{-# LANGUAGE CPP #-}
 
 module Main (main) where
 
@@ -86,7 +87,11 @@ myxmobar conf =
 leftPP:: L.PP
 leftPP = def { L.ppCurrent = L.xmobarColor "black" "yellow" . L.wrap "[<fn=1>" "</fn>]"
              , L.ppSep     = "<fc=#888888> | </fc>"
+#if MIN_VERSION_xmonad_contrib(0,14,0)
+             , L.ppSort    = getSortByXineramaPhysicalRule def
+#else
              , L.ppSort    = getSortByXineramaPhysicalRule
+#endif
              , L.ppTitle   = L.wrap "<fn=3>" "</fn>" . L.xmobarColor "black"  "" . L.shorten 100
              , L.ppVisible = L.xmobarColor "#cccccc" "#666600". L.wrap ".<fn=1>" "</fn>."
              , L.ppHidden  = L.wrap "<fn=1>" "</fn>"

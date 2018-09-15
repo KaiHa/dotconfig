@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+set -e
+
+# nix-shell -I nixpkgs=/home/kai/sw/nixpkgs --run "cabal new-build"
+
+cabal new-build
+
+find -L dist-newstyle \
+     -type f \
+     -executable \
+     -name xmonad-x86_64-linux \
+     -cnewer ./xmonad-x86_64-linux \
+     -exec ln -sf '{}' \;

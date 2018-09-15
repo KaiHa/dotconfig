@@ -2,3 +2,4 @@
 *.hi
 *.o
 xmonad-*-linux
+/dist-newstyle/
