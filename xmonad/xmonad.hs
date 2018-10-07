@@ -84,7 +84,7 @@ myxmobar conf =
     toggleStrutsKey XConfig{modMask = modm} = (modm, xK_b )
 
 
-leftPP:: L.PP
+leftPP :: L.PP
 leftPP = def { L.ppCurrent = L.xmobarColor "black" "yellow" . L.wrap "[<fn=1>" "</fn>]"
              , L.ppSep     = "<fc=#888888> | </fc>"
 #if MIN_VERSION_xmonad_contrib(0,14,0)
@@ -103,7 +103,7 @@ leftPP = def { L.ppCurrent = L.xmobarColor "black" "yellow" . L.wrap "[<fn=1>" "
 rightPP :: L.PP
 rightPP = def { L.ppSep     = " "
               , L.ppExtras  = [ notmuch, load ]
-              , L.ppOrder   = \(_:_:_:xs) -> xs
+              , L.ppOrder   = drop 3
               }
 
 
