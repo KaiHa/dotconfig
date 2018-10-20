@@ -57,7 +57,7 @@ defaults = def
                            ]
   , modMask            = mod4Mask
   , startupHook        = startup
-  , terminal           = "urxvtc -e tmux"
+  , terminal           = "alacritty -e tmux"
   , workspaces         = ["1", "2", "3", "4", "5", "6", "7", "8", "emacs", "web"]
   } `additionalKeys` shortcuts
 
