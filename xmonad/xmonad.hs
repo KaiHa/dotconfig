@@ -8,9 +8,10 @@ import           Numeric
 import           XMonad
 import           XMonad.Actions.CycleWS (toggleWS)
 import           XMonad.Actions.GridSelect
+import qualified XMonad.Actions.TagWindows as W
 import           XMonad.Actions.UpdatePointer
 import           XMonad.Actions.WindowBringer (gotoMenuArgs)
-import           XMonad.Actions.WindowGo (runOrRaise, runOrRaiseAndDo, raiseMaybe)
+import           XMonad.Actions.WindowGo
 import qualified XMonad.Hooks.DynamicLog as L
 import           XMonad.Hooks.FadeInactive (fadeInactiveLogHook)
 import           XMonad.Hooks.ManageDocks (AvoidStruts)
@@ -26,6 +27,7 @@ import           XMonad.Util.Loggers (logCmd)
 import           XMonad.Util.Paste (sendKeyWindow)
 import           XMonad.Util.SpawnOnce
 import           XMonad.Util.WorkspaceCompare (getSortByXineramaPhysicalRule)
+import           XMonad.Util.XUtils
 
 
 main :: IO ()
@@ -51,14 +53,15 @@ defaults = def
                            , (className =? "Nightly")  --> doShift "web"
                            , (className =? "Emacs")    --> doShift "emacs"
                            , (appName   =? "gimp")     --> doFloat
-                           , (appName   =? "kuake")    --> doSideFloat NC
+                           , (title     =? "kuake")    --> do doSideFloat NC
+                                                              doShift "hidden"
                            , (appName   =? "pinentry") --> doFloat
                            , (appName   =? "wttr.in")  --> doFloat
                            ]
   , modMask            = mod4Mask
   , startupHook        = startup
   , terminal           = "alacritty -e tmux"
-  , workspaces         = ["1", "2", "3", "4", "5", "6", "7", "8", "emacs", "web"]
+  , workspaces         = ["1", "2", "3", "4", "5", "6", "7", "8", "emacs", "web", "hidden"]
   } `additionalKeys` shortcuts
 
 
@@ -67,9 +70,8 @@ startup = do
   adapt2environment
   spawn "xset b off dpms 300 300 300"
   spawnOnce "xcompmgr"
-  spawn     "urxvtd --quiet --opendisplay --fork"
-  spawn     "urxvt -name kuake -title kuake -kuake-hotkey F12 -geometry 140x40+0+0 -e tmux new-session -s Q"
-  spawnOnce "nitrokey-app"
+  spawn     "alacritty --title kuake --dimensions 140 40 -e tmux new-session -s Q"
+  --spawnOnce "nitrokey-app"
   spawnOnce "blueman-applet"
   spawnOnce "usermount"  -- automount of removable media
   spawnOnce "unclutter --timeout 3"
@@ -143,7 +145,7 @@ shortcuts =
   , ((noModMask,                xK_RaiseVol),   spawn "amixer sset Master 2%+")
   , ((noModMask,                xK_BrightUp),   spawn "xbacklight -inc 5")
   , ((noModMask,                xK_BrightDown), spawn "xbacklight -dec 5")
-  , ((mod4Mask .|. mod1Mask,    xK_Return),     spawn "urxvtc -bg black -fg white")
+  -- , ((mod4Mask .|. mod1Mask,    xK_Return),     spawn "urxvtc -bg black -fg white")
   , ((noModMask,                xK_Launch6),    runOrRaise "firefox" (className =? "Firefox"))
   , ((noModMask,                xK_Launch5),    raiseMaybe (spawn "emacsclient -c") (className =? "Emacs"))
   , ((noModMask,                xK_Launch1),    raiseMaybe (spawn "emacsclient -c") (className =? "Emacs"))
@@ -151,6 +153,19 @@ shortcuts =
       (\a -> sendKeyWindow controlMask xK_x a >> sendKeyWindow noModMask xK_n a))
   , ((controlMask,              xK_space),      spawn "~/.config/xmonad/togglekb")
   , ((noModMask,                xK_Display),    adapt2environment)
+  , ((noModMask,                xK_F12),        ifWindows (title =? "kuake")
+                                                  (mapM_ (\win -> withDisplay
+                                                           (\dsp ->
+                                                              withWindowAttributes dsp win
+                                                              (\attr ->
+                                                                 if (wa_map_state attr) == waIsViewable
+                                                                 then windows $ W.shiftWin "hidden" win
+                                                                 else windows $ W.shiftHere win
+                                                              )))
+                                                  )
+                                                  (pure ())
+    )
+
   ]
   where
     xK_LowerVol    = stringToKeysym "XF86AudioLowerVolume"
