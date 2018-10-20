@@ -8,11 +8,9 @@ import           Numeric
 import           XMonad
 import           XMonad.Actions.CycleWS (toggleWS)
 import           XMonad.Actions.GridSelect
-import qualified XMonad.Actions.TagWindows as W
 import           XMonad.Actions.UpdatePointer
 import           XMonad.Actions.WindowBringer (gotoMenuArgs)
 import           XMonad.Actions.WindowGo
-import qualified XMonad.Hooks.DynamicLog as L
 import           XMonad.Hooks.FadeInactive (fadeInactiveLogHook)
 import           XMonad.Hooks.ManageDocks (AvoidStruts)
 import           XMonad.Hooks.ManageDocks (docksEventHook)
@@ -21,13 +19,14 @@ import           XMonad.Hooks.UrgencyHook
 import           XMonad.Layout.Grid
 import           XMonad.Layout.LayoutModifier (ModifiedLayout)
 import           XMonad.Layout.Magnifier (magnifiercz)
-import qualified XMonad.StackSet as W
 import           XMonad.Util.EZConfig (additionalKeys)
 import           XMonad.Util.Loggers (logCmd)
 import           XMonad.Util.Paste (sendKeyWindow)
 import           XMonad.Util.SpawnOnce
 import           XMonad.Util.WorkspaceCompare (getSortByXineramaPhysicalRule)
-import           XMonad.Util.XUtils
+import qualified XMonad.Actions.TagWindows as W
+import qualified XMonad.Hooks.DynamicLog as L
+import qualified XMonad.StackSet as W
 
 
 main :: IO ()
@@ -36,6 +35,7 @@ main = xmonad . withHook =<< myxmobar defaults
     withHook = withUrgencyHook (BorderUrgencyHook {urgencyBorderColor = "gold"})
 
 
+--defaults :: XConfig _
 defaults = def
   { borderWidth        = 2
   , focusFollowsMouse  = True
@@ -53,7 +53,7 @@ defaults = def
                            , (className =? "Nightly")  --> doShift "web"
                            , (className =? "Emacs")    --> doShift "emacs"
                            , (appName   =? "gimp")     --> doFloat
-                           , (title     =? "kuake")    --> do doSideFloat NC
+                           , (title     =? "kuake")    --> do _ <- doSideFloat NC
                                                               doShift "hidden"
                            , (appName   =? "pinentry") --> doFloat
                            , (appName   =? "wttr.in")  --> doFloat
@@ -98,7 +98,7 @@ leftPP = def { L.ppCurrent = L.xmobarColor "black" "yellow" . L.wrap "[<fn=1>" "
              , L.ppVisible = L.xmobarColor "#cccccc" "#666600". L.wrap ".<fn=1>" "</fn>."
              , L.ppHidden  = L.wrap "<fn=1>" "</fn>"
              , L.ppUrgent  = L.xmobarColor "yellow" "red" . L.wrap "<fn=1>" "*</fn>"
-             , L.ppOrder   =  \(w:_:t:xs) -> [w, t]
+             , L.ppOrder   =  \(w:_:t:_) -> [w, t]
              }
 
 
@@ -109,6 +109,7 @@ rightPP = def { L.ppSep     = " "
               }
 
 
+notmuch :: X (Maybe String)
 notmuch = do
   count <- logCmd "notmuch count tag:inbox and tag:unread"
   return $ case count of
@@ -117,9 +118,10 @@ notmuch = do
     Nothing  -> Nothing
 
 
+load :: X (Maybe String)
 load = do
-  load <- logCmd "awk '{print $1, $2, $3}' /proc/loadavg"
-  return $ case load of
+  l <- logCmd "awk '{print $1, $2, $3}' /proc/loadavg"
+  return $ case l of
     Just load' -> Just $ icon ++ (unwords $ map colorize $ map read $ words load')
     Nothing    -> Nothing
   where
@@ -165,7 +167,6 @@ shortcuts =
                                                   )
                                                   (pure ())
     )
-
   ]
   where
     xK_LowerVol    = stringToKeysym "XF86AudioLowerVolume"
