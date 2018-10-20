@@ -96,7 +96,9 @@ leftPP = def { L.ppCurrent = L.xmobarColor "black" "yellow" . L.wrap "[<fn=1>" "
 #endif
              , L.ppTitle   = L.wrap "<fn=3>" "</fn>" . L.xmobarColor "black"  "" . L.shorten 100
              , L.ppVisible = L.xmobarColor "#cccccc" "#666600". L.wrap ".<fn=1>" "</fn>."
-             , L.ppHidden  = L.wrap "<fn=1>" "</fn>"
+             , L.ppHidden  = \a -> case a of
+                                     "hidden" -> ""
+                                     a'       -> L.wrap "<fn=1>" "</fn>" a'
              , L.ppUrgent  = L.xmobarColor "yellow" "red" . L.wrap "<fn=1>" "*</fn>"
              , L.ppOrder   =  \(w:_:t:_) -> [w, t]
              }
