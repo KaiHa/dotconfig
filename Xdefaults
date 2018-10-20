@@ -1,9 +1,9 @@
 URxvt.boldFont:         xft:Hack:style=Bold:pixelsize=12, \
-                        xft:Symbola:style=Regular:pixelsize=8
+                        xft:Symbola:style=Regular:pixelsize=12
 URxvt.font:             xft:Hack:style=Regular:pixelsize=12, \
-                        xft:Symbola:style=Regular:pixelsize=8
+                        xft:Symbola:style=Regular:pixelsize=12
 URxvt.italicFont:       xft:Hack:style=Italic:pixelsize=12, \
-                        xft:Symbola:style=Regular:pixelsize=8
+                        xft:Symbola:style=Regular:pixelsize=12
 URxvt.intensityStyles:  false
 URxvt.keysym.C-Down:    font-size:decrease
 URxvt.keysym.C-Up:      font-size:increase
