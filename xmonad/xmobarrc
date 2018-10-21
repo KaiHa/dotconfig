@@ -6,6 +6,7 @@ Config
                        , "xft:Nimbus Sans:size=10:bold:antialias=true:slant=italic"
                        , "xft:Nimbus Sans:size=10:antialias=true:slant=italic"
                        , "xft:Nimbus Sans:size=10:antialias=true"
+                       , "xft:Symbola:size=14:bold:antialias=true"
                        ]
    , bgColor =      "#E4E4E4"
    , fgColor =      "#090909"
@@ -60,20 +61,18 @@ Config
                              ] 50
 
         -- battery monitor
-        , Run Battery        [ "--template" , "<fc=gray><icon=/home/kai/.xmonad/icons/battery_left.xbm/>\
-                                                        \<fc=black,gray><acstatus></fc>\
-                                                        \<icon=/home/kai/.xmonad/icons/battery_right.xbm/></fc>"
-                             , "--low"      , "red,gray"
-                             , "--normal"   , "yellow,gray"
-                             , "--high"     , "black,gray"
+        , Run Battery        [ "--template" , "<acstatus>"
+                             , "--low"      , "red"
+                             , "--normal"   , "yellow"
+                             , "--high"     , "black"
 
                              , "--" -- battery specific options
                                        -- discharging status
-                                       , "-o"	, " <left>% <timeleft> "
+                                       , "-o"	, "<fn=5>🔋</fn><left>% <timeleft> "
                                        -- AC "on" status
-                                       , "-O"	, "<fc=yellow,gray><icon=/home/kai/.xmonad/icons/power_plugged.xbm/><left>% </fc>"
+                                       , "-O"	, "<fn=5>🔌</fn><left>% "
                                        -- charged status
-                                       , "-i"	, "<fc=forestgreen,gray><icon=/home/kai/.xmonad/icons/power_plugged.xbm/></fc>"
+                                       , "-i"	, "<fc=forestgreen><fn=5>🔌 </fn></fc>"
                              ] 150
 
         , Run DiskU [("/", "<icon=/home/kai/.xmonad/icons/disk.xbm/><usedp>%")] [ "--high"     , "orangered"

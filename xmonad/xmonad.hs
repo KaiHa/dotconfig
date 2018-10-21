@@ -115,7 +115,7 @@ notmuch = do
   count <- logCmd "notmuch count tag:inbox and tag:unread"
   return $ case count of
     Just "0" -> Nothing
-    Just a   -> Just $ "<fc=#AA0000><icon=/home/kai/.xmonad/icons/mail.xbm/>" ++ a ++ "</fc>"
+    Just a   -> Just $ "<fc=#AA0000><fn=5>📨</fn>" ++ a ++ "</fc>"
     Nothing  -> Nothing
 
 
