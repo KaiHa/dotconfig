@@ -53,8 +53,7 @@ defaults = def
                            , (className =? "Nightly")  --> doShift "web"
                            , (className =? "Emacs")    --> doShift "emacs"
                            , (appName   =? "gimp")     --> doFloat
-                           , (title     =? "kuake")    --> do _ <- doSideFloat NC
-                                                              doShift "hidden"
+                           , (title     =? "kuake")    --> doSideFloat NC -- <+> doShift "hidden"
                            , (appName   =? "pinentry") --> doFloat
                            , (appName   =? "wttr.in")  --> doFloat
                            ]

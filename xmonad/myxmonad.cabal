@@ -17,6 +17,7 @@ cabal-version:       >=1.10
 
 executable xmonad-x86_64-linux
   main-is:             xmonad.hs
+  ghc-options:         -Wall -threaded
   other-modules:       Adapt2Environment
   other-extensions:    CPP
   build-depends:       base >=4.10
